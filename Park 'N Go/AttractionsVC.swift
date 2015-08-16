@@ -17,9 +17,26 @@ var userLocationCoordinate:CLLocationCoordinate2D!;
 class AttractionsVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, UITableViewDelegate {
     
     // For list in pinned location and attractions. To be
-    
+    var attractionDict: NSDictionary!
     var categoryDictionary = [String:[String]]();
-    var Businesses: [Resturant]! = []
+    class func searchWithQueryWithRadius(map: MKMapView, term: String, deal: Bool, radius: Int, sort: Int, categories: String, completion: ([Resturant]!, NSError!) -> Void) {
+        YelpClient.sharedInstance.searchWithTerm(term, deal: false, radius: radius, sort: sort,categories: categories, success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
+            let responseInfo = response as! NSDictionary
+            resultQueryDictionary = responseInfo
+            println(responseInfo)
+            let dataArray = responseInfo["businesses"] as! NSArray
+            for business in dataArray {
+                let obj = business as! NSDictionary
+                var yelpBusinessMock: YelpBusiness = YelpBusiness(dictionary: obj)
+                var annotation = MKPointAnnotation()
+                annotation.coordinate = yelpBusinessMock.location.coordinate
+                annotation.title = yelpBusinessMock.name
+                map.addAnnotation(annotation)
+            }
+            }) { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
+                println(error)
+        }
+    }
     @IBOutlet var searchText: UITextField!
     @IBOutlet var searchBar: UISearchBar!
     @IBOutlet var attractionsMap: MKMapView!
@@ -257,12 +274,15 @@ class AttractionsVC: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
             var location:CLLocation = CLLocation(latitude: latitude, longitude: longitude)
             let businessPlacemark = MKPlacemark(coordinate: selectedCoordinate, addressDictionary: nil)
             indicatedMapItem = selectedCoordinate;
+            let resturantMock:Resturant = Resturant(dictionary: resultQueryDictionary)
+            attractionDict = resturantMock.location;
             performSegueWithIdentifier("attractionToDetail", sender: self);
         }
     }
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         var attractionsDetailViewController:AttractionsDetailViewController = segue.destinationViewController as! AttractionsDetailViewController
         attractionsDetailViewController.attractionLocation = indicatedMapItem;
+        attractionsDetailViewController.attractionLocationDetail = self.attractionDict
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {

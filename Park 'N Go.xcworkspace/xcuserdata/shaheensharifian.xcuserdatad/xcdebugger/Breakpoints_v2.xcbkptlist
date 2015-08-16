@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Park &apos;N Go/AttractionsDetailViewController.swift"
-            timestampString = "461449189.89832"
+            timestampString = "461455055.842038"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "140"
-            endingLineNumber = "140"
+            startingLineNumber = "148"
+            endingLineNumber = "148"
             landmarkName = "getYelpData()"
             landmarkType = "5">
          </BreakpointContent>

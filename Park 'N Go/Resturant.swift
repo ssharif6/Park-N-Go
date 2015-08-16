@@ -15,11 +15,14 @@ class Resturant: NSObject {
     var thumbUrl: String!
     var address: String!
     var jsonData: NSData!
+    var location: NSDictionary        // location
+
     
     init(dictionary: NSDictionary) {
         name = dictionary["name"] as? String
         thumbUrl = dictionary["thumbUrl"] as? String
         address = dictionary["address"] as? String
+        self.location = dictionary["location"] as? NSDictionary ?? [:]
     }
     
     class func searchWithQuery(map: MKMapView, query: String, completion: ([Resturant]!, NSError!) -> Void) {
@@ -35,7 +38,6 @@ class Resturant: NSObject {
                 annotation.coordinate = yelpBusinessMock.location.coordinate
                 annotation.title = yelpBusinessMock.name
                 annotation.subtitle = yelpBusinessMock.displayAddress
-                attractionDetailAddressString = yelpBusinessMock.displayAddress
                 map.addAnnotation(annotation)
             }
             }) { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
