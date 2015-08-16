@@ -1,0 +1,31 @@
+************************** CATEGORIES *************************
+>> Entertainment
+	1. Theatre
+	2. Concert Halls
+	3. Family-Style
+
+>> Recreation
+	1. Beaches
+	2. Parks
+
+>> Shopping
+	1. Malls
+	2. Supermarkets
+	3. Electronics
+	
+>> Transport
+	1. Metro Buses
+	2. Taxis
+	3. Park & Rides
+	
+>> Lodging
+	1. Hotels
+	2. Motels
+	3. Hostel
+
+>> Banks
+	1. Bank of America
+	2. Chase Bank
+	3. Wells Fargo
+	4. ATM
+

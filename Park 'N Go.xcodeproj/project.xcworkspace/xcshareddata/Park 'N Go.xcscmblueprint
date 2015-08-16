@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "5D8B9E215F74404A66381B9FB738D4A1D70AC6AD",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "01C81FEC5B7F44AA0B07477B0B9271CE6E867F4D" : 0,
+    "5D8B9E215F74404A66381B9FB738D4A1D70AC6AD" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "E944189C-CE48-4CBA-B22F-0B0EDA084E1C",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "01C81FEC5B7F44AA0B07477B0B9271CE6E867F4D" : "",
+    "5D8B9E215F74404A66381B9FB738D4A1D70AC6AD" : "Park%20'N%20Go"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Park 'N Go",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 203,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Park 'N Go.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/bitbucket.org\/ssharif66\/park-n-go.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "01C81FEC5B7F44AA0B07477B0B9271CE6E867F4D"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/bitbucket.org\/ssharif66\/park-n-go.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "5D8B9E215F74404A66381B9FB738D4A1D70AC6AD"
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>E944189C-CE48-4CBA-B22F-0B0EDA084E1C</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Park 'N Go</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>01C81FEC5B7F44AA0B07477B0B9271CE6E867F4D</key>
+		<string>https://bitbucket.org/ssharif66/park-n-go.git</string>
+		<key>5D8B9E215F74404A66381B9FB738D4A1D70AC6AD</key>
+		<string>https://bitbucket.org/ssharif66/park-n-go.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Park 'N Go.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>01C81FEC5B7F44AA0B07477B0B9271CE6E867F4D</key>
+		<string>../../..</string>
+		<key>5D8B9E215F74404A66381B9FB738D4A1D70AC6AD</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://bitbucket.org/ssharif66/park-n-go.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>5D8B9E215F74404A66381B9FB738D4A1D70AC6AD</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>01C81FEC5B7F44AA0B07477B0B9271CE6E867F4D</string>
+			<key>IDESourceControlWCCName</key>
+			<string></string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>5D8B9E215F74404A66381B9FB738D4A1D70AC6AD</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Park%20'N%20Go</string>
+		</dict>
+	</array>
+</dict>
+</plist>
