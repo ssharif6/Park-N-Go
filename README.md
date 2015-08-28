@@ -1,12 +1,11 @@
 !!!!# README #!!!!
--------------------------------------------------------------------------------------------------------------
+
 ###What is Park-N-Go?###
 Park-N-Go is a mobile app that allows a user to pin their location and from there, the user may search 
 for popular locations and create routes to get to their destination. Park-N-Go has Yelp's API integrated
 within it to ensure quality of destinations can be viewed.
 
 Park-N-Go is currently in ALPHA.
--------------------------------------------------------------------------------------------------------------
 ###Getting Started###
 >> Once downloaded, start up the app. This will bring you to the "Park and Pin" tab. This app will save
    wherever your last pin was and keep track of it and your current location.
@@ -16,18 +15,16 @@ Park-N-Go is currently in ALPHA.
    gas stations, restaurants, etc.)
 >> The "Attractions" tab will let you choose an attraction and the genres to it. For example, food will have
    multiple categories such burger joints or seafood restaurants.
--------------------------------------------------------------------------------------------------------------
 ### Contribution guidelines ###
 
 * Writing tests
 * Code review
 * Other guidelines
--------------------------------------------------------------------------------------------------------------
+
 ###CONTACT###
 *Shaheen Sharifian
 *Max Shao
 *Nelson Tan (nelsontan.school@gmail.com)
--------------------------------------------------------------------------------------------------------------
 ### CURRENT BUGS / ISSUES ###
 *
 -------------------------------------------------------------------------------------------------------------
