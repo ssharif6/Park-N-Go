@@ -8,7 +8,6 @@ within it to ensure quality of destinations can be viewed.
 Park-N-Go is currently in ALPHA.
 -------------------------------------------------------------------------------------------------------------
 ###Getting Started###
-To start, you have to download this app in the Apple AppStore.
 >> Once downloaded, start up the app. This will bring you to the "Park and Pin" tab. This app will save
    wherever your last pin was and keep track of it and your current location.
 >> If you want to pin a new location, simply hit the trashcan symbol on the top left corner and then hit the
