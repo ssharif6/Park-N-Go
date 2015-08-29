@@ -1,0 +1,51 @@
+businesses =     (
+{
+categories =             (
+(
+Thai,
+thai
+)
+);
+"display_phone" = "+1-212-239-8792";
+distance = "1652.33096099431";
+id = "songkran-new-york";
+"image_url" = "http://s3-media2.fl.yelpcdn.com/bphoto/2QomFoZGRCstp7873diaFw/ms.jpg";
+"is_claimed" = 1;
+"is_closed" = 0;
+location =             {
+address =                 (
+"330 8th Ave"
+);
+city = "New York";
+coordinate =                 {
+latitude = "40.7474966";
+longitude = "-73.99670690000001";
+};
+"country_code" = US;
+"cross_streets" = "26th St & 27th St";
+"display_address" =                 (
+"330 8th Ave",
+Chelsea,
+"New York, NY 10001"
+);
+"geo_accuracy" = "9.5";
+neighborhoods =                 (
+Chelsea
+);
+"postal_code" = 10001;
+"state_code" = NY;
+};
+"menu_date_updated" = 1436601986;
+"menu_provider" = eat24;
+"mobile_url" = "http://m.yelp.com/biz/songkran-new-york";
+name = Songkran;
+phone = 2122398792;
+rating = "3.5";
+"rating_img_url" = "http://s3-media1.fl.yelpcdn.com/assets/2/www/img/5ef3eb3cb162/ico/stars/v1/stars_3_half.png";
+"rating_img_url_large" = "http://s3-media3.fl.yelpcdn.com/assets/2/www/img/bd9b7a815d1b/ico/stars/v1/stars_large_3_half.png";
+"rating_img_url_small" = "http://s3-media1.fl.yelpcdn.com/assets/2/www/img/2e909d5d3536/ico/stars/v1/stars_small_3_half.png";
+"review_count" = 129;
+"snippet_image_url" = "http://s3-media4.fl.yelpcdn.com/photo/-8o3Sa8PbX4NghB1kr4Eew/ms.jpg";
+"snippet_text" = "Solid thai in a convenient location.\n\nI typically order the steamed dumplings and beef salad.  Beef salad has a great taste and generous portion.  I have...";
+url = "http://www.yelp.com/biz/songkran-new-york";
+}

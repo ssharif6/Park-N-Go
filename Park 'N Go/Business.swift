@@ -107,6 +107,11 @@ class Business: NSObject {
             return nil
         }
     }
+    var phone: String {
+        get {
+            return self.dictionary["display_phone"] as! String
+        }
+    }
     
     var displayAddress: String {
         get {

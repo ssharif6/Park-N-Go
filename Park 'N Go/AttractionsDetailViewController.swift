@@ -11,13 +11,15 @@ import MapKit
 import AddressBook
 
 
-class AttractionsDetailViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
+class AttractionsDetailViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UITableViewDelegate, UITableViewDataSource {
 
-    @IBOutlet var addressLabel: UILabel!
     @IBOutlet var detailMap: MKMapView!
     
     var attractionDetailAddressString:String!
+    var currentBusiness:NSDictionary!
 
+    var businessToUse: Business!
+    
     var pinnedAttraction:CLLocation! // given the coordinate
     
     var locationManager:CLLocationManager = CLLocationManager();
@@ -25,19 +27,24 @@ class AttractionsDetailViewController: UIViewController, MKMapViewDelegate, CLLo
     var attractionLocation:CLLocationCoordinate2D!;
     
     var attractionLocationDetail: NSDictionary!
+    // Outlets
+    @IBOutlet weak var YelpInfoTableview: UITableView!
+    @IBOutlet weak var businessName: UILabel!
+    @IBOutlet weak var reviewImage: UIImageView!
+    @IBOutlet weak var reviews: UILabel!
+    @IBOutlet weak var categories: UILabel!
+    @IBOutlet weak var distanceLabel: UILabel!
+    @IBOutlet weak var thumbImage: UIImageView!
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        addressLabel.font = UIFont(name: addressLabel.font.fontName, size: 18);
-        detailMap.delegate = self;
+        loadYelpInfo()
         locationManager.delegate = self;
-        detailMap.mapType = MKMapType.Hybrid;
         locationManager.desiredAccuracy = kCLLocationAccuracyBest;
         locationManager.requestWhenInUseAuthorization();
-        detailMap.zoomEnabled = true;
-//        getYelpData()
         getDataFromYelp()
-        // Do any additional setup after loading the view.
     }
 
     @IBAction func goToAddressButton(sender: AnyObject) {
@@ -50,123 +57,76 @@ class AttractionsDetailViewController: UIViewController, MKMapViewDelegate, CLLo
         MKMapItem.openMapsWithItems(mapItems, launchOptions: launchOptions);
 
     }
-    func getInfo() {
-        var latitude = attractionLocation.latitude;
-        var longitude  = attractionLocation.longitude;
-        var latDelta:CLLocationDegrees = 0.000001
-        var longDelta: CLLocationDegrees = 0.000001
-        var span: MKCoordinateSpan = MKCoordinateSpanMake(latDelta, longDelta);
-        var location = CLLocationCoordinate2DMake(latitude, longitude);
-        var realLocation = CLLocation(latitude: latitude, longitude: longitude);
-        CLGeocoder().reverseGeocodeLocation(realLocation, completionHandler: { (placemarks, error) -> Void in
-            var title = ""
-            var subtitle = ""
-            var locality = ""
-            if(error == nil) {
-                if let placemark = CLPlacemark(placemark: placemarks?[0] as! CLPlacemark) {
-                    var subThoroughfare:String = "";
-                    var thoroughfare:String = "";
-                    var locality:String = "";
-                    var postalCode:String = "";
-                    var administrativeArea:String = "";
-                    var country:String = "";
-                    
-                    if (placemark.subThoroughfare != nil) {
-                        subThoroughfare = placemark.subThoroughfare;
-                    }
-                    if(placemark.thoroughfare != nil) {
-                        thoroughfare = placemark.thoroughfare;
-                    }
-                    if(placemark.locality != nil) {
-                        locality = placemark.locality;
-                    }
-                    if(placemark.postalCode != nil) {
-                        postalCode = placemark.postalCode;
-                    }
-                    if(placemark.administrativeArea != nil) {
-                        administrativeArea = placemark.administrativeArea;
-                    }
-                    if(placemark.country != nil) {
-                        country = placemark.country;
-                    }
-                    println("viewcontroller placmark data:");
-                    println(locality);
-                    println(postalCode);
-                    println(administrativeArea);
-                    println(country);
-                    
-                    title = " \(subThoroughfare) \(thoroughfare) \n \(locality), \(administrativeArea) \n \(postalCode)\(country)";
-                    subtitle = " \(subThoroughfare) \(thoroughfare)";
-                    println(title);
-                    self.addressLabel.text = title;
-                    
-                }
-            }
-            var overallLoc = CLLocationCoordinate2DMake(latitude, longitude);
-            var region:MKCoordinateRegion = MKCoordinateRegionMake(overallLoc, span);
-            var annotation = MKPointAnnotation();
-            annotation.coordinate = location;
-            annotation.title = subtitle;
-            self.detailMap.addAnnotation(annotation);
-            self.detailMap.setRegion(region, animated: true)
-        })
+    func loadYelpInfo() {
+        businessName.text = businessToUse.name
+        let thumbImageViewData = NSData(contentsOfURL: businessToUse.imageURL!)
+        thumbImage.image = UIImage(data: thumbImageViewData!)
+        let reviewImageData = NSData(contentsOfURL: businessToUse.ratingImageURL!)
+        reviewImage.image = UIImage(data: reviewImageData!)
+        categories.text = businessToUse.categories
+        reviews.text = "\(businessToUse.reviewCount!) Reviews"
+        distanceLabel.text = businessToUse.distance
     }
-    
-    func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
-        if(annotation is MKUserLocation) {
-            return nil;
-        }
-        let reuseId = "pin";
-        var pinView = mapView.dequeueReusableAnnotationViewWithIdentifier(reuseId) as? MKPinAnnotationView;
-        if(pinView == nil) {
-            pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId);
-            pinView!.canShowCallout = true;
-            pinView!.animatesDrop = true;
-        }
-        var rightButton = UIButton.buttonWithType(UIButtonType.DetailDisclosure) as! UIButton; // change this to custom after graphic is made
-        pinView?.rightCalloutAccessoryView = rightButton;
-        return pinView;
-    }
-    func mapView(mapView: MKMapView!, annotationView view: MKAnnotationView!, calloutAccessoryControlTapped control: UIControl!) {
-        let selectedLocation = view.annotation;
-        attractionLocation = selectedLocation.coordinate;
-        if(control == view.rightCalloutAccessoryView) {
-            let currentLocMapItem = MKMapItem.mapItemForCurrentLocation();
-            let selectedPlacemark = MKPlacemark(coordinate: selectedLocation.coordinate, addressDictionary: nil);
-            let selectedMapItem = MKMapItem(placemark: selectedPlacemark);
-            let mapItems = [currentLocMapItem, selectedMapItem];
-            let launchOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeWalking];
-            
-            MKMapItem.openMapsWithItems(mapItems, launchOptions: launchOptions);
-        }
-    }
-    func getDataFromYelp() {
-        var businessMock:Resturant = Resturant(dictionary: resultQueryDictionary)
-        self.addressLabel.text = self.attractionDetailAddressString
-    }
-
-//    func getYelpData() {
-//        var businessMock:Resturant = Resturant(dictionary: resultQueryDictionary)
-////        attractionDetailAddressString = resultQueryDictionary["display_address"] as? String;
-//        self.addressLabel.text = attractionDetailAddressString
-//        //        var yelpBusiness:Resturat = YelpBusiness(dictionary: resultQueryDictionary)
-////        var displayAddress = yelpBusiness.displayAddress
-////        println(displayAddress + "display address ")
-////        var displayCategories = yelpBusiness.displayCategories
-////        var imageURL = yelpBusiness.imageURL
-////        var latitude = yelpBusiness.latitude
-////        var longitude = yelpBusiness.longitude
-////        var name = yelpBusiness.name as String
-////        var phoneNumber = yelpBusiness.phone as String
-////        var rating = yelpBusiness.rating as String
-////        var ratingImageURL = yelpBusiness.ratingImageURL as NSURL
-////        var reviewCount = yelpBusiness.reviewCount as Int
-////        var shortAddress = yelpBusiness.shortAddress as String
+//    func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
+//        if(annotation is MKUserLocation) {
+//            return nil;
+//        }
+//        let reuseId = "pin";
+//        var pinView = mapView.dequeueReusableAnnotationViewWithIdentifier(reuseId) as? MKPinAnnotationView;
+//        if(pinView == nil) {
+//            pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId);
+//            pinView!.canShowCallout = true;
+//            pinView!.animatesDrop = true;
+//        }
+//        var rightButton = UIButton.buttonWithType(UIButtonType.DetailDisclosure) as! UIButton; // change this to custom after graphic is made
+//        pinView?.rightCalloutAccessoryView = rightButton;
+//        return pinView;
 //    }
+//    func mapView(mapView: MKMapView!, annotationView view: MKAnnotationView!, calloutAccessoryControlTapped control: UIControl!) {
+//        let selectedLocation = view.annotation;
+//        attractionLocation = selectedLocation.coordinate;
+//        if(control == view.rightCalloutAccessoryView) {
+//            let currentLocMapItem = MKMapItem.mapItemForCurrentLocation();
+//            let selectedPlacemark = MKPlacemark(coordinate: selectedLocation.coordinate, addressDictionary: nil);
+//            let selectedMapItem = MKMapItem(placemark: selectedPlacemark);
+//            let mapItems = [currentLocMapItem, selectedMapItem];
+//            let launchOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeWalking];
+//            
+//            MKMapItem.openMapsWithItems(mapItems, launchOptions: launchOptions);
+//        }
+//    }
+    func getDataFromYelp() {
+        YelpInfoTableview.dataSource = self
+        YelpInfoTableview.delegate = self
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 3
+    }
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        var businessMock: Business = Business(dictionary: currentBusiness)
+
+        if indexPath.row == 0 {
+            let directionsCell = YelpInfoTableview.dequeueReusableCellWithIdentifier("YelpInfoDirectionCell", forIndexPath: indexPath) as! YelpInfoDirectionCell
+//            directionsCell.business = currentBusiness
+            directionsCell.business = businessMock
+            
+            return directionsCell
+            
+        } else if indexPath.row == 1 {
+            let contactCell = YelpInfoTableview.dequeueReusableCellWithIdentifier("YelpInfoContactCell", forIndexPath: indexPath) as! YelpInfoContactCell
+            contactCell.business = businessMock
+            return contactCell
+            
+        } else {
+            let infoCell = YelpInfoTableview.dequeueReusableCellWithIdentifier("YelpInfoInfoCell", forIndexPath: indexPath) as! YelpInfoInfoCell
+            infoCell.business = businessMock
+            return infoCell
+        }
     }
     
 

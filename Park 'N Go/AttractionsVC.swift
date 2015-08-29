@@ -15,6 +15,7 @@ var userLocationCoordinate:CLLocationCoordinate2D!;
 
 class AttractionsVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, UITableViewDelegate {
     
+    var businessMock: Business!
     var matchingItems: [MKMapItem] = [MKMapItem]();
     var indicatedMapItem:CLLocationCoordinate2D!;
     var attractionLocationString:String!
@@ -271,6 +272,7 @@ class AttractionsVC: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
                     if yelpBusinessMock.longitude == view.annotation.coordinate.longitude {
                         attractionDict = obj;
                         foundDisplayAddress = yelpBusinessMock.displayAddress
+                        businessMock = Business(dictionary: obj)
                     }
                 }
             }
@@ -284,6 +286,8 @@ class AttractionsVC: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
                 if let ivc = segue.destinationViewController as? AttractionsDetailViewController {
                     ivc.attractionLocation = self.indicatedMapItem
                     ivc.attractionDetailAddressString = self.attractionLocationString
+                    ivc.currentBusiness = self.attractionDict
+                    ivc.businessToUse = self.businessMock
                 }
             }
         }
