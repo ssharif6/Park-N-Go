@@ -28,6 +28,7 @@ class YelpTableBusinessCell: UITableViewCell {
             categoryLabel.text = business.categories
             addressLabel.text = business.address
             reviewLabel.text = "\(business.reviewCount!) Reviews"
+            distanceLabel.text = business.distance
         }
     }
 

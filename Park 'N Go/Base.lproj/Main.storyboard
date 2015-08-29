@@ -119,21 +119,12 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="IwT-bY-zPe">
-                                <rect key="frame" x="0.0" y="493" width="375" height="174"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="Af9-Rb-XX8" id="EoH-oC-muy"/>
-                                    <outlet property="delegate" destination="Af9-Rb-XX8" id="eYx-0Y-OWG"/>
-                                </connections>
-                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Pinned Location" image="Triangle 1 Copy" id="HKO-g0-Rbx"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
-                        <outlet property="PinnedCategories" destination="IwT-bY-zPe" id="gxs-X8-1Ko"/>
                         <outlet property="addressLabel" destination="Zpb-oh-QBy" id="wCd-Ig-goV"/>
                         <outlet property="smallMapView" destination="eUM-r0-I8d" id="3LY-IR-jMi"/>
                     </connections>
