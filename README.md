@@ -36,12 +36,6 @@ Install Cocoapods from here: https://cocoapods.org via Bash in Project Directory
 * Code review
 * Other guidelines
 
-#CONTACT#
-
-* Shaheen Sharifian
-* Max Shao
-* Nelson Tan 
-
 #CURRENT BUGS / ISSUES#
 * UI/UX Edits
 
