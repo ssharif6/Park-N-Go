@@ -8,32 +8,34 @@
 
 import UIKit
 import MapKit
+
 var resultQueryDictionary:NSDictionary!
+var businessArray:NSArray!
 
 class Resturant: NSObject {
     var name: String!
     var thumbUrl: String!
     var address: String!
     var jsonData: NSData!
-    var location: NSDictionary        // location
-
+    var locationDict: NSDictionary        // location
     
     init(dictionary: NSDictionary) {
-        name = dictionary["name"] as? String
-        thumbUrl = dictionary["thumbUrl"] as? String
-        address = dictionary["address"] as? String
-        self.location = dictionary["location"] as? NSDictionary ?? [:]
+        self.name = dictionary["name"] as? String
+        self.thumbUrl = dictionary["thumbUrl"] as? String
+        self.address = dictionary["address"] as? String
+        self.locationDict = dictionary["location"] as? NSDictionary ?? [:]
     }
     
     class func searchWithQuery(map: MKMapView, query: String, completion: ([Resturant]!, NSError!) -> Void) {
-        YelpClient.sharedInstance.searchWithTerm(query,sort: 0, radius: 1069, success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
+        YelpClient.sharedInstance.searchWithTerm(query,sort: 0, radius: 8000, success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
             let responseInfo = response as! NSDictionary
             resultQueryDictionary = responseInfo
             println(responseInfo)
             let dataArray = responseInfo["businesses"] as! NSArray
+            businessArray = dataArray
             for business in dataArray {
                 let obj = business as! NSDictionary
-                var yelpBusinessMock: YelpBusiness = YelpBusiness(dictionary: obj)
+                var yelpBusinessMock: Business = Business(dictionary: obj)
                 var annotation = MKPointAnnotation()
                 annotation.coordinate = yelpBusinessMock.location.coordinate
                 annotation.title = yelpBusinessMock.name

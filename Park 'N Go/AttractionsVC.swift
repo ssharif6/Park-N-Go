@@ -10,33 +10,19 @@ import UIKit
 import MapKit
 import AddressBook
 
-var matchingItems: [MKMapItem] = [MKMapItem]();
-var indicatedMapItem:CLLocationCoordinate2D!;
 var userLocationCoordinate:CLLocationCoordinate2D!;
+
 
 class AttractionsVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, UITableViewDelegate {
     
+    var matchingItems: [MKMapItem] = [MKMapItem]();
+    var indicatedMapItem:CLLocationCoordinate2D!;
+    var attractionLocationString:String!
     // For list in pinned location and attractions. To be
     var attractionDict: NSDictionary!
     var categoryDictionary = [String:[String]]();
-    class func searchWithQueryWithRadius(map: MKMapView, term: String, deal: Bool, radius: Int, sort: Int, categories: String, completion: ([Resturant]!, NSError!) -> Void) {
-        YelpClient.sharedInstance.searchWithTerm(term, deal: false, radius: radius, sort: sort,categories: categories, success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
-            let responseInfo = response as! NSDictionary
-            resultQueryDictionary = responseInfo
-            println(responseInfo)
-            let dataArray = responseInfo["businesses"] as! NSArray
-            for business in dataArray {
-                let obj = business as! NSDictionary
-                var yelpBusinessMock: YelpBusiness = YelpBusiness(dictionary: obj)
-                var annotation = MKPointAnnotation()
-                annotation.coordinate = yelpBusinessMock.location.coordinate
-                annotation.title = yelpBusinessMock.name
-                map.addAnnotation(annotation)
-            }
-            }) { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
-                println(error)
-        }
-    }
+    
+
     @IBOutlet var searchText: UITextField!
     @IBOutlet var searchBar: UISearchBar!
     @IBOutlet var attractionsMap: MKMapView!
@@ -223,6 +209,7 @@ class AttractionsVC: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
     func performYelpSearchWithParams(query: String) {
         attractionsMap.removeAnnotations(attractionsMap.annotations)
         matchingItems.removeAll()
+        var resturantMock:Resturant = Resturant(dictionary: resultQueryDictionary)
         Resturant.searchWithQueryWithRadius(self.attractionsMap, term: query, deal: false, radius: 100, sort: 0, categories: "Restaurants") { (BusinessList: [Resturant]!, error: NSError!) -> Void in
             if(error != nil) {
                 println("Error occured in the search \(error.localizedDescription)")
@@ -275,14 +262,31 @@ class AttractionsVC: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
             let businessPlacemark = MKPlacemark(coordinate: selectedCoordinate, addressDictionary: nil)
             indicatedMapItem = selectedCoordinate;
             let resturantMock:Resturant = Resturant(dictionary: resultQueryDictionary)
-            attractionDict = resturantMock.location;
-            performSegueWithIdentifier("attractionToDetail", sender: self);
+            let dataArray = resultQueryDictionary["businesses"] as! NSArray
+            var foundDisplayAddress:String = "Address not found"
+            for business in dataArray {
+                let obj = business as! NSDictionary
+                var yelpBusinessMock: YelpBusiness = YelpBusiness(dictionary: obj)
+                if yelpBusinessMock.latitude == view.annotation.coordinate.latitude {
+                    if yelpBusinessMock.longitude == view.annotation.coordinate.longitude {
+                        attractionDict = obj;
+                        foundDisplayAddress = yelpBusinessMock.displayAddress
+                    }
+                }
+            }
+            attractionLocationString = foundDisplayAddress
+            performSegueWithIdentifier("attractionToDetail", sender: view);
         }
     }
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        var attractionsDetailViewController:AttractionsDetailViewController = segue.destinationViewController as! AttractionsDetailViewController
-        attractionsDetailViewController.attractionLocation = indicatedMapItem;
-        attractionsDetailViewController.attractionLocationDetail = self.attractionDict
+        if segue.identifier == "attractionToDetail" {
+            if let annotation = (sender as? MKAnnotationView)?.annotation {
+                if let ivc = segue.destinationViewController as? AttractionsDetailViewController {
+                    ivc.attractionLocation = self.indicatedMapItem
+                    ivc.attractionDetailAddressString = self.attractionLocationString
+                }
+            }
+        }
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {

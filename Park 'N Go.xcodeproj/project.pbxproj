@@ -22,10 +22,12 @@
 		85A7B59C1B504D6200EE0611 /* AttractionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A7B59B1B504D6200EE0611 /* AttractionsVC.swift */; };
 		85A7B5A81B508B1000EE0611 /* AttractionsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A7B5A71B508B1000EE0611 /* AttractionsDetailViewController.swift */; };
 		85AA2C951B8128C1007433B7 /* YelpBusinessModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85AA2C941B8128C1007433B7 /* YelpBusinessModel.swift */; };
-		85AF7FA31B54AF4900333448 /* CategoryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85AF7FA21B54AF4900333448 /* CategoryDetailViewController.swift */; };
 		85BED0DA1B6EF56500413EE4 /* categories.json in Resources */ = {isa = PBXBuildFile; fileRef = 85BED0D91B6EF56500413EE4 /* categories.json */; };
 		85C7E0361B6C3D3C00E2F3A2 /* YelpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C7E0351B6C3D3C00E2F3A2 /* YelpClient.swift */; };
 		85DC1B4C1B54E6C500DA8ABB /* CustomCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85DC1B4B1B54E6C500DA8ABB /* CustomCategoryCell.swift */; };
+		85DC42DF1B9149A800CB72B2 /* YelpTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85DC42DE1B9149A800CB72B2 /* YelpTableViewController.swift */; };
+		85DC42E21B914B8A00CB72B2 /* YelpTableBusinessCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85DC42E11B914B8A00CB72B2 /* YelpTableBusinessCell.swift */; };
+		85DC42E41B915BBD00CB72B2 /* Business.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85DC42E31B915BBD00CB72B2 /* Business.swift */; };
 		85DCCFFB1B54A32100188C4D /* CustomCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85DCCFFA1B54A32100188C4D /* CustomCellTableViewCell.swift */; };
 		85DCCFFD1B54A52F00188C4D /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85DCCFFC1B54A52F00188C4D /* CategoryModel.swift */; };
 		85DCCFFF1B54A6C900188C4D /* button 13.png in Resources */ = {isa = PBXBuildFile; fileRef = 85DCCFFE1B54A6C900188C4D /* button 13.png */; };
@@ -69,10 +71,12 @@
 		85A7B59B1B504D6200EE0611 /* AttractionsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttractionsVC.swift; sourceTree = "<group>"; };
 		85A7B5A71B508B1000EE0611 /* AttractionsDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttractionsDetailViewController.swift; sourceTree = "<group>"; };
 		85AA2C941B8128C1007433B7 /* YelpBusinessModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YelpBusinessModel.swift; sourceTree = "<group>"; };
-		85AF7FA21B54AF4900333448 /* CategoryDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryDetailViewController.swift; sourceTree = "<group>"; };
 		85BED0D91B6EF56500413EE4 /* categories.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = categories.json; sourceTree = "<group>"; };
 		85C7E0351B6C3D3C00E2F3A2 /* YelpClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YelpClient.swift; sourceTree = "<group>"; };
 		85DC1B4B1B54E6C500DA8ABB /* CustomCategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCategoryCell.swift; sourceTree = "<group>"; };
+		85DC42DE1B9149A800CB72B2 /* YelpTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YelpTableViewController.swift; sourceTree = "<group>"; };
+		85DC42E11B914B8A00CB72B2 /* YelpTableBusinessCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YelpTableBusinessCell.swift; sourceTree = "<group>"; };
+		85DC42E31B915BBD00CB72B2 /* Business.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Business.swift; sourceTree = "<group>"; };
 		85DCCFFA1B54A32100188C4D /* CustomCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCellTableViewCell.swift; sourceTree = "<group>"; };
 		85DCCFFC1B54A52F00188C4D /* CategoryModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryModel.swift; sourceTree = "<group>"; };
 		85DCCFFE1B54A6C900188C4D /* button 13.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button 13.png"; sourceTree = "<group>"; };
@@ -128,6 +132,7 @@
 		8550DE271B47478F0074A71C /* Park 'N Go */ = {
 			isa = PBXGroup;
 			children = (
+				85DC42E01B914B7300CB72B2 /* Views */,
 				85BE522E1B5B5918006C351B /* YelpAPI */,
 				85630AB51B502CAA000DE1BD /* ViewControllers */,
 				855980DB1B55DDF30071F120 /* Models */,
@@ -178,6 +183,7 @@
 			children = (
 				85DCCFFC1B54A52F00188C4D /* CategoryModel.swift */,
 				850A45DE1B6C4240008D30E0 /* Resturant.swift */,
+				85DC42E31B915BBD00CB72B2 /* Business.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -207,7 +213,7 @@
 				85630AB31B4E0144000DE1BD /* VCDetailMapView.swift */,
 				85A7B59B1B504D6200EE0611 /* AttractionsVC.swift */,
 				85A7B5A71B508B1000EE0611 /* AttractionsDetailViewController.swift */,
-				85AF7FA21B54AF4900333448 /* CategoryDetailViewController.swift */,
+				85DC42DE1B9149A800CB72B2 /* YelpTableViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -221,6 +227,14 @@
 				85AA2C941B8128C1007433B7 /* YelpBusinessModel.swift */,
 			);
 			name = YelpAPI;
+			sourceTree = "<group>";
+		};
+		85DC42E01B914B7300CB72B2 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				85DC42E11B914B8A00CB72B2 /* YelpTableBusinessCell.swift */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 		F4694B284863B4AAD61F7A8E /* Frameworks */ = {
@@ -379,11 +393,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				85DC42E21B914B8A00CB72B2 /* YelpTableBusinessCell.swift in Sources */,
 				85E84C4D1B4C35C300614FB3 /* VCMapView.swift in Sources */,
 				85DC1B4C1B54E6C500DA8ABB /* CustomCategoryCell.swift in Sources */,
 				85DCCFFD1B54A52F00188C4D /* CategoryModel.swift in Sources */,
 				85E84C4F1B4C38B900614FB3 /* JSON.swift in Sources */,
-				85AF7FA31B54AF4900333448 /* CategoryDetailViewController.swift in Sources */,
 				855980F31B5B4E9A0071F120 /* (null) in Sources */,
 				8550DE2D1B47478F0074A71C /* ViewController.swift in Sources */,
 				85E84C4B1B4C344700614FB3 /* Artwork.swift in Sources */,
@@ -394,8 +408,10 @@
 				85A7B5A81B508B1000EE0611 /* AttractionsDetailViewController.swift in Sources */,
 				850A45DF1B6C4240008D30E0 /* Resturant.swift in Sources */,
 				85630AB41B4E0144000DE1BD /* VCDetailMapView.swift in Sources */,
+				85DC42E41B915BBD00CB72B2 /* Business.swift in Sources */,
 				85A7B59C1B504D6200EE0611 /* AttractionsVC.swift in Sources */,
 				850A45E11B6C790A008D30E0 /* YelpBusiness.swift in Sources */,
+				85DC42DF1B9149A800CB72B2 /* YelpTableViewController.swift in Sources */,
 				8509B5091B4CA225001C4AE8 /* detailViewController.swift in Sources */,
 				8550DE2B1B47478F0074A71C /* AppDelegate.swift in Sources */,
 			);

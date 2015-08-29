@@ -10,13 +10,14 @@ import UIKit
 import MapKit
 import AddressBook
 
-var attractionDetailAddressString:String!
 
 class AttractionsDetailViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
 
     @IBOutlet var addressLabel: UILabel!
     @IBOutlet var detailMap: MKMapView!
     
+    var attractionDetailAddressString:String!
+
     var pinnedAttraction:CLLocation! // given the coordinate
     
     var locationManager:CLLocationManager = CLLocationManager();
@@ -24,8 +25,6 @@ class AttractionsDetailViewController: UIViewController, MKMapViewDelegate, CLLo
     var attractionLocation:CLLocationCoordinate2D!;
     
     var attractionLocationDetail: NSDictionary!
-    
-    var addressStringText:String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,8 +35,8 @@ class AttractionsDetailViewController: UIViewController, MKMapViewDelegate, CLLo
         locationManager.desiredAccuracy = kCLLocationAccuracyBest;
         locationManager.requestWhenInUseAuthorization();
         detailMap.zoomEnabled = true;
-        getYelpData()
-
+//        getYelpData()
+        getDataFromYelp()
         // Do any additional setup after loading the view.
     }
 
@@ -51,67 +50,67 @@ class AttractionsDetailViewController: UIViewController, MKMapViewDelegate, CLLo
         MKMapItem.openMapsWithItems(mapItems, launchOptions: launchOptions);
 
     }
-//    func getInfo() {
-//        var latitude = attractionLocation.latitude;
-//        var longitude  = attractionLocation.longitude;
-//        var latDelta:CLLocationDegrees = 0.000001
-//        var longDelta: CLLocationDegrees = 0.000001
-//        var span: MKCoordinateSpan = MKCoordinateSpanMake(latDelta, longDelta);
-//        var location = CLLocationCoordinate2DMake(latitude, longitude);
-//        var realLocation = CLLocation(latitude: latitude, longitude: longitude);
-//        CLGeocoder().reverseGeocodeLocation(realLocation, completionHandler: { (placemarks, error) -> Void in
-//            var title = ""
-//            var subtitle = ""
-//            var locality = ""
-//            if(error == nil) {
-//                if let placemark = CLPlacemark(placemark: placemarks?[0] as! CLPlacemark) {
-//                    var subThoroughfare:String = "";
-//                    var thoroughfare:String = "";
-//                    var locality:String = "";
-//                    var postalCode:String = "";
-//                    var administrativeArea:String = "";
-//                    var country:String = "";
-//                    
-//                    if (placemark.subThoroughfare != nil) {
-//                        subThoroughfare = placemark.subThoroughfare;
-//                    }
-//                    if(placemark.thoroughfare != nil) {
-//                        thoroughfare = placemark.thoroughfare;
-//                    }
-//                    if(placemark.locality != nil) {
-//                        locality = placemark.locality;
-//                    }
-//                    if(placemark.postalCode != nil) {
-//                        postalCode = placemark.postalCode;
-//                    }
-//                    if(placemark.administrativeArea != nil) {
-//                        administrativeArea = placemark.administrativeArea;
-//                    }
-//                    if(placemark.country != nil) {
-//                        country = placemark.country;
-//                    }
-//                    println("viewcontroller placmark data:");
-//                    println(locality);
-//                    println(postalCode);
-//                    println(administrativeArea);
-//                    println(country);
-//                    
-//                    title = " \(subThoroughfare) \(thoroughfare) \n \(locality), \(administrativeArea) \n \(postalCode)\(country)";
-//                    subtitle = " \(subThoroughfare) \(thoroughfare)";
-//                    println(title);
-//                    self.addressLabel.text = attractionDetailAddressString;
-//                    
-//                }
-//            }
-//            var overallLoc = CLLocationCoordinate2DMake(latitude, longitude);
-//            var region:MKCoordinateRegion = MKCoordinateRegionMake(overallLoc, span);
-//            var annotation = MKPointAnnotation();
-//            annotation.coordinate = location;
-//            annotation.title = subtitle;
-//            self.detailMap.addAnnotation(annotation);
-//            self.detailMap.setRegion(region, animated: true)
-//        })
-//    }
+    func getInfo() {
+        var latitude = attractionLocation.latitude;
+        var longitude  = attractionLocation.longitude;
+        var latDelta:CLLocationDegrees = 0.000001
+        var longDelta: CLLocationDegrees = 0.000001
+        var span: MKCoordinateSpan = MKCoordinateSpanMake(latDelta, longDelta);
+        var location = CLLocationCoordinate2DMake(latitude, longitude);
+        var realLocation = CLLocation(latitude: latitude, longitude: longitude);
+        CLGeocoder().reverseGeocodeLocation(realLocation, completionHandler: { (placemarks, error) -> Void in
+            var title = ""
+            var subtitle = ""
+            var locality = ""
+            if(error == nil) {
+                if let placemark = CLPlacemark(placemark: placemarks?[0] as! CLPlacemark) {
+                    var subThoroughfare:String = "";
+                    var thoroughfare:String = "";
+                    var locality:String = "";
+                    var postalCode:String = "";
+                    var administrativeArea:String = "";
+                    var country:String = "";
+                    
+                    if (placemark.subThoroughfare != nil) {
+                        subThoroughfare = placemark.subThoroughfare;
+                    }
+                    if(placemark.thoroughfare != nil) {
+                        thoroughfare = placemark.thoroughfare;
+                    }
+                    if(placemark.locality != nil) {
+                        locality = placemark.locality;
+                    }
+                    if(placemark.postalCode != nil) {
+                        postalCode = placemark.postalCode;
+                    }
+                    if(placemark.administrativeArea != nil) {
+                        administrativeArea = placemark.administrativeArea;
+                    }
+                    if(placemark.country != nil) {
+                        country = placemark.country;
+                    }
+                    println("viewcontroller placmark data:");
+                    println(locality);
+                    println(postalCode);
+                    println(administrativeArea);
+                    println(country);
+                    
+                    title = " \(subThoroughfare) \(thoroughfare) \n \(locality), \(administrativeArea) \n \(postalCode)\(country)";
+                    subtitle = " \(subThoroughfare) \(thoroughfare)";
+                    println(title);
+                    self.addressLabel.text = title;
+                    
+                }
+            }
+            var overallLoc = CLLocationCoordinate2DMake(latitude, longitude);
+            var region:MKCoordinateRegion = MKCoordinateRegionMake(overallLoc, span);
+            var annotation = MKPointAnnotation();
+            annotation.coordinate = location;
+            annotation.title = subtitle;
+            self.detailMap.addAnnotation(annotation);
+            self.detailMap.setRegion(region, animated: true)
+        })
+    }
     
     func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
         if(annotation is MKUserLocation) {
@@ -141,26 +140,29 @@ class AttractionsDetailViewController: UIViewController, MKMapViewDelegate, CLLo
             MKMapItem.openMapsWithItems(mapItems, launchOptions: launchOptions);
         }
     }
-
-    func getYelpData() {
+    func getDataFromYelp() {
         var businessMock:Resturant = Resturant(dictionary: resultQueryDictionary)
-        var address:NSDictionary = attractionLocationDetail //dictionary
-        attractionDetailAddressString = businessMock.location["display_address"] as? String;
-        self.addressLabel.text = attractionDetailAddressString
-        //        var yelpBusiness:Resturat = YelpBusiness(dictionary: resultQueryDictionary)
-//        var displayAddress = yelpBusiness.displayAddress
-//        println(displayAddress + "display address ")
-//        var displayCategories = yelpBusiness.displayCategories
-//        var imageURL = yelpBusiness.imageURL
-//        var latitude = yelpBusiness.latitude
-//        var longitude = yelpBusiness.longitude
-//        var name = yelpBusiness.name as String
-//        var phoneNumber = yelpBusiness.phone as String
-//        var rating = yelpBusiness.rating as String
-//        var ratingImageURL = yelpBusiness.ratingImageURL as NSURL
-//        var reviewCount = yelpBusiness.reviewCount as Int
-//        var shortAddress = yelpBusiness.shortAddress as String
+        self.addressLabel.text = self.attractionDetailAddressString
     }
+
+//    func getYelpData() {
+//        var businessMock:Resturant = Resturant(dictionary: resultQueryDictionary)
+////        attractionDetailAddressString = resultQueryDictionary["display_address"] as? String;
+//        self.addressLabel.text = attractionDetailAddressString
+//        //        var yelpBusiness:Resturat = YelpBusiness(dictionary: resultQueryDictionary)
+////        var displayAddress = yelpBusiness.displayAddress
+////        println(displayAddress + "display address ")
+////        var displayCategories = yelpBusiness.displayCategories
+////        var imageURL = yelpBusiness.imageURL
+////        var latitude = yelpBusiness.latitude
+////        var longitude = yelpBusiness.longitude
+////        var name = yelpBusiness.name as String
+////        var phoneNumber = yelpBusiness.phone as String
+////        var rating = yelpBusiness.rating as String
+////        var ratingImageURL = yelpBusiness.ratingImageURL as NSURL
+////        var reviewCount = yelpBusiness.reviewCount as Int
+////        var shortAddress = yelpBusiness.shortAddress as String
+//    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
