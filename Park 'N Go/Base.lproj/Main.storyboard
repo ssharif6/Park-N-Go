@@ -279,9 +279,6 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ya1-rg-05A" id="kJi-Dn-8Hk">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4x1-Ib-roY">
-                                                    <rect key="frame" x="8" y="0.0" width="44" height="35.5"/>
-                                                </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Directions" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yWB-TW-t1Q">
                                                     <rect key="frame" x="60" y="0.0" width="77" height="21"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
@@ -294,6 +291,9 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="MapBlack" translatesAutoresizingMaskIntoConstraints="NO" id="4x1-Ib-roY">
+                                                    <rect key="frame" x="8" y="0.0" width="37" height="35.5"/>
+                                                </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
@@ -307,9 +307,6 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7Ju-Om-9O7" id="NX7-K7-sAC">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nIW-Vj-YLi">
-                                                    <rect key="frame" x="8" y="3" width="44" height="35.5"/>
-                                                </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Phone Number" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pDg-U3-aha">
                                                     <rect key="frame" x="60" y="0.0" width="99" height="21"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
@@ -322,6 +319,9 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="blackPhone" translatesAutoresizingMaskIntoConstraints="NO" id="nIW-Vj-YLi">
+                                                    <rect key="frame" x="8" y="0.0" width="37" height="35.5"/>
+                                                </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
@@ -341,15 +341,15 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KVm-xQ-Ntm">
-                                                    <rect key="frame" x="8" y="3" width="44" height="35.5"/>
-                                                </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Business Yelp Page" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MEM-t3-9W9">
                                                     <rect key="frame" x="60" y="19" width="299" height="19.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Dots Copy" translatesAutoresizingMaskIntoConstraints="NO" id="KVm-xQ-Ntm">
+                                                    <rect key="frame" x="8" y="17" width="37" height="7.5"/>
+                                                </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
@@ -510,9 +510,12 @@
     <resources>
         <image name="Artboard" width="594" height="95"/>
         <image name="BlackBackgroundWithBlurr" width="750" height="1335"/>
+        <image name="Dots Copy" width="44" height="11"/>
         <image name="Fill 62" width="30" height="30"/>
+        <image name="MapBlack" width="44" height="44"/>
         <image name="Shape2" width="22" height="36"/>
         <image name="Triangle 1 Copy" width="30" height="30"/>
+        <image name="blackPhone" width="43" height="43"/>
         <image name="bridgePurple" width="750" height="1069"/>
     </resources>
     <inferredMetricsTieBreakers>
