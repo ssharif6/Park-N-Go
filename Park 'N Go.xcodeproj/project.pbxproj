@@ -32,6 +32,7 @@
 		85E84C491B4C2DF800614FB3 /* PublicArt.json in Resources */ = {isa = PBXBuildFile; fileRef = 85E84C481B4C2DF800614FB3 /* PublicArt.json */; };
 		85E84C4D1B4C35C300614FB3 /* VCMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E84C4C1B4C35C300614FB3 /* VCMapView.swift */; };
 		85E84C511B4C60DB00614FB3 /* Annotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E84C501B4C60DB00614FB3 /* Annotation.swift */; };
+		85EC7B9C1B92EFCA0042FF5B /* PinnedLocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85EC7B9B1B92EFCA0042FF5B /* PinnedLocationTableViewCell.swift */; };
 		85FE497D1B922DEA00820FC4 /* RedoneShape.png in Resources */ = {isa = PBXBuildFile; fileRef = 85FE497C1B922DEA00820FC4 /* RedoneShape.png */; };
 		85FE497F1B922F0A00820FC4 /* ExampleBusiness in Resources */ = {isa = PBXBuildFile; fileRef = 85FE497E1B922F0A00820FC4 /* ExampleBusiness */; };
 		85FE49811B9232EC00820FC4 /* blur background.png in Resources */ = {isa = PBXBuildFile; fileRef = 85FE49801B9232EC00820FC4 /* blur background.png */; };
@@ -84,6 +85,7 @@
 		85E84C481B4C2DF800614FB3 /* PublicArt.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = PublicArt.json; sourceTree = "<group>"; };
 		85E84C4C1B4C35C300614FB3 /* VCMapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VCMapView.swift; sourceTree = "<group>"; };
 		85E84C501B4C60DB00614FB3 /* Annotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Annotation.swift; sourceTree = "<group>"; };
+		85EC7B9B1B92EFCA0042FF5B /* PinnedLocationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinnedLocationTableViewCell.swift; sourceTree = "<group>"; };
 		85FE497C1B922DEA00820FC4 /* RedoneShape.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RedoneShape.png; sourceTree = "<group>"; };
 		85FE497E1B922F0A00820FC4 /* ExampleBusiness */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ExampleBusiness; sourceTree = "<group>"; };
 		85FE49801B9232EC00820FC4 /* blur background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blur background.png"; sourceTree = "<group>"; };
@@ -203,6 +205,7 @@
 				85FE49841B923D8100820FC4 /* YelpInfoDirectionCell.swift */,
 				85FE49861B923D9700820FC4 /* YelpInfoContactCell.swift */,
 				85FE49881B923DA800820FC4 /* YelpInfoInfoCell.swift */,
+				85EC7B9B1B92EFCA0042FF5B /* PinnedLocationTableViewCell.swift */,
 			);
 			name = "Custom Cells";
 			sourceTree = "<group>";
@@ -409,6 +412,7 @@
 				85C7E0361B6C3D3C00E2F3A2 /* YelpClient.swift in Sources */,
 				85E84C511B4C60DB00614FB3 /* Annotation.swift in Sources */,
 				85A7B5A81B508B1000EE0611 /* AttractionsDetailViewController.swift in Sources */,
+				85EC7B9C1B92EFCA0042FF5B /* PinnedLocationTableViewCell.swift in Sources */,
 				850A45DF1B6C4240008D30E0 /* Resturant.swift in Sources */,
 				85630AB41B4E0144000DE1BD /* VCDetailMapView.swift in Sources */,
 				85DC42E41B915BBD00CB72B2 /* Business.swift in Sources */,

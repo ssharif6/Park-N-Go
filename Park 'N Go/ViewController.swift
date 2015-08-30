@@ -22,6 +22,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         
     var currentLocation:MKUserLocation!;
     var isPinLocationButtonPressed = false;
+    var pinnedLocation: CLLocation!
 
     var isEmpty = false;
     let regionRadius: CLLocationDistance = 1000
@@ -89,8 +90,11 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         //places.append(["name":title,"lat":"\(newCoordinate.latitude)","lon":"\(newCoordinate.longitude)"])
         isPinLocationButtonPressed = true;
         pinLocationButton.enabled = false;
+
         getLocationInfo(map.userLocation.location);
         let pinnedLocation = map.userLocation.location;
+        self.pinnedLocation = pinnedLocation
+        locationToUseForAppleMaps = self.pinnedLocation
         let locationData = NSKeyedArchiver.archivedDataWithRootObject(pinnedLocation);
         NSUserDefaults.standardUserDefaults().setObject(locationData, forKey: "pinnedLocation");
         NSNotificationCenter.defaultCenter().postNotificationName("loadData", object: nil);
@@ -108,6 +112,10 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
                     
                     var subThoroughfare:String = ""
                     var thoroughfare:String = ""
+                    var locality: String = ""
+                    var postalCode: String = ""
+                    var administrativeArea: String = ""
+                    var country: String = ""
                     
                     if p.subThoroughfare != nil {
                         
@@ -118,8 +126,23 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
                         thoroughfare = p.thoroughfare
                         
                     }
+                    if(p.locality != nil) {
+                        locality = p.locality;
+                    }
+                    if(p.postalCode != nil) {
+                        postalCode = p.postalCode;
+                    }
+                    if(p.administrativeArea != nil) {
+                        administrativeArea = p.administrativeArea;
+                    }
+                    if(p.country != nil) {
+                        country = p.country;
+                    }
+
+                    
                     completeAddress = self.displayLocationInfo(p);
-                    title = "\(subThoroughfare) \(thoroughfare)"
+                    title = " \(subThoroughfare) \(thoroughfare), \(locality), \(administrativeArea), \(postalCode) \(country)";
+                    completeAddressPinned = title
                 }
             }
             // annotation, i.e pins

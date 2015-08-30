@@ -72,6 +72,10 @@ class AttractionsDetailViewController: UIViewController, MKMapViewDelegate, CLLo
         YelpInfoTableview.dataSource = self
         YelpInfoTableview.delegate = self
     }
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        tableView.rowHeight = 100
+        return tableView.rowHeight
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

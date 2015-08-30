@@ -9,35 +9,36 @@
 import UIKit
 import MapKit
 
+var completeAddressPinned: String!
+var locationToUseForAppleMaps: CLLocation!
 
-class detailViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UITableViewDelegate {
+class detailViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UITableViewDelegate, UITableViewDataSource {
 
+    @IBOutlet weak var pinnedLocationTableView: UITableView!
     @IBOutlet var localityLabel: UILabel!
     @IBOutlet var smallMapView: MKMapView!
     
     var toPass:String!
+    
     var locationManager = CLLocationManager();
     
-    @IBOutlet weak var PinnedCategories: UITableViewCell!
-    
-    var cat = ["Petrol", "Hospital", "Mechanic"]
-    
-    @IBOutlet var addressLabel: UILabel!
     override func viewDidLoad() {
 
         super.viewDidLoad()
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "resetData:", name: "reloadData", object: nil);
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadData:", name: "loadData", object: nil);
-        addressLabel.font = UIFont(name: addressLabel.font.fontName, size: 18)
         smallMapView.delegate = self;
         locationManager.delegate = self;
+        
+        pinnedLocationTableView.delegate = self
+        pinnedLocationTableView.dataSource = self
+        
         smallMapView.mapType = MKMapType.Hybrid;
         locationManager.desiredAccuracy = kCLLocationAccuracyBest;
         locationManager.requestWhenInUseAuthorization();
         locationManager.startUpdatingLocation();
         smallMapView.zoomEnabled = true;
-        smallMapView.rotateEnabled = true;
 
         if let loadedData = NSUserDefaults.standardUserDefaults().dataForKey("pinnedLocation") {
             if let loadedLocation = NSKeyedUnarchiver.unarchiveObjectWithData(loadedData) as? CLLocation {
@@ -84,8 +85,9 @@ class detailViewController: UIViewController, MKMapViewDelegate, CLLocationManag
                             
                             title = " \(subThoroughfare) \(thoroughfare) \n \(locality), \(administrativeArea) \n \(postalCode) \(country)";
                             subtitle = " \(subThoroughfare) \(thoroughfare)";
-                            println(title);
-                            self.addressLabel.text = title;
+                            println(title + "SHIT FUCK");
+//                            self.addressLabel.text = title;
+                            self.toPass = title
                         }
                     }
                     var latitude = location.coordinate.latitude;
@@ -97,6 +99,7 @@ class detailViewController: UIViewController, MKMapViewDelegate, CLLocationManag
                     var overallLoc = CLLocationCoordinate2DMake(latitude, longitude);
                     var region:MKCoordinateRegion = MKCoordinateRegionMake(overallLoc, span);
                     var annotation = MKPointAnnotation();
+                    locationToUseForAppleMaps = location
                     annotation.coordinate = coordinate;
                     annotation.title = subtitle;
                     self.smallMapView.addAnnotation(annotation);
@@ -153,8 +156,9 @@ class detailViewController: UIViewController, MKMapViewDelegate, CLLocationManag
                             
                             title = " \(subThoroughfare) \(thoroughfare) \n \(locality), \(administrativeArea) \n \(postalCode) \(country)";
                             subtitle = " \(subThoroughfare) \(thoroughfare)";
-                            println(title);
-                            self.addressLabel.text = title;
+                            println(title + "TAR TAR");
+//                            self.addressLabel.text = title;
+                            self.toPass = title
                         }
                     }
                     var latitude = location.coordinate.latitude;
@@ -167,6 +171,7 @@ class detailViewController: UIViewController, MKMapViewDelegate, CLLocationManag
                     var region:MKCoordinateRegion = MKCoordinateRegionMake(overallLoc, span);
                     var annotation = MKPointAnnotation();
                     annotation.coordinate = coordinate;
+                    locationToUseForAppleMaps = location
                     annotation.title = subtitle;
                     self.smallMapView.addAnnotation(annotation);
                     self.smallMapView.setRegion(region, animated: true)
@@ -177,10 +182,22 @@ class detailViewController: UIViewController, MKMapViewDelegate, CLLocationManag
         }
 
     }
+    func goToAddressButton(sender: AnyObject) {
+        let currentLocMapItem = MKMapItem.mapItemForCurrentLocation();
+        let selectedPlacemark = MKPlacemark(coordinate: locationToUseForAppleMaps.coordinate, addressDictionary: nil);
+        let selectedMapItem = MKMapItem(placemark: selectedPlacemark);
+        let mapItems = [currentLocMapItem, selectedMapItem];
+        let launchOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeWalking];
+        
+        MKMapItem.openMapsWithItems(mapItems, launchOptions: launchOptions);
+        
+    }
+
     func resetData(notification:NSNotification) {
         smallMapView.removeAnnotations(smallMapView.annotations);
         smallMapView.showsUserLocation = true;
-        addressLabel.text = "No pinned location!";
+//        addressLabel.text = "No pinned location!";
+
         var location = locationManager.location;
         var latitude = location.coordinate.latitude;
         var longitude = location.coordinate.longitude;
@@ -195,31 +212,23 @@ class detailViewController: UIViewController, MKMapViewDelegate, CLLocationManag
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return cat.count
+        return 1
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Cell")
-        
-        cell.textLabel?.text = cat[indexPath.row]
-        
+        let cell = tableView.dequeueReusableCellWithIdentifier("PinnedLocationCell", forIndexPath: indexPath) as! PinnedLocationTableViewCell
+        cell.addressLabel.text = completeAddressPinned
         return cell
+    }
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if indexPath.row == 0 {
+            goToAddressButton(self)
+        }
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
