@@ -47,7 +47,7 @@ class AttractionsDetailViewController: UIViewController, MKMapViewDelegate, CLLo
         getDataFromYelp()
     }
 
-    @IBAction func goToAddressButton(sender: AnyObject) {
+    func goToAddressButton(sender: AnyObject) {
         let currentLocMapItem = MKMapItem.mapItemForCurrentLocation();
         let selectedPlacemark = MKPlacemark(coordinate: attractionLocation, addressDictionary: nil);
         let selectedMapItem = MKMapItem(placemark: selectedPlacemark);
@@ -67,34 +67,7 @@ class AttractionsDetailViewController: UIViewController, MKMapViewDelegate, CLLo
         reviews.text = "\(businessToUse.reviewCount!) Reviews"
         distanceLabel.text = businessToUse.distance
     }
-//    func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
-//        if(annotation is MKUserLocation) {
-//            return nil;
-//        }
-//        let reuseId = "pin";
-//        var pinView = mapView.dequeueReusableAnnotationViewWithIdentifier(reuseId) as? MKPinAnnotationView;
-//        if(pinView == nil) {
-//            pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId);
-//            pinView!.canShowCallout = true;
-//            pinView!.animatesDrop = true;
-//        }
-//        var rightButton = UIButton.buttonWithType(UIButtonType.DetailDisclosure) as! UIButton; // change this to custom after graphic is made
-//        pinView?.rightCalloutAccessoryView = rightButton;
-//        return pinView;
-//    }
-//    func mapView(mapView: MKMapView!, annotationView view: MKAnnotationView!, calloutAccessoryControlTapped control: UIControl!) {
-//        let selectedLocation = view.annotation;
-//        attractionLocation = selectedLocation.coordinate;
-//        if(control == view.rightCalloutAccessoryView) {
-//            let currentLocMapItem = MKMapItem.mapItemForCurrentLocation();
-//            let selectedPlacemark = MKPlacemark(coordinate: selectedLocation.coordinate, addressDictionary: nil);
-//            let selectedMapItem = MKMapItem(placemark: selectedPlacemark);
-//            let mapItems = [currentLocMapItem, selectedMapItem];
-//            let launchOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeWalking];
-//            
-//            MKMapItem.openMapsWithItems(mapItems, launchOptions: launchOptions);
-//        }
-//    }
+    
     func getDataFromYelp() {
         YelpInfoTableview.dataSource = self
         YelpInfoTableview.delegate = self
@@ -104,31 +77,57 @@ class AttractionsDetailViewController: UIViewController, MKMapViewDelegate, CLLo
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // Return number of cells
         return 3
     }
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var businessMock: Business = Business(dictionary: currentBusiness)
 
-        if indexPath.row == 0 {
+        if indexPath.row == 0 { // Direction Cell
             let directionsCell = YelpInfoTableview.dequeueReusableCellWithIdentifier("YelpInfoDirectionCell", forIndexPath: indexPath) as! YelpInfoDirectionCell
-//            directionsCell.business = currentBusiness
             directionsCell.business = businessMock
-            
             return directionsCell
             
-        } else if indexPath.row == 1 {
+        } else if indexPath.row == 1 { // Contact Cell
             let contactCell = YelpInfoTableview.dequeueReusableCellWithIdentifier("YelpInfoContactCell", forIndexPath: indexPath) as! YelpInfoContactCell
             contactCell.business = businessMock
             return contactCell
             
-        } else {
+        } else { // MoreInfo Cell
             let infoCell = YelpInfoTableview.dequeueReusableCellWithIdentifier("YelpInfoInfoCell", forIndexPath: indexPath) as! YelpInfoInfoCell
             infoCell.business = businessMock
             return infoCell
         }
     }
     
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if indexPath.row == 0 {
+            goToAddressButton(self)
+        } else if indexPath.row == 1 {
+            makeCall()
+        } else {
+            openYelpURL()
+        }
+    }
+    
+    func makeCall() {
+        var url: NSURL = NSURL(string: "tel://" + businessToUse.phone)!
+        UIApplication.sharedApplication().openURL(url)
+        // Doesn't work on simulator
+    }
+    
+    func openYelpURL() {
+        if let checkURL = NSURL(string: businessToUse.mobileUrl) {
+            if UIApplication.sharedApplication().openURL(checkURL) {
+                println("url opened sucesfully")
+            }
+        } else {
+            println("url failed")
+        }
+    }
 
     /*
     // MARK: - Navigation

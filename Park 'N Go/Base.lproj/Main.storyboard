@@ -273,7 +273,7 @@
                                 <rect key="frame" x="0.0" y="188" width="375" height="154"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="YelpInfoDirectionCell" id="ya1-rg-05A" customClass="YelpInfoDirectionCell" customModule="Park__N_Go" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="YelpInfoDirectionCell" id="ya1-rg-05A" customClass="YelpInfoDirectionCell" customModule="Park__N_Go" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ya1-rg-05A" id="kJi-Dn-8Hk">
@@ -282,15 +282,15 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4x1-Ib-roY">
                                                     <rect key="frame" x="8" y="0.0" width="44" height="35.5"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="My as;dlkfja;ldsfjkl;asdgj agkasgoiuasdfpo; agaspdufasdfasfd asdf adsflhasdjfsadlf jsadhf asdfas;df asdfhljadls fjkhasd flk " lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wht-fY-lus">
-                                                    <rect key="frame" x="60" y="14" width="629" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Directions" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yWB-TW-t1Q">
                                                     <rect key="frame" x="60" y="0.0" width="77" height="21"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Address here" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wht-fY-lus">
+                                                    <rect key="frame" x="60" y="14" width="282" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -301,7 +301,7 @@
                                             <outlet property="thumbImage" destination="4x1-Ib-roY" id="dUn-Kq-WEd"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="YelpInfoContactCell" id="7Ju-Om-9O7" customClass="YelpInfoContactCell" customModule="Park__N_Go" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="YelpInfoContactCell" id="7Ju-Om-9O7" customClass="YelpInfoContactCell" customModule="Park__N_Go" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7Ju-Om-9O7" id="NX7-K7-sAC">
@@ -329,7 +329,7 @@
                                             <outlet property="thumbImage" destination="nIW-Vj-YLi" id="lMD-9g-gQp"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="YelpInfoInfoCell" id="epR-a3-Dd6" customClass="YelpInfoInfoCell" customModule="Park__N_Go" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="YelpInfoInfoCell" id="epR-a3-Dd6" customClass="YelpInfoInfoCell" customModule="Park__N_Go" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="epR-a3-Dd6" id="0hi-pm-q7w">
@@ -358,16 +358,6 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6H9-lj-dUu">
-                                <rect key="frame" x="269" y="373" width="81" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <state key="normal" title="Directions">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="goToAddressButton:" destination="hM4-tT-yfm" eventType="touchUpInside" id="UHy-Jw-JsP"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -386,7 +376,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gEf-pC-xnl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1641.5" y="2644.5"/>
+            <point key="canvasLocation" x="1679.5" y="2652.5"/>
         </scene>
         <!--Attractions-->
         <scene sceneID="Aii-tA-zXe">
@@ -491,6 +481,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="tableview" destination="BaS-zE-xaX" id="3NO-M6-gXl"/>
+                        <segue destination="hM4-tT-yfm" kind="show" identifier="businessToDetailVC" id="lvq-f5-pNt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hv5-y7-e53" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -525,6 +516,7 @@
         <image name="bridgePurple" width="750" height="1069"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="lvq-f5-pNt"/>
         <segue reference="rw0-hr-5vw"/>
     </inferredMetricsTieBreakers>
 </document>

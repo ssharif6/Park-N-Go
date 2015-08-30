@@ -181,16 +181,6 @@ class AttractionsVC: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
     @IBAction func returnText(sender: AnyObject) {
         sender.resignFirstResponder();
         attractionsMap.removeAnnotations(attractionsMap.annotations);
-        //performSearch(searchText.text);
-//        Resturant.searchWithQuery(searchText.text!, completion: { (resturants : [Resturant]!, error: NSError!) -> Void in
-//            if(error != nil) {
-//                println(error)
-//            } else {
-//                self.Businesses = resturants
-//                println(resturants)
-//            }
-//        })
-//        performYelpSearchWithParams(searchText.text)
         performYelpSearch(searchText.text)
     }
     func performYelpSearch(query: String) {
@@ -309,37 +299,22 @@ class AttractionsVC: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
     
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
         let cell:UITableViewCell = tableView.dequeueReusableCellWithIdentifier("myCell") as! UITableViewCell;
-        
         var sectionTitle = categoriesList[indexPath.section]
         var sectionArray = categoryDictionary[sectionTitle];
         var itemInArray = sectionArray?[indexPath.row];
         cell.textLabel?.text = itemInArray;
-        
         return cell
     }
 
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
         var detailView = false;
         let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Cell")
         var sectionTitle = categoriesList[indexPath.section]
         var sectionArray = categoryDictionary[sectionTitle];
         var itemInArray = sectionArray?[indexPath.row];
-        
-        //performSearch(itemInArray!);
-//        Resturant.searchWithQuery(itemInArray!, completion: { (resturants : [Resturant]!, error: NSError!) -> Void in
-//            if(error != nil) {
-//                println(error)
-//            } else {
-//                self.Businesses = resturants
-//                println(resturants)
-//            }
-//        })
         performYelpSearch(itemInArray!)
-//        performYelpSearchWithParams(itemInArray!)
         self.attractionsTabView.deselectRowAtIndexPath(indexPath, animated: true)
     
     }

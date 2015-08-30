@@ -107,6 +107,13 @@ class Business: NSObject {
             return nil
         }
     }
+    
+    var mobileUrl: String {
+        get {
+            return self.dictionary["mobile_url"] as! String
+        }
+    }
+    
     var phone: String {
         get {
             return self.dictionary["display_phone"] as! String
