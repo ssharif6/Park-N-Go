@@ -10,8 +10,8 @@ import UIKit
 import MapKit
 
 class Business: NSObject {
+    
     var dictionary: NSDictionary
-
     let name: String?
     let address: String?
     let imageURL: NSURL?
@@ -19,20 +19,16 @@ class Business: NSObject {
     let distance: String?
     let ratingImageURL: NSURL?
     let reviewCount: NSNumber?
-    
 
-    
     init(dictionary: NSDictionary) {
         self.dictionary = dictionary
         name = dictionary["name"] as? String
-        
         let imageURLString = dictionary["image_url"] as? String
         if imageURLString != nil {
             imageURL = NSURL(string: imageURLString!)!
         } else {
             imageURL = nil
         }
-        
         let location = dictionary["location"] as? NSDictionary
         var address = ""
         if location != nil {
@@ -107,7 +103,6 @@ class Business: NSObject {
             return nil
         }
     }
-    
     var mobileUrl: String {
         get {
             return self.dictionary["mobile_url"] as! String

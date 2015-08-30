@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MapKit
 
 class YelpTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -55,6 +56,12 @@ class YelpTableViewController: UIViewController, UITableViewDelegate, UITableVie
             if let ivc = segue.destinationViewController as? AttractionsDetailViewController {
                 ivc.businessToUse = self.businessToUseTVC
                 ivc.currentBusiness = self.businessDict
+                var locationLatitude = businessToUseTVC.latitude
+                var locationLongitude = businessToUseTVC.longitude
+                var locationCoordinate: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: locationLatitude!, longitude: locationLongitude!)
+                ivc.attractionLocation = locationCoordinate
+//                ivc.attractionLocation = self.indicatedMapItem
+
             }
         }
     }
