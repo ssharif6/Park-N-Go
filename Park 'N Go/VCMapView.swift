@@ -14,7 +14,6 @@ extension ViewController: MKMapViewDelegate {
 
     func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
         if(annotation is MKUserLocation) {
-            println("You retard");
             return nil;
         }
         let reuseId = "pin";

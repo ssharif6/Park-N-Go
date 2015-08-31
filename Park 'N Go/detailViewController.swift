@@ -85,7 +85,7 @@ class detailViewController: UIViewController, MKMapViewDelegate, CLLocationManag
                             
                             title = " \(subThoroughfare) \(thoroughfare) \n \(locality), \(administrativeArea) \n \(postalCode) \(country)";
                             subtitle = " \(subThoroughfare) \(thoroughfare)";
-                            println(title + "SHIT FUCK");
+                            println(title);
 //                            self.addressLabel.text = title;
                             self.toPass = title
                         }

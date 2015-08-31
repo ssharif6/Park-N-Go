@@ -188,10 +188,10 @@
 		855980DB1B55DDF30071F120 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				85FE497E1B922F0A00820FC4 /* ExampleBusiness */,
 				85DCCFFC1B54A52F00188C4D /* CategoryModel.swift */,
 				850A45DE1B6C4240008D30E0 /* Resturant.swift */,
 				85DC42E31B915BBD00CB72B2 /* Business.swift */,
-				85FE497E1B922F0A00820FC4 /* ExampleBusiness */,
 			);
 			name = Models;
 			sourceTree = "<group>";

@@ -118,8 +118,13 @@ class AttractionsDetailViewController: UIViewController, MKMapViewDelegate, CLLo
     }
     
     func makeCall() {
-        var url: NSURL = NSURL(string: "tel://" + businessToUse.phone)!
-        UIApplication.sharedApplication().openURL(url)
+        if let checkURL = NSURL(string: "tel://" + businessToUse.phone) {
+            if UIApplication.sharedApplication().openURL(checkURL) {
+                println("Phone Url opened")
+            }
+        } else {
+            println("Phone URL didn't open")
+        }
         // Doesn't work on simulator
     }
     
