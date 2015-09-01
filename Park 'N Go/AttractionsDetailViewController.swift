@@ -73,7 +73,7 @@ class AttractionsDetailViewController: UIViewController, MKMapViewDelegate, CLLo
         YelpInfoTableview.delegate = self
     }
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        tableView.rowHeight = 100
+        tableView.rowHeight = 143.3333333333
         return tableView.rowHeight
     }
     
