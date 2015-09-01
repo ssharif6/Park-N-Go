@@ -46,7 +46,7 @@ class AttractionsVC: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         setupSetUps();
         attractionsMap.mapType = MKMapType.Hybrid;
         attractionsMap.delegate = self;
@@ -304,6 +304,11 @@ class AttractionsVC: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
         var sectionArray = categoryDictionary[sectionTitle];
         var itemInArray = sectionArray?[indexPath.row];
         cell.textLabel?.text = itemInArray;
+        cell.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.2)
+        cell.textLabel?.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.0)
+        cell.textLabel?.textColor = UIColor.whiteColor()
+        cell.contentView.backgroundColor = UIColor.clearColor()
+        AttractionsTableView.backgroundColor = UIColor.clearColor()
         return cell
     }
 

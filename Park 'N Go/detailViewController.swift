@@ -217,7 +217,12 @@ class detailViewController: UIViewController, MKMapViewDelegate, CLLocationManag
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("PinnedLocationCell", forIndexPath: indexPath) as! PinnedLocationTableViewCell
-        cell.addressLabel.text = completeAddressPinned
+        cell.OGAddressLabel.text = completeAddressPinned
+        cell.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.2)
+        cell.textLabel?.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.0)
+        cell.textLabel?.textColor = UIColor.whiteColor()
+        cell.contentView.backgroundColor = UIColor.clearColor()
+        pinnedLocationTableView.backgroundColor = UIColor.clearColor()
         return cell
     }
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {

@@ -40,6 +40,7 @@ class AttractionsDetailViewController: UIViewController, MKMapViewDelegate, CLLo
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         loadYelpInfo()
         locationManager.delegate = self;
         locationManager.desiredAccuracy = kCLLocationAccuracyBest;

@@ -17,7 +17,7 @@ class YelpTableViewController: UIViewController, UITableViewDelegate, UITableVie
     @IBOutlet weak var tableview: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.tableview.backgroundView = UIImageView(image: UIImage(named: "bg"))
         tableview.dataSource = self
         tableview.delegate = self
         
@@ -41,6 +41,9 @@ class YelpTableViewController: UIViewController, UITableViewDelegate, UITableVie
         let cell = tableView.dequeueReusableCellWithIdentifier("YelpTableBusinessCell", forIndexPath: indexPath) as! YelpTableBusinessCell
         var business:Business = Business(dictionary: businessArray[indexPath.row] as! NSDictionary)
         cell.business = business
+        cell.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.2)
+        cell.textLabel?.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.0)
+        cell.textLabel?.textColor = UIColor.whiteColor()
         return cell
     }
     
