@@ -40,7 +40,6 @@ class AttractionsDetailViewController: UIViewController, MKMapViewDelegate, CLLo
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         loadYelpInfo()
         locationManager.delegate = self;
         locationManager.desiredAccuracy = kCLLocationAccuracyBest;
@@ -94,18 +93,34 @@ class AttractionsDetailViewController: UIViewController, MKMapViewDelegate, CLLo
         if indexPath.row == 0 { // Direction Cell
             let directionsCell = YelpInfoTableview.dequeueReusableCellWithIdentifier("YelpInfoDirectionCell", forIndexPath: indexPath) as! YelpInfoDirectionCell
             directionsCell.business = businessMock
+            directionsCell.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.2)
+            directionsCell.textLabel?.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.0)
+            directionsCell.textLabel?.textColor = UIColor.whiteColor()
+            directionsCell.contentView.backgroundColor = UIColor.clearColor()
+            tableView.backgroundColor = UIColor.clearColor()
             return directionsCell
             
         } else if indexPath.row == 1 { // Contact Cell
             let contactCell = YelpInfoTableview.dequeueReusableCellWithIdentifier("YelpInfoContactCell", forIndexPath: indexPath) as! YelpInfoContactCell
             contactCell.business = businessMock
+            contactCell.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.2)
+            contactCell.textLabel?.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.0)
+            contactCell.textLabel?.textColor = UIColor.whiteColor()
+            contactCell.contentView.backgroundColor = UIColor.clearColor()
+            tableView.backgroundColor = UIColor.clearColor()
             return contactCell
             
         } else { // MoreInfo Cell
             let infoCell = YelpInfoTableview.dequeueReusableCellWithIdentifier("YelpInfoInfoCell", forIndexPath: indexPath) as! YelpInfoInfoCell
             infoCell.business = businessMock
+            infoCell.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.2)
+            infoCell.textLabel?.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.0)
+            infoCell.textLabel?.textColor = UIColor.whiteColor()
+            infoCell.contentView.backgroundColor = UIColor.clearColor()
+            tableView.backgroundColor = UIColor.clearColor()
             return infoCell
         }
+        
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
