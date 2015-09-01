@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		219A73421B951567008BAFE6 /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 219A73411B951567008BAFE6 /* bg.png */; };
+		219A73441B951EF5008BAFE6 /* Traffic.png in Resources */ = {isa = PBXBuildFile; fileRef = 219A73431B951EF5008BAFE6 /* Traffic.png */; };
+		219A73461B952611008BAFE6 /* BayErn.png in Resources */ = {isa = PBXBuildFile; fileRef = 219A73451B952611008BAFE6 /* BayErn.png */; };
 		8509B5091B4CA225001C4AE8 /* detailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8509B5081B4CA225001C4AE8 /* detailViewController.swift */; };
 		850A45DF1B6C4240008D30E0 /* Resturant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850A45DE1B6C4240008D30E0 /* Resturant.swift */; };
 		850A45E11B6C790A008D30E0 /* YelpBusiness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850A45E01B6C790A008D30E0 /* YelpBusiness.swift */; };
@@ -54,6 +57,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		219A73411B951567008BAFE6 /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bg.png; path = ../../Desktop/bg.png; sourceTree = "<group>"; };
+		219A73431B951EF5008BAFE6 /* Traffic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Traffic.png; path = "UI Assets/Traffic.png"; sourceTree = SOURCE_ROOT; };
+		219A73451B952611008BAFE6 /* BayErn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BayErn.png; path = ../../Desktop/BayErn.png; sourceTree = "<group>"; };
 		48083750E2C542F3A1308F6F /* Pods-Park 'N Go.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Park 'N Go.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Park 'N Go/Pods-Park 'N Go.debug.xcconfig"; sourceTree = "<group>"; };
 		612978662B9A9602632F4E0D /* Pods-Park 'N Go.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Park 'N Go.release.xcconfig"; path = "Pods/Target Support Files/Pods-Park 'N Go/Pods-Park 'N Go.release.xcconfig"; sourceTree = "<group>"; };
 		8509B5081B4CA225001C4AE8 /* detailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = detailViewController.swift; sourceTree = "<group>"; };
@@ -149,6 +155,9 @@
 				8550DE2E1B47478F0074A71C /* Main.storyboard */,
 				855980E71B5AEF2B0071F120 /* Graphics */,
 				8550DE311B47478F0074A71C /* Images.xcassets */,
+				219A73451B952611008BAFE6 /* BayErn.png */,
+				219A73431B951EF5008BAFE6 /* Traffic.png */,
+				219A73411B951567008BAFE6 /* bg.png */,
 				85FE49821B92333200820FC4 /* BlackBackgroundWithBlurr.pdf */,
 				85FE49801B9232EC00820FC4 /* blur background.png */,
 				85FE497C1B922DEA00820FC4 /* RedoneShape.png */,
@@ -341,7 +350,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				219A73421B951567008BAFE6 /* bg.png in Resources */,
 				85BED0DA1B6EF56500413EE4 /* categories.json in Resources */,
+				219A73461B952611008BAFE6 /* BayErn.png in Resources */,
 				85E84C491B4C2DF800614FB3 /* PublicArt.json in Resources */,
 				8550DE301B47478F0074A71C /* Main.storyboard in Resources */,
 				85FE49811B9232EC00820FC4 /* blur background.png in Resources */,
@@ -349,6 +360,7 @@
 				85FE497F1B922F0A00820FC4 /* ExampleBusiness in Resources */,
 				8550DE351B47478F0074A71C /* LaunchScreen.xib in Resources */,
 				85FE497D1B922DEA00820FC4 /* RedoneShape.png in Resources */,
+				219A73441B951EF5008BAFE6 /* Traffic.png in Resources */,
 				8550DE321B47478F0074A71C /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

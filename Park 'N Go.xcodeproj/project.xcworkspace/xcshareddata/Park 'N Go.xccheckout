@@ -12,6 +12,8 @@
 	<dict>
 		<key>01C81FEC5B7F44AA0B07477B0B9271CE6E867F4D</key>
 		<string>https://bitbucket.org/ssharif66/park-n-go.git</string>
+		<key>2D6172C8CA3E9C636D4C57C8CB9CAA7D9420F7C5</key>
+		<string>https://github.com/funnyabc/Park-N-Go.git</string>
 		<key>5D8B9E215F74404A66381B9FB738D4A1D70AC6AD</key>
 		<string>https://bitbucket.org/ssharif66/park-n-go.git</string>
 	</dict>
@@ -21,15 +23,17 @@
 	<dict>
 		<key>01C81FEC5B7F44AA0B07477B0B9271CE6E867F4D</key>
 		<string>../../..</string>
-		<key>5D8B9E215F74404A66381B9FB738D4A1D70AC6AD</key>
+		<key>2D6172C8CA3E9C636D4C57C8CB9CAA7D9420F7C5</key>
 		<string>../..</string>
+		<key>5D8B9E215F74404A66381B9FB738D4A1D70AC6AD</key>
+		<string>../../../Park%20'N%20Go</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://bitbucket.org/ssharif66/park-n-go.git</string>
+	<string>https://github.com/funnyabc/Park-N-Go.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>5D8B9E215F74404A66381B9FB738D4A1D70AC6AD</string>
+	<string>2D6172C8CA3E9C636D4C57C8CB9CAA7D9420F7C5</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
@@ -39,6 +43,14 @@
 			<string>01C81FEC5B7F44AA0B07477B0B9271CE6E867F4D</string>
 			<key>IDESourceControlWCCName</key>
 			<string></string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>2D6172C8CA3E9C636D4C57C8CB9CAA7D9420F7C5</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Park-N-Go</string>
 		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>

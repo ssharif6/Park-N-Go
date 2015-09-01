@@ -10,7 +10,7 @@ import UIKit
 
 class PinnedLocationTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var addressLabel: UILabel!
+    @IBOutlet weak var OGAddressLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
