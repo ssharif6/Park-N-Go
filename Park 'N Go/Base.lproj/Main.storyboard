@@ -294,63 +294,61 @@
                                 <rect key="frame" x="259" y="72" width="100" height="100"/>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="PlF-7j-EQJ">
-                                <rect key="frame" x="0.0" y="188" width="375" height="320"/>
+                                <rect key="frame" x="0.0" y="188" width="375" height="430"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="YelpInfoDirectionCell" rowHeight="100" id="ya1-rg-05A" customClass="YelpInfoDirectionCell" customModule="Park__N_Go" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="YelpInfoDirectionCell" rowHeight="112" id="ya1-rg-05A" customClass="YelpInfoDirectionCell" customModule="Park__N_Go" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ya1-rg-05A" id="kJi-Dn-8Hk">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="MapBlack" translatesAutoresizingMaskIntoConstraints="NO" id="4x1-Ib-roY">
-                                                    <rect key="frame" x="8" y="27" width="45" height="45"/>
-                                                </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Directions" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yWB-TW-t1Q">
-                                                    <rect key="frame" x="70" y="27" width="77" height="21"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                                    <rect key="frame" x="108" y="17" width="127" height="23"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Address here" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wht-fY-lus">
-                                                    <rect key="frame" x="69" y="51" width="282" height="21"/>
+                                                    <rect key="frame" x="108" y="48" width="282" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="Shape Copy 2" translatesAutoresizingMaskIntoConstraints="NO" id="Jis-xn-FfJ">
+                                                    <rect key="frame" x="20" y="17" width="80" height="70"/>
+                                                </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="addressLabel" destination="Wht-fY-lus" id="mzW-Vg-44h"/>
-                                            <outlet property="thumbImage" destination="4x1-Ib-roY" id="dUn-Kq-WEd"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="YelpInfoContactCell" rowHeight="100" id="7Ju-Om-9O7" customClass="YelpInfoContactCell" customModule="Park__N_Go" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="YelpInfoContactCell" rowHeight="131" id="7Ju-Om-9O7" customClass="YelpInfoContactCell" customModule="Park__N_Go" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7Ju-Om-9O7" id="NX7-K7-sAC">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="blackPhone" translatesAutoresizingMaskIntoConstraints="NO" id="nIW-Vj-YLi">
-                                                    <rect key="frame" x="8" y="27" width="45" height="45"/>
-                                                </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Phone Number" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pDg-U3-aha">
-                                                    <rect key="frame" x="70" y="27" width="99" height="21"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                                    <rect key="frame" x="106" y="21" width="152" height="22"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="42585823432" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="toZ-JU-xCC">
-                                                    <rect key="frame" x="70" y="56" width="299" height="19.5"/>
+                                                    <rect key="frame" x="106" y="62" width="299" height="19.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="Shape Copy 3-1" translatesAutoresizingMaskIntoConstraints="NO" id="Cjk-B0-N8C">
+                                                    <rect key="frame" x="18" y="23" width="80" height="83"/>
+                                                </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="phoneNumberLabel" destination="toZ-JU-xCC" id="9qL-cm-8qZ"/>
-                                            <outlet property="thumbImage" destination="nIW-Vj-YLi" id="lMD-9g-gQp"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="YelpInfoInfoCell" rowHeight="100" id="epR-a3-Dd6" customClass="YelpInfoInfoCell" customModule="Park__N_Go" customModuleProvider="target">
@@ -359,26 +357,23 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="epR-a3-Dd6" id="0hi-pm-q7w">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="More Info" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MhV-Lg-FhG">
-                                                    <rect key="frame" x="70" y="27" width="77" height="21"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Dots Copy" translatesAutoresizingMaskIntoConstraints="NO" id="KVm-xQ-Ntm">
-                                                    <rect key="frame" x="8" y="45" width="45" height="7.5"/>
-                                                </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Business Yelp Page" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MEM-t3-9W9">
-                                                    <rect key="frame" x="70" y="50" width="299" height="19.5"/>
+                                                    <rect key="frame" x="106" y="53" width="299" height="19.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="More Info" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rFf-1k-sON">
+                                                    <rect key="frame" x="106" y="24" width="98" height="21"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="Dots Copy-1" translatesAutoresizingMaskIntoConstraints="NO" id="Q8Z-ZI-8UT">
+                                                    <rect key="frame" x="18" y="40" width="80" height="20"/>
+                                                </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="thumbImage" destination="KVm-xQ-Ntm" id="ecm-B6-QLQ"/>
-                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -535,15 +530,15 @@
     <resources>
         <image name="Artboard" width="594" height="95"/>
         <image name="BayErn" width="375" height="667"/>
-        <image name="Dots Copy" width="44" height="11"/>
+        <image name="Dots Copy-1" width="80" height="20"/>
         <image name="EditedPin-2" width="30" height="30"/>
         <image name="Favela II" width="375" height="667"/>
         <image name="Fill 62" width="30" height="30"/>
-        <image name="MapBlack" width="44" height="44"/>
         <image name="ReformParisII" width="375" height="667"/>
         <image name="Schweiss" width="375" height="667"/>
+        <image name="Shape Copy 2" width="80" height="70"/>
+        <image name="Shape Copy 3-1" width="80" height="83"/>
         <image name="Triangle 1 Copy" width="30" height="30"/>
-        <image name="blackPhone" width="43" height="43"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="rw0-hr-5vw"/>
