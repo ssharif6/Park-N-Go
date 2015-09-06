@@ -20,6 +20,8 @@
 		8550DE4B1B4749FA0074A71C /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8550DE4A1B4749FA0074A71C /* CoreLocation.framework */; };
 		855980F31B5B4E9A0071F120 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		85630AB41B4E0144000DE1BD /* VCDetailMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85630AB31B4E0144000DE1BD /* VCDetailMapView.swift */; };
+		857C5D331B9AAD99004796AF /* DistanceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857C5D321B9AAD99004796AF /* DistanceTableViewCell.swift */; };
+		857C5D351B9AADC1004796AF /* ETATableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857C5D341B9AADC1004796AF /* ETATableViewCell.swift */; };
 		85A7B59C1B504D6200EE0611 /* AttractionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A7B59B1B504D6200EE0611 /* AttractionsVC.swift */; };
 		85A7B5A81B508B1000EE0611 /* AttractionsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A7B5A71B508B1000EE0611 /* AttractionsDetailViewController.swift */; };
 		85BED0DA1B6EF56500413EE4 /* categories.json in Resources */ = {isa = PBXBuildFile; fileRef = 85BED0D91B6EF56500413EE4 /* categories.json */; };
@@ -74,6 +76,8 @@
 		8550DE4A1B4749FA0074A71C /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		85630AB31B4E0144000DE1BD /* VCDetailMapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VCDetailMapView.swift; sourceTree = "<group>"; };
 		8579AEB71B5E155C00BFBCF0 /* Park 'N Go-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Park 'N Go-Bridging-Header.h"; sourceTree = "<group>"; };
+		857C5D321B9AAD99004796AF /* DistanceTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DistanceTableViewCell.swift; sourceTree = "<group>"; };
+		857C5D341B9AADC1004796AF /* ETATableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ETATableViewCell.swift; sourceTree = "<group>"; };
 		85A7B59B1B504D6200EE0611 /* AttractionsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttractionsVC.swift; sourceTree = "<group>"; };
 		85A7B5A71B508B1000EE0611 /* AttractionsDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttractionsDetailViewController.swift; sourceTree = "<group>"; };
 		85BED0D91B6EF56500413EE4 /* categories.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = categories.json; sourceTree = "<group>"; };
@@ -209,6 +213,8 @@
 				85FE49861B923D9700820FC4 /* YelpInfoContactCell.swift */,
 				85FE49881B923DA800820FC4 /* YelpInfoInfoCell.swift */,
 				85EC7B9B1B92EFCA0042FF5B /* PinnedLocationTableViewCell.swift */,
+				857C5D321B9AAD99004796AF /* DistanceTableViewCell.swift */,
+				857C5D341B9AADC1004796AF /* ETATableViewCell.swift */,
 			);
 			name = "Custom Cells";
 			sourceTree = "<group>";
@@ -418,8 +424,10 @@
 				85A7B5A81B508B1000EE0611 /* AttractionsDetailViewController.swift in Sources */,
 				85EC7B9C1B92EFCA0042FF5B /* PinnedLocationTableViewCell.swift in Sources */,
 				850A45DF1B6C4240008D30E0 /* Resturant.swift in Sources */,
+				857C5D351B9AADC1004796AF /* ETATableViewCell.swift in Sources */,
 				85630AB41B4E0144000DE1BD /* VCDetailMapView.swift in Sources */,
 				85DC42E41B915BBD00CB72B2 /* Business.swift in Sources */,
+				857C5D331B9AAD99004796AF /* DistanceTableViewCell.swift in Sources */,
 				85A7B59C1B504D6200EE0611 /* AttractionsVC.swift in Sources */,
 				850A45E11B6C790A008D30E0 /* YelpBusiness.swift in Sources */,
 				85DC42DF1B9149A800CB72B2 /* YelpTableViewController.swift in Sources */,

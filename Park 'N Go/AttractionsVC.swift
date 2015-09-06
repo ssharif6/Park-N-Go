@@ -15,6 +15,7 @@ var userLocationCoordinate:CLLocationCoordinate2D!;
 
 class AttractionsVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, UITableViewDelegate {
     
+
     var businessMock: Business!
     var matchingItems: [MKMapItem] = [MKMapItem]();
     var indicatedMapItem:CLLocationCoordinate2D!;
@@ -46,7 +47,7 @@ class AttractionsVC: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        searchText.hidden = true
         setupSetUps();
         attractionsMap.mapType = MKMapType.Hybrid;
         attractionsMap.delegate = self;
@@ -67,6 +68,9 @@ class AttractionsVC: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
         attractionsMap.region = region;
         attractionsMap.setRegion(region, animated: true)
         self.attractionsMap.showsUserLocation = true;
+    }
+    @IBAction func tapSearchButon(sender: AnyObject) {
+        searchText.hidden = false
     }
     func setupSetUps() {
         

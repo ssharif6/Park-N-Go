@@ -10,19 +10,25 @@ import UIKit
 import MapKit
 import CoreLocation
 
+var distanceLabelStringG: String!
+var etaLabelStringG:String!
+
 var carInitialCoordinate:CLLocationCoordinate2D!
 var carInitialLocation: CLLocation!
 var completeAddress:NSString = "";
 var manager = CLLocationManager();
 
+var pinnedLocationGlobal: CLLocation!
+
+
 class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UITableViewDelegate, UIAlertViewDelegate {
     
     @IBOutlet var map: MKMapView!
     @IBOutlet var pinLocationButton: UIButton!
+   
         
     var currentLocation:MKUserLocation!;
     var isPinLocationButtonPressed = false;
-    var pinnedLocation: CLLocation!
 
     var isEmpty = false;
     let regionRadius: CLLocationDistance = 1000
@@ -93,11 +99,11 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
 
         getLocationInfo(map.userLocation.location);
         let pinnedLocation = map.userLocation.location;
-        self.pinnedLocation = pinnedLocation
-        locationToUseForAppleMaps = self.pinnedLocation
+        locationToUseForAppleMaps = pinnedLocation
         let locationData = NSKeyedArchiver.archivedDataWithRootObject(pinnedLocation);
         NSUserDefaults.standardUserDefaults().setObject(locationData, forKey: "pinnedLocation");
         NSNotificationCenter.defaultCenter().postNotificationName("loadData", object: nil);
+        calculateDistanceAndEta()
 
     }
     func getLocationInfo(locationParameter:CLLocation) {
@@ -169,6 +175,31 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         return title;
         
     }
+    
+    func calculateDistanceAndEta() {
+        let currentLocMapItem = MKMapItem.mapItemForCurrentLocation();
+        let selectedPlacemark = MKPlacemark(coordinate: locationToUseForAppleMaps.coordinate, addressDictionary: nil);
+        let selectedMapItem = MKMapItem(placemark: selectedPlacemark);
+        let mapItems = [currentLocMapItem, selectedMapItem];
+        let request: MKDirectionsRequest = MKDirectionsRequest()
+        request.transportType = MKDirectionsTransportType.Walking;
+        request.setSource(currentLocMapItem)
+        request.setDestination(selectedMapItem);
+        var directions: MKDirections = MKDirections(request: request);
+        directions.calculateDirectionsWithCompletionHandler { (response, error) -> Void in
+            if (error == nil) {
+                if (response.routes.count > 0) {
+                    var route: MKRoute = response.routes[0] as! MKRoute;
+                    //                    route.distance = distance
+                    //                    route.expectedTravelTime = eta
+                    distanceLabelStringG = "\(route.distance)"
+                    etaLabelStringG = "\(route.expectedTravelTime)"
+                }
+            }
+        }
+        
+    }
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -179,7 +210,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         if (segue.identifier == "detailViewSegue") {
             var svc = segue.destinationViewController as! detailViewController;
             svc.toPass = title;
-        }
+        } 
     }
     
     

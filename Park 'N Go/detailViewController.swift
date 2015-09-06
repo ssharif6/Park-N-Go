@@ -19,7 +19,8 @@ class detailViewController: UIViewController, MKMapViewDelegate, CLLocationManag
     @IBOutlet var smallMapView: MKMapView!
     
     var toPass:String!
-    
+    var distanceLabelString:String!
+    var etaLabelString:String!
     var locationManager = CLLocationManager();
     
     override func viewDidLoad() {
@@ -39,7 +40,6 @@ class detailViewController: UIViewController, MKMapViewDelegate, CLLocationManag
         locationManager.requestWhenInUseAuthorization();
         locationManager.startUpdatingLocation();
         smallMapView.zoomEnabled = true;
-
         if let loadedData = NSUserDefaults.standardUserDefaults().dataForKey("pinnedLocation") {
             if let loadedLocation = NSKeyedUnarchiver.unarchiveObjectWithData(loadedData) as? CLLocation {
                 println("You've gotten to the detailViewcontroller")
@@ -86,7 +86,7 @@ class detailViewController: UIViewController, MKMapViewDelegate, CLLocationManag
                             title = " \(subThoroughfare) \(thoroughfare) \n \(locality), \(administrativeArea) \n \(postalCode) \(country)";
                             subtitle = " \(subThoroughfare) \(thoroughfare)";
                             println(title);
-//                            self.addressLabel.text = title;
+                            //                            self.addressLabel.text = title;
                             self.toPass = title
                         }
                     }
@@ -106,10 +106,12 @@ class detailViewController: UIViewController, MKMapViewDelegate, CLLocationManag
                     self.smallMapView.setRegion(region, animated: true)
                     
                 })
-
+                
             }
         }
     }
+
+    
     func loadData(notification:NSNotification) {
         if let loadedData = NSUserDefaults.standardUserDefaults().dataForKey("pinnedLocation") {
             if let loadedLocation = NSKeyedUnarchiver.unarchiveObjectWithData(loadedData) as? CLLocation {
@@ -156,7 +158,6 @@ class detailViewController: UIViewController, MKMapViewDelegate, CLLocationManag
                             
                             title = " \(subThoroughfare) \(thoroughfare) \n \(locality), \(administrativeArea) \n \(postalCode) \(country)";
                             subtitle = " \(subThoroughfare) \(thoroughfare)";
-                            println(title + "TAR TAR");
 //                            self.addressLabel.text = title;
                             self.toPass = title
                         }
@@ -171,7 +172,7 @@ class detailViewController: UIViewController, MKMapViewDelegate, CLLocationManag
                     var region:MKCoordinateRegion = MKCoordinateRegionMake(overallLoc, span);
                     var annotation = MKPointAnnotation();
                     annotation.coordinate = coordinate;
-                    locationToUseForAppleMaps = location
+//                    locationToUseForAppleMaps = location
                     annotation.title = subtitle;
                     self.smallMapView.addAnnotation(annotation);
                     self.smallMapView.setRegion(region, animated: true)
@@ -182,22 +183,19 @@ class detailViewController: UIViewController, MKMapViewDelegate, CLLocationManag
         }
 
     }
+
     func goToAddressButton(sender: AnyObject) {
         let currentLocMapItem = MKMapItem.mapItemForCurrentLocation();
         let selectedPlacemark = MKPlacemark(coordinate: locationToUseForAppleMaps.coordinate, addressDictionary: nil);
         let selectedMapItem = MKMapItem(placemark: selectedPlacemark);
         let mapItems = [currentLocMapItem, selectedMapItem];
         let launchOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeWalking];
-        
         MKMapItem.openMapsWithItems(mapItems, launchOptions: launchOptions);
-        
     }
 
     func resetData(notification:NSNotification) {
         smallMapView.removeAnnotations(smallMapView.annotations);
         smallMapView.showsUserLocation = true;
-//        addressLabel.text = "No pinned location!";
-
         var location = locationManager.location;
         var latitude = location.coordinate.latitude;
         var longitude = location.coordinate.longitude;
@@ -212,18 +210,30 @@ class detailViewController: UIViewController, MKMapViewDelegate, CLLocationManag
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return 3
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("PinnedLocationCell", forIndexPath: indexPath) as! PinnedLocationTableViewCell
-        cell.OGAddressLabel.text = completeAddressPinned
-        cell.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.2)
-        cell.textLabel?.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.0)
-        cell.textLabel?.textColor = UIColor.whiteColor()
-        cell.contentView.backgroundColor = UIColor.clearColor()
         pinnedLocationTableView.backgroundColor = UIColor.clearColor()
-        return cell
+        
+        if indexPath.row == 0 {
+            let cell = tableView.dequeueReusableCellWithIdentifier("PinnedLocationCell", forIndexPath: indexPath) as! PinnedLocationTableViewCell
+            cell.OGAddressLabel.text = completeAddressPinned
+            cell.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.2)
+            cell.textLabel?.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.0)
+            cell.textLabel?.textColor = UIColor.whiteColor()
+            cell.contentView.backgroundColor = UIColor.clearColor()
+            return cell
+        } else if indexPath.row == 1 {
+            let distanceCell = tableView.dequeueReusableCellWithIdentifier("DistanceCell", forIndexPath: indexPath) as! DistanceTableViewCell
+            distanceCell.distanceLabel.text = distanceLabelStringG
+            return distanceCell
+        } else {
+            let etaCell = tableView.dequeueReusableCellWithIdentifier("EtaCell", forIndexPath: indexPath) as! ETATableViewCell
+            etaCell.etaTime.text = etaLabelStringG
+            return etaCell
+        }
+
     }
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if indexPath.row == 0 {

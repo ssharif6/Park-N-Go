@@ -21,8 +21,12 @@ class YelpTableBusinessCell: UITableViewCell {
     var business: Business! {
         didSet {
             nameLabel.text = business.name
-            let thumbImageViewData = NSData(contentsOfURL: business.imageURL!)
-            thumbIMageView.image = UIImage(data: thumbImageViewData!)
+            if business.imageURL != nil {
+                if let thumbImageViewData = NSData(contentsOfURL: business.imageURL!) {
+                    thumbIMageView.image = UIImage(data: thumbImageViewData)
+                }
+
+            }
             let ratingsData = NSData(contentsOfURL: business.ratingImageURL!)
             ratingsImageView.image = UIImage(data: ratingsData!)
             categoryLabel.text = business.categories
