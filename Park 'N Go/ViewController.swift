@@ -103,7 +103,6 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         let locationData = NSKeyedArchiver.archivedDataWithRootObject(pinnedLocation);
         NSUserDefaults.standardUserDefaults().setObject(locationData, forKey: "pinnedLocation");
         NSNotificationCenter.defaultCenter().postNotificationName("loadData", object: nil);
-        calculateDistanceAndEta()
 
     }
     func getLocationInfo(locationParameter:CLLocation) {
@@ -129,17 +128,17 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
                     }
                     if p.thoroughfare != nil {
                         
-                        thoroughfare = p.thoroughfare
+                        thoroughfare = p.thoroughfare + ","
                         
                     }
                     if(p.locality != nil) {
-                        locality = p.locality;
+                        locality = p.locality + ",";
                     }
                     if(p.postalCode != nil) {
                         postalCode = p.postalCode;
                     }
                     if(p.administrativeArea != nil) {
-                        administrativeArea = p.administrativeArea;
+                        administrativeArea = p.administrativeArea + ",";
                     }
                     if(p.country != nil) {
                         country = p.country;
@@ -147,7 +146,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
 
                     
                     completeAddress = self.displayLocationInfo(p);
-                    title = " \(subThoroughfare) \(thoroughfare), \(locality), \(administrativeArea), \(postalCode) \(country)";
+                    title = " \(subThoroughfare) \(thoroughfare) \(locality) \(administrativeArea) \(postalCode) \(country)";
                     completeAddressPinned = title
                 }
             }
@@ -175,31 +174,6 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         return title;
         
     }
-    
-    func calculateDistanceAndEta() {
-        let currentLocMapItem = MKMapItem.mapItemForCurrentLocation();
-        let selectedPlacemark = MKPlacemark(coordinate: locationToUseForAppleMaps.coordinate, addressDictionary: nil);
-        let selectedMapItem = MKMapItem(placemark: selectedPlacemark);
-        let mapItems = [currentLocMapItem, selectedMapItem];
-        let request: MKDirectionsRequest = MKDirectionsRequest()
-        request.transportType = MKDirectionsTransportType.Walking;
-        request.setSource(currentLocMapItem)
-        request.setDestination(selectedMapItem);
-        var directions: MKDirections = MKDirections(request: request);
-        directions.calculateDirectionsWithCompletionHandler { (response, error) -> Void in
-            if (error == nil) {
-                if (response.routes.count > 0) {
-                    var route: MKRoute = response.routes[0] as! MKRoute;
-                    //                    route.distance = distance
-                    //                    route.expectedTravelTime = eta
-                    distanceLabelStringG = "\(route.distance)"
-                    etaLabelStringG = "\(route.expectedTravelTime)"
-                }
-            }
-        }
-        
-    }
-
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

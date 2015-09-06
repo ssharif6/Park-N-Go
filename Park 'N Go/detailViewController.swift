@@ -14,6 +14,8 @@ var locationToUseForAppleMaps: CLLocation!
 
 class detailViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UITableViewDelegate, UITableViewDataSource {
 
+    @IBOutlet weak var etaLabel: UILabel!
+    @IBOutlet weak var distanceFromPinLabel: UILabel!
     @IBOutlet weak var pinnedLocationTableView: UITableView!
     @IBOutlet var localityLabel: UILabel!
     @IBOutlet var smallMapView: MKMapView!
@@ -22,6 +24,8 @@ class detailViewController: UIViewController, MKMapViewDelegate, CLLocationManag
     var distanceLabelString:String!
     var etaLabelString:String!
     var locationManager = CLLocationManager();
+    var routeToUse: MKRoute!
+    var coordinateToUse:CLLocationCoordinate2D!
     
     override func viewDidLoad() {
 
@@ -45,7 +49,8 @@ class detailViewController: UIViewController, MKMapViewDelegate, CLLocationManag
                 println("You've gotten to the detailViewcontroller")
                 let location = loadedLocation;
                 let coordinate = loadedLocation.coordinate
-                
+                self.coordinateToUse = coordinate
+                calculateDistanceAndEta(coordinate)
                 CLGeocoder().reverseGeocodeLocation(location, completionHandler: { (placemarks, error) -> Void in
                     var title = "";
                     var subtitle = "";
@@ -110,7 +115,33 @@ class detailViewController: UIViewController, MKMapViewDelegate, CLLocationManag
             }
         }
     }
-
+    
+    @IBAction func refreshButton(sender: AnyObject) {
+        calculateDistanceAndEta(coordinateToUse)
+    }
+    func calculateDistanceAndEta(locationCooridnate: CLLocationCoordinate2D) {
+        let currentLocMapItem = MKMapItem.mapItemForCurrentLocation();
+        let selectedPlacemark = MKPlacemark(coordinate: locationCooridnate, addressDictionary: nil);
+        let selectedMapItem = MKMapItem(placemark: selectedPlacemark);
+        let mapItems = [currentLocMapItem, selectedMapItem];
+        let request: MKDirectionsRequest = MKDirectionsRequest()
+        request.transportType = MKDirectionsTransportType.Walking;
+        request.setSource(currentLocMapItem)
+        request.setDestination(selectedMapItem);
+        var directions: MKDirections = MKDirections(request: request);
+        directions.calculateDirectionsWithCompletionHandler { (response, error) -> Void in
+            if (error == nil) {
+                if (response.routes.count > 0) {
+                    var route: MKRoute = response.routes[0] as! MKRoute;
+                    self.routeToUse = route
+                    //                    route.distance = distance
+                    //                    route.expectedTravelTime = eta
+                    self.distanceFromPinLabel.text = "\(route.distance)"
+                    self.etaLabel.text = "\(route.expectedTravelTime)"
+                }
+            }
+        }
+    }
     
     func loadData(notification:NSNotification) {
         if let loadedData = NSUserDefaults.standardUserDefaults().dataForKey("pinnedLocation") {
@@ -210,13 +241,11 @@ class detailViewController: UIViewController, MKMapViewDelegate, CLLocationManag
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return 1
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         pinnedLocationTableView.backgroundColor = UIColor.clearColor()
-        
-        if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCellWithIdentifier("PinnedLocationCell", forIndexPath: indexPath) as! PinnedLocationTableViewCell
             cell.OGAddressLabel.text = completeAddressPinned
             cell.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.2)
@@ -224,16 +253,7 @@ class detailViewController: UIViewController, MKMapViewDelegate, CLLocationManag
             cell.textLabel?.textColor = UIColor.whiteColor()
             cell.contentView.backgroundColor = UIColor.clearColor()
             return cell
-        } else if indexPath.row == 1 {
-            let distanceCell = tableView.dequeueReusableCellWithIdentifier("DistanceCell", forIndexPath: indexPath) as! DistanceTableViewCell
-            distanceCell.distanceLabel.text = distanceLabelStringG
-            return distanceCell
-        } else {
-            let etaCell = tableView.dequeueReusableCellWithIdentifier("EtaCell", forIndexPath: indexPath) as! ETATableViewCell
-            etaCell.etaTime.text = etaLabelStringG
-            return etaCell
-        }
-
+        
     }
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if indexPath.row == 0 {
