@@ -12,7 +12,6 @@ import AddressBook
 
 var userLocationCoordinate:CLLocationCoordinate2D!;
 
-
 class AttractionsVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, UITableViewDelegate, UISearchBarDelegate {
     
     @IBOutlet weak var searchBar2: UISearchBar!
@@ -50,13 +49,6 @@ class AttractionsVC: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        var searchBarItem:UIBarButtonItem = UIBarButtonItem(title: "Search", style: UIBarButtonItemStyle.Plain, target: self, action: "setupSearch")
-        tempSearchBar = searchBarItem
-        
-        self.navigationItem.rightBarButtonItem = searchBarItem
-        searchBar2.searchBarStyle = UISearchBarStyle.Minimal
-        searchBar2.showsCancelButton = true
-        searchBarItem = navigationItem.rightBarButtonItem!
         
         searchText.hidden = true
         setupSetUps();
@@ -80,27 +72,36 @@ class AttractionsVC: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
         attractionsMap.setRegion(region, animated: true)
         self.attractionsMap.showsUserLocation = true;
     }
-    @IBAction func tapSearchButon(sender: AnyObject) {
-        searchText.hidden = false
-    }
-    func setupSearch() {
-        searchBar2.alpha = 0
-        navigationItem.titleView = searchBar2
-        navigationItem.setLeftBarButtonItem(nil, animated: true)
-        UIView.animateWithDuration(2.0, animations: {
-            self.searchBar2.alpha = 1
-            }, completion: { finished in
-                self.navigationItem.rightBarButtonItem = nil
-                self.searchBar2.becomeFirstResponder()
-        })
+    
+    func searchbarPopulate() {
+        tempSearchBar = searchButton
+        searchBar2.delegate = self
+        searchBar2.searchBarStyle = UISearchBarStyle.Minimal
+        searchBar2.showsCancelButton = true
     }
     
+    @IBAction func tapSearchButon(sender: AnyObject) {
+        searchbarPopulate()
+        self.navigationItem.rightBarButtonItem = nil
+        navigationItem.titleView = searchBar2
+        searchBar2.alpha = 0
+        navigationItem.setLeftBarButtonItem(nil, animated: true)
+        UIView.animateWithDuration(0.5, animations: {
+            self.searchBar2.alpha = 1
+            }, completion: { finished in
+                self.searchBar2 .becomeFirstResponder()
+            })
+    }
+
+    
     func searchBarCancelButtonClicked(searchBar: UISearchBar) {
-        navigationItem.setRightBarButtonItem(tempSearchBar, animated: true)
         UIView.animateWithDuration(0.5, animations: { () -> Void in
-            searchBar.alpha = 1
-        }) { (finished) -> Void in
-            
+            searchBar.alpha = 0
+            }) { (completed) -> Void in
+//                self.navigationItem.titleView = "Attractions"
+                // Make Title View of Attractions in Sketch
+                self.navigationItem.rightBarButtonItem = self.searchButton
+                
         }
     }
 

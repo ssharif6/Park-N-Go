@@ -263,13 +263,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <toolbarItems>
-                        <barButtonItem systemItem="search" id="HA1-5n-2ZG">
-                            <connections>
-                                <action selector="tapSearchButon:" destination="rMh-AC-EEB" id="QJ2-Xo-cvN"/>
-                            </connections>
-                        </barButtonItem>
-                    </toolbarItems>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" title="Attractions" id="cL3-OP-9Jk">
                         <barButtonItem key="leftBarButtonItem" style="plain" id="WBs-nC-Mce">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Dmu-jb-iDt">
@@ -282,6 +276,11 @@
                                     <segue destination="Wir-AL-27z" kind="show" id="5Yq-xI-GNy"/>
                                 </connections>
                             </button>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="HA1-5n-2ZG">
+                            <connections>
+                                <action selector="tapSearchButon:" destination="rMh-AC-EEB" id="QJ2-Xo-cvN"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
