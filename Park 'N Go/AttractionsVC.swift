@@ -12,7 +12,7 @@ import AddressBook
 
 var userLocationCoordinate:CLLocationCoordinate2D!;
 
-class AttractionsVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, UITableViewDelegate, UISearchBarDelegate {
+class AttractionsVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, UITableViewDelegate, UISearchBarDelegate, UITextFieldDelegate {
     
     @IBOutlet weak var searchBar2: UISearchBar!
 
@@ -49,8 +49,8 @@ class AttractionsVC: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        searchText.hidden = true
+//        searchText.hidden = true
+        searchText.alpha = 0.6
         setupSetUps();
         attractionsMap.mapType = MKMapType.Hybrid;
         attractionsMap.delegate = self;
@@ -71,6 +71,7 @@ class AttractionsVC: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
         attractionsMap.region = region;
         attractionsMap.setRegion(region, animated: true)
         self.attractionsMap.showsUserLocation = true;
+        searchbarPopulate()
     }
     
     func searchbarPopulate() {
@@ -81,19 +82,26 @@ class AttractionsVC: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
     }
     
     @IBAction func tapSearchButon(sender: AnyObject) {
+        self.viewDidLoad()
         searchbarPopulate()
         self.navigationItem.rightBarButtonItem = nil
         navigationItem.titleView = searchBar2
-        searchBar2.alpha = 0
-        navigationItem.setLeftBarButtonItem(nil, animated: true)
-        UIView.animateWithDuration(0.5, animations: {
-            self.searchBar2.alpha = 1
-            }, completion: { finished in
-                self.searchBar2 .becomeFirstResponder()
-            })
+        self.searchBar2.alpha = 1
+//        searchBar2.alpha = 0
+//        navigationItem.setLeftBarButtonItem(nil, animated: true)
+//        UIView.animateWithDuration(0.5, animations: {
+////            self.searchBar2.alpha = 1
+//            }, completion: { finished in
+//                self.searchBar2 .becomeFirstResponder()
+//                self.searchBar2.alpha = 1
+//            })
     }
-
     
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        attractionsMap.removeAnnotations(attractionsMap.annotations);
+        performYelpSearch(searchBar.text)
+        searchBarCancelButtonClicked(searchBar)
+    }
     func searchBarCancelButtonClicked(searchBar: UISearchBar) {
         UIView.animateWithDuration(0.5, animations: { () -> Void in
             searchBar.alpha = 0
@@ -220,6 +228,7 @@ class AttractionsVC: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
         sender.resignFirstResponder();
         attractionsMap.removeAnnotations(attractionsMap.annotations);
         performYelpSearch(searchText.text)
+        searchText.hidden = true;
     }
     func performYelpSearch(query: String) {
         attractionsMap.removeAnnotations(attractionsMap.annotations)
@@ -312,6 +321,7 @@ class AttractionsVC: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
         if segue.identifier == "attractionToDetail" {
             if let annotation = (sender as? MKAnnotationView)?.annotation {
                 if let ivc = segue.destinationViewController as? AttractionsDetailViewController {
+                    searchBarCancelButtonClicked(searchBar2)
                     ivc.attractionLocation = self.indicatedMapItem
                     ivc.attractionDetailAddressString = self.attractionLocationString
                     ivc.currentBusiness = self.attractionDict
