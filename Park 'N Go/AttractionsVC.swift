@@ -53,8 +53,6 @@ class AttractionsVC: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
         super.viewDidLoad()
         searchBar2.delegate = self
         searchBar2.searchBarStyle = UISearchBarStyle.Minimal
-        searchText.hidden = true
-        searchText.alpha = 0.6
         setupSetUps();
         attractionsMap.mapType = MKMapType.Hybrid;
         attractionsMap.delegate = self;
@@ -85,6 +83,7 @@ class AttractionsVC: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
     }
     
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        searchBar.resignFirstResponder();
         attractionsMap.removeAnnotations(attractionsMap.annotations);
         performYelpSearch(searchBar.text)
     }
@@ -192,19 +191,7 @@ class AttractionsVC: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
         
         categoryDictionary["Services"] = servicesCategories;
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    
-    @IBAction func returnText(sender: AnyObject) {
-        sender.resignFirstResponder();
-        attractionsMap.removeAnnotations(attractionsMap.annotations);
-        performYelpSearch(searchText.text)
-        searchText.hidden = true;
-    }
+
     func performYelpSearch(query: String) {
         attractionsMap.removeAnnotations(attractionsMap.annotations)
         matchingItems.removeAll()
@@ -219,6 +206,7 @@ class AttractionsVC: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
             }
         })
     }
+    
     func performYelpSearchWithParams(query: String) {
         attractionsMap.removeAnnotations(attractionsMap.annotations)
         matchingItems.removeAll()

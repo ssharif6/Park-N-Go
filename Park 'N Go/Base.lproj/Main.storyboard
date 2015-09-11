@@ -232,14 +232,6 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="44"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Arq-Oo-WqG">
-                                <rect key="frame" x="64" y="292" width="230" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" returnKeyType="search"/>
-                                <connections>
-                                    <action selector="returnText:" destination="rMh-AC-EEB" eventType="editingDidEndOnExit" id="jlG-QP-4zV"/>
-                                </connections>
-                            </textField>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsMultipleSelection="YES" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Mb9-JW-eVU">
                                 <rect key="frame" x="0.0" y="380" width="375" height="238"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -278,7 +270,6 @@
                         <outlet property="attractionsMap" destination="4jm-xj-E0A" id="hBr-1q-zJ0"/>
                         <outlet property="attractionsTabView" destination="Mb9-JW-eVU" id="i3n-Y5-pg3"/>
                         <outlet property="searchBar2" destination="6bl-dv-YTU" id="8eI-vQ-goH"/>
-                        <outlet property="searchText" destination="Arq-Oo-WqG" id="ZeT-ZN-NaK"/>
                         <outlet property="yelpTableButton" destination="s6h-UQ-PhP" id="PXH-EY-am5"/>
                         <segue destination="hM4-tT-yfm" kind="show" identifier="attractionToDetail" id="p0U-gC-6sh"/>
                     </connections>
@@ -581,8 +572,8 @@
         <image name="Triangle 1 Copy" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="B1w-p8-k0z"/>
         <segue reference="p0U-gC-6sh"/>
         <segue reference="utQ-xm-y6I"/>
-        <segue reference="Sxe-Ow-ytu"/>
     </inferredMetricsTieBreakers>
 </document>

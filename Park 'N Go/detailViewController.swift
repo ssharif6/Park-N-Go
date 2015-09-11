@@ -119,6 +119,23 @@ class detailViewController: UIViewController, MKMapViewDelegate, CLLocationManag
     @IBAction func refreshButton(sender: AnyObject) {
         calculateDistanceAndEta(coordinateToUse)
     }
+    
+    func stringFromTimeInterval(interval: NSTimeInterval) -> String {
+        let interval = Int(interval)
+        let seconds = interval % 60
+        let minutes = (interval / 60) % 60
+        let hours = (interval / 3600)
+        if minutes < 60 {
+            if minutes < 10 {
+                return String(format: "%2d:%02d", minutes, seconds)
+            } else {
+                return String(format: "%02d:%02d", minutes, seconds)
+            }
+        } else {
+            return String(format: "%02d:%02d:%02d", hours, minutes, seconds)
+        }
+    }
+    
     func calculateDistanceAndEta(locationCooridnate: CLLocationCoordinate2D) {
         let currentLocMapItem = MKMapItem.mapItemForCurrentLocation();
         let selectedPlacemark = MKPlacemark(coordinate: locationCooridnate, addressDictionary: nil);
@@ -136,8 +153,11 @@ class detailViewController: UIViewController, MKMapViewDelegate, CLLocationManag
                     self.routeToUse = route
                     //                    route.distance = distance
                     //                    route.expectedTravelTime = eta
-                    self.distanceFromPinLabel.text = "\(route.distance)"
-                    self.etaLabel.text = "\(route.expectedTravelTime)"
+                    var distanceInMiles = route.distance * 0.000621371192237
+                    var distanceInMilesRounded = Double(round(100 * distanceInMiles)/100)
+                    self.distanceFromPinLabel.text = "\(distanceInMilesRounded) Miles"
+                    var minutesAndHourtext = self.stringFromTimeInterval(route.expectedTravelTime)
+                    self.etaLabel.text = "\(minutesAndHourtext)"
                 }
             }
         }
@@ -162,7 +182,6 @@ class detailViewController: UIViewController, MKMapViewDelegate, CLLocationManag
                             var postalCode:String = "";
                             var administrativeArea:String = "";
                             var country:String = "";
-                            
                             if (placemark.subThoroughfare != nil) {
                                 subThoroughfare = placemark.subThoroughfare;
                             }
@@ -203,7 +222,6 @@ class detailViewController: UIViewController, MKMapViewDelegate, CLLocationManag
                     var region:MKCoordinateRegion = MKCoordinateRegionMake(overallLoc, span);
                     var annotation = MKPointAnnotation();
                     annotation.coordinate = coordinate;
-//                    locationToUseForAppleMaps = location
                     annotation.title = subtitle;
                     self.smallMapView.addAnnotation(annotation);
                     self.smallMapView.setRegion(region, animated: true)
@@ -253,17 +271,11 @@ class detailViewController: UIViewController, MKMapViewDelegate, CLLocationManag
             cell.textLabel?.textColor = UIColor.whiteColor()
             cell.contentView.backgroundColor = UIColor.clearColor()
             return cell
-        
     }
+    
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if indexPath.row == 0 {
             goToAddressButton(self)
         }
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
 }
