@@ -12,8 +12,10 @@ import AddressBook
 
 var userLocationCoordinate:CLLocationCoordinate2D!;
 
-class AttractionsVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, UITableViewDelegate, UISearchBarDelegate, UITextFieldDelegate {
+class AttractionsVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, UITableViewDelegate, UISearchBarDelegate, UITextFieldDelegate, UINavigationControllerDelegate {
     
+    @IBOutlet weak var yelpTableButton: UIBarButtonItem!
+    @IBOutlet weak var tableButton: UIButton!
     @IBOutlet weak var searchBar2: UISearchBar!
 
     @IBOutlet weak var searchButton: UIBarButtonItem!
@@ -49,7 +51,7 @@ class AttractionsVC: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        searchText.hidden = true
+        searchText.hidden = true
         searchText.alpha = 0.6
         setupSetUps();
         attractionsMap.mapType = MKMapType.Hybrid;
@@ -86,15 +88,14 @@ class AttractionsVC: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
         searchbarPopulate()
         self.navigationItem.rightBarButtonItem = nil
         navigationItem.titleView = searchBar2
-        self.searchBar2.alpha = 1
-//        searchBar2.alpha = 0
-//        navigationItem.setLeftBarButtonItem(nil, animated: true)
-//        UIView.animateWithDuration(0.5, animations: {
-////            self.searchBar2.alpha = 1
-//            }, completion: { finished in
-//                self.searchBar2 .becomeFirstResponder()
-//                self.searchBar2.alpha = 1
-//            })
+        searchBar2.alpha = 0
+        navigationItem.setLeftBarButtonItem(nil, animated: true)
+        UIView.animateWithDuration(0.5, animations: {
+//            self.searchBar2.alpha = 1
+            }, completion: { finished in
+                self.searchBar2 .becomeFirstResponder()
+                self.searchBar2.alpha = 1
+            })
     }
     
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
@@ -109,7 +110,7 @@ class AttractionsVC: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
 //                self.navigationItem.titleView = "Attractions"
                 // Make Title View of Attractions in Sketch
                 self.navigationItem.rightBarButtonItem = self.searchButton
-                
+                self.navigationItem.leftBarButtonItem = self.yelpTableButton
         }
     }
 

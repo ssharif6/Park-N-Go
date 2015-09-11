@@ -265,17 +265,10 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Attractions" id="cL3-OP-9Jk">
-                        <barButtonItem key="leftBarButtonItem" style="plain" id="WBs-nC-Mce">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Dmu-jb-iDt">
-                                <rect key="frame" x="319" y="72" width="40" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Table">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="Wir-AL-27z" kind="show" id="5Yq-xI-GNy"/>
-                                </connections>
-                            </button>
+                        <barButtonItem key="leftBarButtonItem" title="table" id="s6h-UQ-PhP">
+                            <connections>
+                                <segue destination="Ozt-YZ-leu" kind="show" id="B1w-p8-k0z"/>
+                            </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="search" id="HA1-5n-2ZG">
                             <connections>
@@ -292,6 +285,7 @@
                         <outlet property="searchBar2" destination="6bl-dv-YTU" id="8eI-vQ-goH"/>
                         <outlet property="searchButton" destination="HA1-5n-2ZG" id="1VM-xC-TuR"/>
                         <outlet property="searchText" destination="Arq-Oo-WqG" id="ZeT-ZN-NaK"/>
+                        <outlet property="yelpTableButton" destination="s6h-UQ-PhP" id="PXH-EY-am5"/>
                         <segue destination="hM4-tT-yfm" kind="show" identifier="attractionToDetail" id="p0U-gC-6sh"/>
                     </connections>
                 </viewController>
@@ -594,6 +588,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="utQ-xm-y6I"/>
+        <segue reference="B1w-p8-k0z"/>
         <segue reference="p0U-gC-6sh"/>
     </inferredMetricsTieBreakers>
 </document>
