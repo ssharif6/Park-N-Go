@@ -51,6 +51,8 @@ class AttractionsVC: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        searchBar2.delegate = self
+        searchBar2.searchBarStyle = UISearchBarStyle.Minimal
         searchText.hidden = true
         searchText.alpha = 0.6
         setupSetUps();
@@ -73,7 +75,6 @@ class AttractionsVC: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
         attractionsMap.region = region;
         attractionsMap.setRegion(region, animated: true)
         self.attractionsMap.showsUserLocation = true;
-        searchbarPopulate()
     }
     
     func searchbarPopulate() {
@@ -83,37 +84,10 @@ class AttractionsVC: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
         searchBar2.showsCancelButton = true
     }
     
-    @IBAction func tapSearchButon(sender: AnyObject) {
-        self.viewDidLoad()
-        searchbarPopulate()
-        self.navigationItem.rightBarButtonItem = nil
-        navigationItem.titleView = searchBar2
-        searchBar2.alpha = 0
-        navigationItem.setLeftBarButtonItem(nil, animated: true)
-        UIView.animateWithDuration(0.5, animations: {
-//            self.searchBar2.alpha = 1
-            }, completion: { finished in
-                self.searchBar2 .becomeFirstResponder()
-                self.searchBar2.alpha = 1
-            })
-    }
-    
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         attractionsMap.removeAnnotations(attractionsMap.annotations);
         performYelpSearch(searchBar.text)
-        searchBarCancelButtonClicked(searchBar)
     }
-    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
-        UIView.animateWithDuration(0.5, animations: { () -> Void in
-            searchBar.alpha = 0
-            }) { (completed) -> Void in
-//                self.navigationItem.titleView = "Attractions"
-                // Make Title View of Attractions in Sketch
-                self.navigationItem.rightBarButtonItem = self.searchButton
-                self.navigationItem.leftBarButtonItem = self.yelpTableButton
-        }
-    }
-
 
     func setupSetUps() {
         
@@ -322,7 +296,6 @@ class AttractionsVC: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
         if segue.identifier == "attractionToDetail" {
             if let annotation = (sender as? MKAnnotationView)?.annotation {
                 if let ivc = segue.destinationViewController as? AttractionsDetailViewController {
-                    searchBarCancelButtonClicked(searchBar2)
                     ivc.attractionLocation = self.indicatedMapItem
                     ivc.attractionDetailAddressString = self.attractionLocationString
                     ivc.currentBusiness = self.attractionDict

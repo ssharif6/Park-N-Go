@@ -222,18 +222,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6bl-dv-YTU">
-                                <rect key="frame" x="-56" y="-16" width="375" height="44"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="BayErn" translatesAutoresizingMaskIntoConstraints="NO" id="mRT-2i-rq8">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="108" width="375" height="559"/>
                             </imageView>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.90000000000000002" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="4jm-xj-E0A">
-                                <rect key="frame" x="0.0" y="64" width="375" height="318"/>
+                                <rect key="frame" x="0.0" y="108" width="375" height="274"/>
                             </mapView>
+                            <searchBar contentMode="redraw" fixedFrame="YES" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6bl-dv-YTU">
+                                <rect key="frame" x="0.0" y="64" width="375" height="44"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Arq-Oo-WqG">
-                                <rect key="frame" x="72" y="72" width="230" height="30"/>
+                                <rect key="frame" x="64" y="292" width="230" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="search"/>
                                 <connections>
@@ -270,11 +270,6 @@
                                 <segue destination="Ozt-YZ-leu" kind="show" id="B1w-p8-k0z"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="HA1-5n-2ZG">
-                            <connections>
-                                <action selector="tapSearchButon:" destination="rMh-AC-EEB" id="QJ2-Xo-cvN"/>
-                            </connections>
-                        </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
@@ -283,7 +278,6 @@
                         <outlet property="attractionsMap" destination="4jm-xj-E0A" id="hBr-1q-zJ0"/>
                         <outlet property="attractionsTabView" destination="Mb9-JW-eVU" id="i3n-Y5-pg3"/>
                         <outlet property="searchBar2" destination="6bl-dv-YTU" id="8eI-vQ-goH"/>
-                        <outlet property="searchButton" destination="HA1-5n-2ZG" id="1VM-xC-TuR"/>
                         <outlet property="searchText" destination="Arq-Oo-WqG" id="ZeT-ZN-NaK"/>
                         <outlet property="yelpTableButton" destination="s6h-UQ-PhP" id="PXH-EY-am5"/>
                         <segue destination="hM4-tT-yfm" kind="show" identifier="attractionToDetail" id="p0U-gC-6sh"/>
@@ -587,8 +581,8 @@
         <image name="Triangle 1 Copy" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="utQ-xm-y6I"/>
-        <segue reference="B1w-p8-k0z"/>
         <segue reference="p0U-gC-6sh"/>
+        <segue reference="utQ-xm-y6I"/>
+        <segue reference="Sxe-Ow-ytu"/>
     </inferredMetricsTieBreakers>
 </document>
