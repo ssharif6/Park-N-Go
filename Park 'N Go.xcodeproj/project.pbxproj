@@ -18,6 +18,7 @@
 		8550DE351B47478F0074A71C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8550DE331B47478F0074A71C /* LaunchScreen.xib */; };
 		8550DE411B47478F0074A71C /* Park__N_GoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8550DE401B47478F0074A71C /* Park__N_GoTests.swift */; };
 		8550DE4B1B4749FA0074A71C /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8550DE4A1B4749FA0074A71C /* CoreLocation.framework */; };
+		85556FB31BA3D4F40011C401 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85556FB21BA3D4F40011C401 /* SettingsTableViewController.swift */; };
 		855980F31B5B4E9A0071F120 /* (null) in Sources */ = {isa = PBXBuildFile; };
 		85630AB41B4E0144000DE1BD /* VCDetailMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85630AB31B4E0144000DE1BD /* VCDetailMapView.swift */; };
 		857C5D331B9AAD99004796AF /* DistanceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 857C5D321B9AAD99004796AF /* DistanceTableViewCell.swift */; };
@@ -74,6 +75,7 @@
 		8550DE3F1B47478F0074A71C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8550DE401B47478F0074A71C /* Park__N_GoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Park__N_GoTests.swift; sourceTree = "<group>"; };
 		8550DE4A1B4749FA0074A71C /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		85556FB21BA3D4F40011C401 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		85630AB31B4E0144000DE1BD /* VCDetailMapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VCDetailMapView.swift; sourceTree = "<group>"; };
 		8579AEB71B5E155C00BFBCF0 /* Park 'N Go-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Park 'N Go-Bridging-Header.h"; sourceTree = "<group>"; };
 		857C5D321B9AAD99004796AF /* DistanceTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DistanceTableViewCell.swift; sourceTree = "<group>"; };
@@ -236,6 +238,7 @@
 				85A7B59B1B504D6200EE0611 /* AttractionsVC.swift */,
 				85A7B5A71B508B1000EE0611 /* AttractionsDetailViewController.swift */,
 				85DC42DE1B9149A800CB72B2 /* YelpTableViewController.swift */,
+				85556FB21BA3D4F40011C401 /* SettingsTableViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -421,6 +424,7 @@
 				85DCCFFB1B54A32100188C4D /* CustomCellTableViewCell.swift in Sources */,
 				85C7E0361B6C3D3C00E2F3A2 /* YelpClient.swift in Sources */,
 				85E84C511B4C60DB00614FB3 /* Annotation.swift in Sources */,
+				85556FB31BA3D4F40011C401 /* SettingsTableViewController.swift in Sources */,
 				85A7B5A81B508B1000EE0611 /* AttractionsDetailViewController.swift in Sources */,
 				85EC7B9C1B92EFCA0042FF5B /* PinnedLocationTableViewCell.swift in Sources */,
 				850A45DF1B6C4240008D30E0 /* Resturant.swift in Sources */,

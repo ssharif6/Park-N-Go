@@ -48,6 +48,7 @@ class AttractionsVC: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
     var transportCategories = [String]();
     var lodgingCategories = [String]();
     var servicesCategories = [String]();
+    var queryString: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,8 +74,20 @@ class AttractionsVC: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
         attractionsMap.region = region;
         attractionsMap.setRegion(region, animated: true)
         self.attractionsMap.showsUserLocation = true;
+        // Set Notification Observers
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "sortBySettingsChanged:", name: "sortBySettingsChanged", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "radiusSettingsChanged:", name: "radiusSettingsChanged", object: nil)
+    }
+    func metricsSettingsChecked(notification: NSNotification) {
+
+    }
+    func radiusSettingsChanged (notification: NSNotification) {
+        performYelpSearch(queryString)
     }
     
+    func sortBySettingsChanged (notification: NSNotification) {
+        performYelpSearch(queryString)
+    }
     func searchbarPopulate() {
         tempSearchBar = searchButton
         searchBar2.delegate = self
@@ -82,6 +95,9 @@ class AttractionsVC: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
         searchBar2.showsCancelButton = true
     }
     
+    @IBAction func settingsButtonClicked(sender: AnyObject) {
+        performSegueWithIdentifier("attractionsToSettings", sender: self)
+    }
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         searchBar.resignFirstResponder();
         attractionsMap.removeAnnotations(attractionsMap.annotations);
@@ -193,6 +209,7 @@ class AttractionsVC: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
     }
 
     func performYelpSearch(query: String) {
+        queryString = query
         attractionsMap.removeAnnotations(attractionsMap.annotations)
         matchingItems.removeAll()
 

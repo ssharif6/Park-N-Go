@@ -18,6 +18,7 @@ class Resturant: NSObject {
     var address: String!
     var jsonData: NSData!
     var locationDict: NSDictionary        // location
+    var sortFromSettings: Int! = 0
     
     init(dictionary: NSDictionary) {
         self.name = dictionary["name"] as? String
@@ -27,7 +28,9 @@ class Resturant: NSObject {
     }
     
     class func searchWithQuery(map: MKMapView, query: String, completion: ([Resturant]!, NSError!) -> Void) {
-        YelpClient.sharedInstance.searchWithTerm(query,sort: 0, radius: 8000, success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
+//        var radiusInMiles: Double = Double(radiusGlobal) * 0.000621371
+        var radiusInMeters: Double = Double(radiusGlobal) * 1609.34
+        YelpClient.sharedInstance.searchWithTerm(query, sort: sortGlobal, radius: radiusInMeters, limit: 5, success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
             let responseInfo = response as! NSDictionary
             resultQueryDictionary = responseInfo
             println(responseInfo)
@@ -46,6 +49,7 @@ class Resturant: NSObject {
          println(error)
         }
     }
+    
     // term: String, deal: Bool, radius: Int, sort: Int, categories: String, success: (AFHTTPRequestOperation!, AnyObject!) -> Void, failure: (AFHTTPRequestOperation!, NSError!) -> Void) -> AFHTTPRequestOperation! {
 
     class func searchWithQueryWithRadius(map: MKMapView, term: String, deal: Bool, radius: Int, sort: Int, categories: String, completion: ([Resturant]!, NSError!) -> Void) {
