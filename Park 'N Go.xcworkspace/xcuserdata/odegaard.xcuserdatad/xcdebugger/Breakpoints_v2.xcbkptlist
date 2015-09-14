@@ -26,12 +26,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Park &apos;N Go/detailViewController.swift"
-            timestampString = "462766588.347326"
+            timestampString = "463902730.308666"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "208"
-            endingLineNumber = "208"
-            landmarkName = "resetData(_:)"
+            startingLineNumber = "210"
+            endingLineNumber = "210"
+            landmarkName = "loadData(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

@@ -35,6 +35,8 @@ class detailViewController: UIViewController, MKMapViewDelegate, CLLocationManag
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadData:", name: "loadData", object: nil);
         smallMapView.delegate = self;
         locationManager.delegate = self;
+        self.pinnedLocationTableView.separatorStyle = UITableViewCellSeparatorStyle.None
+        pinnedLocationTableView.scrollEnabled = false
         
         pinnedLocationTableView.delegate = self
         pinnedLocationTableView.dataSource = self
@@ -266,7 +268,7 @@ class detailViewController: UIViewController, MKMapViewDelegate, CLLocationManag
         pinnedLocationTableView.backgroundColor = UIColor.clearColor()
             let cell = tableView.dequeueReusableCellWithIdentifier("PinnedLocationCell", forIndexPath: indexPath) as! PinnedLocationTableViewCell
             cell.OGAddressLabel.text = completeAddressPinned
-            cell.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.2)
+            cell.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.0)
             cell.textLabel?.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.0)
             cell.textLabel?.textColor = UIColor.whiteColor()
             cell.contentView.backgroundColor = UIColor.clearColor()

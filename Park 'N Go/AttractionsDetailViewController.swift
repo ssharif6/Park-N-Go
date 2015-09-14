@@ -44,6 +44,8 @@ class AttractionsDetailViewController: UIViewController, MKMapViewDelegate, CLLo
         locationManager.delegate = self;
         locationManager.desiredAccuracy = kCLLocationAccuracyBest;
         locationManager.requestWhenInUseAuthorization();
+        YelpInfoTableview.scrollEnabled = false
+
         getDataFromYelp()
     }
 

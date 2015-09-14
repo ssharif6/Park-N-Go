@@ -20,6 +20,8 @@ class YelpTableViewController: UIViewController, UITableViewDelegate, UITableVie
         self.tableview.backgroundView = UIImageView(image: UIImage(named: "bg"))
         tableview.dataSource = self
         tableview.delegate = self
+        tableview.tableFooterView = UIView(frame: CGRectZero)
+
         
         // Do any additional setup after loading the view.
     }
