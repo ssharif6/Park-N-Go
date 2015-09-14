@@ -77,14 +77,14 @@ class AttractionsVC: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
         // Set Notification Observers
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "sortBySettingsChanged:", name: "sortBySettingsChanged", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "radiusSettingsChanged:", name: "radiusSettingsChanged", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "numResultsPickerChanged:", name: "numResultsPickerChanged", object: nil)
     }
-    func metricsSettingsChecked(notification: NSNotification) {
-
+    func numResultsPickerChanged(notification: NSNotification) {
+        performYelpSearch(queryString)
     }
     func radiusSettingsChanged (notification: NSNotification) {
         performYelpSearch(queryString)
     }
-    
     func sortBySettingsChanged (notification: NSNotification) {
         performYelpSearch(queryString)
     }

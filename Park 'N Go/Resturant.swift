@@ -30,7 +30,7 @@ class Resturant: NSObject {
     class func searchWithQuery(map: MKMapView, query: String, completion: ([Resturant]!, NSError!) -> Void) {
 //        var radiusInMiles: Double = Double(radiusGlobal) * 0.000621371
         var radiusInMeters: Double = Double(radiusGlobal) * 1609.34
-        YelpClient.sharedInstance.searchWithTerm(query, sort: sortGlobal, radius: radiusInMeters, limit: 5, success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
+        YelpClient.sharedInstance.searchWithTerm(query, sort: sortGlobal, radius: radiusInMeters, limit: numResultsGlobal, success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
             let responseInfo = response as! NSDictionary
             resultQueryDictionary = responseInfo
             println(responseInfo)

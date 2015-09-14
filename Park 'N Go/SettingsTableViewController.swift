@@ -10,6 +10,7 @@ import UIKit
 
 var sortGlobal:Int = 0
 var radiusGlobal:Int = 1
+var numResultsGlobal:Int = 5
 
 class SettingsTableViewController: UITableViewController, UITableViewDelegate, UITableViewDataSource, UIPickerViewDelegate, UIPickerViewDataSource {
 
@@ -17,6 +18,8 @@ class SettingsTableViewController: UITableViewController, UITableViewDelegate, U
     @IBOutlet weak var radiusPIcker: UIPickerView!
     @IBOutlet weak var detailLabel: UILabel!
     
+    @IBOutlet weak var numResultsPicker: UIPickerView!
+    @IBOutlet weak var numResultsLabel: UILabel!
     @IBOutlet weak var metricsSwitch: UISwitch!
     @IBOutlet weak var sortByPicker: UIPickerView!
     @IBOutlet weak var sortbyLabel: UILabel!
@@ -24,8 +27,15 @@ class SettingsTableViewController: UITableViewController, UITableViewDelegate, U
     var sortByTapped: Bool = false
     var radiusPickerHidden = false
     var sortByPickerHidden:Bool = false
+    var numResultsTapped = false
+    var numResultsPickerHIdden: Bool = false
     let radiusPickerData = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     let sortByPickerData = ["Best Matched", "Distance", "Highest Rated"]
+    let numResultsPickerData = [5, 10, 15, 20, 25, 30]
+    
+    var currentRowRadius:Int = 0
+    var currentRowSortBy:Int = 0
+    var currentRowNumResults:Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,15 +45,29 @@ class SettingsTableViewController: UITableViewController, UITableViewDelegate, U
         sortByPicker.dataSource = self
         settingsTableView.delegate = self
         settingsTableView.dataSource = self
-        
+        self.settingsTableView.tableFooterView = UIView(frame: CGRectZero)
+
         // Set metrics default to false
         metricsSwitch.setOn(false, animated: true)
-        
-        self.settingsTableView.tableFooterView = UIView(frame: CGRectZero)
+        // Load from User Defaults
+        if (NSUserDefaults.standardUserDefaults().stringForKey("radiusSettingsChanged") != nil) {
+            detailLabel.text = (NSUserDefaults.standardUserDefaults().stringForKey("radiusSettingsChanged"))
+        }
+        if ((NSUserDefaults.standardUserDefaults().stringForKey("sortBySettingsChanged")) != nil) {
+            sortbyLabel.text = (NSUserDefaults.standardUserDefaults().stringForKey("sortBySettingsChanged"))
+        }
+        if (NSUserDefaults.standardUserDefaults().stringForKey("numResultsSettingsChanged") != nil) {
+            numResultsLabel.text = (NSUserDefaults.standardUserDefaults().stringForKey("numResultsSettingsChanged"))
+        }
     }
     
     func radiusChanged() {
         detailLabel.text = "1" // Sets the Initial default value of radius to 1
+    }
+    func toggleNumResultsPicker() {
+        numResultsPickerHIdden = !numResultsPickerHIdden
+        settingsTableView.beginUpdates()
+        settingsTableView.endUpdates()
     }
     
     func toggleSortByPicker() {
@@ -65,6 +89,8 @@ class SettingsTableViewController: UITableViewController, UITableViewDelegate, U
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if pickerView == radiusPIcker {
             return radiusPickerData.count
+        } else if pickerView == numResultsPicker {
+            return numResultsPickerData.count
         } else {
             return sortByPickerData.count
         }
@@ -74,8 +100,10 @@ class SettingsTableViewController: UITableViewController, UITableViewDelegate, U
         if pickerView == radiusPIcker {
             radiusGlobal = row + 1
             return String(radiusPickerData[row])
+        } else if pickerView == numResultsPicker {
+            numResultsGlobal = numResultsPickerData[row]
+            return String(numResultsPickerData[row])
         } else {
-            // Sort By
             sortGlobal = row
             return String(sortByPickerData[row])
         }
@@ -83,36 +111,59 @@ class SettingsTableViewController: UITableViewController, UITableViewDelegate, U
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if pickerView == radiusPIcker {
-            if row != 0 {
+            if row != currentRowRadius {
                 NSNotificationCenter.defaultCenter().postNotificationName("radiusSettingsChanged", object: nil)
+                currentRowRadius = row
             }
+            if (NSUserDefaults.standardUserDefaults().stringForKey("radiusSettingsChanged") != nil) {
+                detailLabel.text = (NSUserDefaults.standardUserDefaults().stringForKey("radiusSettingsChanged"))
+            }
+            NSUserDefaults.standardUserDefaults().setObject(String(radiusPickerData[row]) as String, forKey: "radiusSettingsChanged")
             detailLabel.text = String(radiusPickerData[row])
+        }
+        else if pickerView == numResultsPicker {
+            if row != currentRowNumResults {
+                NSNotificationCenter.defaultCenter().postNotificationName("numResultsPickerChanged", object: nil)
+            }
+            if (NSUserDefaults.standardUserDefaults().stringForKey("numResultsSettingsChanged") != nil) {
+                numResultsLabel.text = (NSUserDefaults.standardUserDefaults().stringForKey("numResultsSettingsChanged"))
+            }
+            NSUserDefaults.standardUserDefaults().setObject(String(numResultsPickerData[row]) as String, forKey: "numResultsSettingsChanged")
+            numResultsLabel.text = String(numResultsPickerData[row])
+            currentRowNumResults = row
+            
         } else {
             // Sort By
-            if row != 0 {
+            if row != currentRowSortBy {
                 NSNotificationCenter.defaultCenter().postNotificationName("sortBySettingsChanged", object: nil)
             }
+            if (NSUserDefaults.standardUserDefaults().stringForKey("sortBySettingsChanged") != nil) {
+                sortbyLabel.text = (NSUserDefaults.standardUserDefaults().stringForKey("sortBySettingsChanged"))
+            }
+            NSUserDefaults.standardUserDefaults().setObject(String(sortByPickerData[row]) as String, forKey: "sortBySettingsChanged")
             sortbyLabel.text = String(sortByPickerData[row])
+            currentRowSortBy = row
         }
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     // MARK: - Table view data source
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        if indexPath.row == 2 && radiusTapped == false {
+        if indexPath.row == 2 && numResultsTapped == false {
             return 0
         }
-        if indexPath.row == 4 && sortByTapped == false {
+        if indexPath.row == 4 && radiusTapped == false {
             return 0
         }
-        else if indexPath.section == 1 && indexPath.row == 1 && radiusTapped == true {
+        if indexPath.row == 6 && sortByTapped == false {
+            return 0
+        }
+        else if indexPath.section == 1 && indexPath.row == 1 && numResultsTapped == true {
             return super.tableView(tableView, heightForRowAtIndexPath: indexPath)
         }
-        else if indexPath.section == 1 && indexPath.row == 3 && sortByTapped == true {
+        else if indexPath.section == 1 && indexPath.row == 3 && radiusTapped == true {
+            return super.tableView(tableView, heightForRowAtIndexPath: indexPath)
+        }
+        else if indexPath.section == 1 && indexPath.row == 5 && sortByTapped == true {
             return super.tableView(tableView, heightForRowAtIndexPath: indexPath)
         }
         else {
@@ -120,38 +171,33 @@ class SettingsTableViewController: UITableViewController, UITableViewDelegate, U
         }
     }
     
-
-//    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-//        // #warning Potentially incomplete method implementation.
-//        // Return the number of sections.
-//        return 0
-//    }
-
-//    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        // #warning Incomplete method implementation.
-//        // Return the number of rows in the section.
-//        return 0
-//    }
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if indexPath.section == 1 && indexPath.row == 1 && radiusTapped == false {
+        if indexPath.section == 1 && indexPath.row == 3 && radiusTapped == false {
             radiusTapped = true
             toggleRadiusPicker()
         }
-        else if indexPath.section == 1 && indexPath.row == 1 && radiusTapped == true {
+        else if indexPath.section == 1 && indexPath.row == 3 && radiusTapped == true {
             radiusTapped = false
             toggleRadiusPicker()
         }
+        if indexPath.section == 1 && indexPath.row == 1 && numResultsTapped == false {
+            numResultsTapped = true
+            toggleNumResultsPicker()
+        } else if indexPath.section == 1 && indexPath.row == 1 && numResultsTapped == true {
+            numResultsTapped = false
+            toggleNumResultsPicker()
+        }
         else {
-            if indexPath.section == 1 && indexPath.row == 3 && sortByTapped == false {
+            if indexPath.section == 1 && indexPath.row == 5 && sortByTapped == false {
                 sortByTapped = true
                 toggleSortByPicker()
             }
-            else if indexPath.section == 1 && indexPath.row == 3 && sortByTapped == true {
+            else if indexPath.section == 1 && indexPath.row == 5 && sortByTapped == true {
                 sortByTapped = false
                 toggleSortByPicker()
             }
             else {
-                radiusTapped = false
+//                radiusTapped = false
                 toggleRadiusPicker()
                 toggleSortByPicker()
             }
