@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="pLP-e7-bdD">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="bkL-qP-eBf">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <scenes>
-        <!--Park and PIn-->
+        <!--View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
                 <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="Park__N_Go" customModuleProvider="target" sceneMemberID="viewController">
@@ -61,19 +61,22 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Park and PIn" image="EditedPin-2" id="35c-0D-gts"/>
+                    <navigationItem key="navigationItem" id="cam-hn-OEW">
+                        <barButtonItem key="leftBarButtonItem" title="Item" id="7xp-De-CXe"/>
+                    </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="map" destination="lLX-bY-nw2" id="VmV-el-nzd"/>
+                        <outlet property="menuButton" destination="7xp-De-CXe" id="Mr7-Xo-K7O"/>
                         <outlet property="pinLocationButton" destination="Z6Z-Uz-yR1" id="e3w-Cc-Q0J"/>
-                        <segue destination="Af9-Rb-XX8" kind="showDetail" identifier="detailViewSegue" id="utQ-xm-y6I"/>
+                        <segue destination="vxo-Qn-Erf" kind="showDetail" identifier="detailViewSegue" id="utQ-xm-y6I"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="927.5" y="332.5"/>
+            <point key="canvasLocation" x="1506.5" y="311.5"/>
         </scene>
-        <!--Pinned Location-->
+        <!--Detail View Controller-->
         <scene sceneID="fwl-fP-wcl">
             <objects>
                 <viewController id="Af9-Rb-XX8" customClass="detailViewController" customModule="Park__N_Go" customModuleProvider="target" sceneMemberID="viewController">
@@ -182,7 +185,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Pinned Location" image="Triangle 1 Copy" id="HKO-g0-Rbx"/>
+                    <navigationItem key="navigationItem" id="lUc-XK-CCs"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="distanceFromPinLabel" destination="qeV-SI-OyJ" id="CMu-NP-fx4"/>
@@ -193,7 +196,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oky-qZ-Zkg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1410.5" y="327.5"/>
+            <point key="canvasLocation" x="2584.5" y="327.5"/>
         </scene>
         <!--Settings Table View Controller-->
         <scene sceneID="XrJ-mC-jtY">
@@ -382,11 +385,83 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lA9-In-VTe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2034.5" y="164.5"/>
+            <point key="canvasLocation" x="3208.5" y="164.5"/>
+        </scene>
+        <!--Reveal View Controller-->
+        <scene sceneID="PKm-zM-TkP">
+            <objects>
+                <viewController id="bkL-qP-eBf" customClass="SWRevealViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="kgO-ya-fsZ"/>
+                        <viewControllerLayoutGuide type="bottom" id="D5Y-6Q-uYs"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="eZS-ih-6sV">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <segue destination="MiU-z4-uyI" kind="custom" identifier="sw_rear" customClass="SWRevealViewControllerSegueSetController" id="kC5-8f-d1s"/>
+                        <segue destination="pLP-e7-bdD" kind="custom" identifier="sw_front" customClass="SWRevealViewControllerSegueSetController" id="sRy-Ev-Cg7"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zXw-ee-9Os" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-663.5" y="448.5"/>
+        </scene>
+        <!--Back TableVC-->
+        <scene sceneID="qxm-pm-OXa">
+            <objects>
+                <tableViewController id="MiU-z4-uyI" customClass="BackTableVC" customModule="Park__N_Go" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="XXP-09-xni">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Current Location" id="NkR-6F-C27">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NkR-6F-C27" id="qvP-Mw-8Bg">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="n4u-j2-vws" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="BYZ-k1-TJe"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Pinned Location" id="4pb-Qe-DMX">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4pb-Qe-DMX" id="Rg8-tT-dEG">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="vxo-Qn-Erf" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="KNb-Ih-0oE"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="What's Near You?" id="LgM-Eh-2Vv">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LgM-Eh-2Vv" id="J10-mc-hgv">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="f38-d8-0I1" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="ehm-tr-gqB"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="MiU-z4-uyI" id="IbP-PG-B6d"/>
+                            <outlet property="delegate" destination="MiU-z4-uyI" id="dfQ-PP-af5"/>
+                        </connections>
+                    </tableView>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iLM-V5-isp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-21.5" y="322.5"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="AD8-4x-Wjq">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ek0-1a-bkJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="pLP-e7-bdD" sceneMemberID="viewController">
                     <toolbarItems/>
                     <nil key="simulatedBottomBarMetrics"/>
@@ -396,14 +471,13 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="vXZ-lx-hvc" kind="relationship" relationship="viewControllers" id="8b2-FH-d27"/>
-                        <segue destination="Af9-Rb-XX8" kind="relationship" relationship="viewControllers" id="rw0-hr-5vw"/>
+                        <segue destination="n4u-j2-vws" kind="relationship" relationship="viewControllers" id="8b2-FH-d27"/>
+                        <segue destination="vxo-Qn-Erf" kind="relationship" relationship="viewControllers" id="rw0-hr-5vw"/>
                         <segue destination="f38-d8-0I1" kind="relationship" relationship="viewControllers" id="q7D-ti-4qx"/>
                     </connections>
                 </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ek0-1a-bkJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="454.5" y="311.5"/>
+            <point key="canvasLocation" x="418.5" y="-200.5"/>
         </scene>
         <!--Attractions-->
         <scene sceneID="PVF-tv-EOd">
@@ -450,19 +524,21 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <toolbarItems/>
+                    <toolbarItems>
+                        <barButtonItem title="Settings" id="Fbe-uS-5Oa">
+                            <connections>
+                                <action selector="settingsButtonClicked:" destination="rMh-AC-EEB" id="RLw-69-Cdq"/>
+                                <segue destination="dz3-yf-v63" kind="show" identifier="attractionsToSettings" id="wLI-Zu-6Jp"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
                     <navigationItem key="navigationItem" title="Attractions" id="cL3-OP-9Jk">
                         <barButtonItem key="leftBarButtonItem" title="table" id="s6h-UQ-PhP">
                             <connections>
                                 <segue destination="Ozt-YZ-leu" kind="show" id="B1w-p8-k0z"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Settings" id="Fbe-uS-5Oa">
-                            <connections>
-                                <action selector="settingsButtonClicked:" destination="rMh-AC-EEB" id="RLw-69-Cdq"/>
-                                <segue destination="dz3-yf-v63" kind="show" identifier="attractionsToSettings" id="wLI-Zu-6Jp"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Open" id="EdG-MJ-W2F"/>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
@@ -470,6 +546,7 @@
                         <outlet property="AttractionsTableView" destination="Mb9-JW-eVU" id="Psj-L5-fkC"/>
                         <outlet property="attractionsMap" destination="4jm-xj-E0A" id="hBr-1q-zJ0"/>
                         <outlet property="attractionsTabView" destination="Mb9-JW-eVU" id="i3n-Y5-pg3"/>
+                        <outlet property="openSidebar" destination="EdG-MJ-W2F" id="NP6-9T-Lcg"/>
                         <outlet property="searchBar2" destination="6bl-dv-YTU" id="8eI-vQ-goH"/>
                         <outlet property="yelpTableButton" destination="s6h-UQ-PhP" id="PXH-EY-am5"/>
                         <segue destination="hM4-tT-yfm" kind="show" identifier="attractionToDetail" id="p0U-gC-6sh"/>
@@ -635,6 +712,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="f38-d8-0I1" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Attractions" image="Fill 62" id="pak-ZF-SOe"/>
                     <toolbarItems/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="t1f-vS-fBd">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -646,7 +724,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1P5-yo-xTZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="454.5" y="1103.5"/>
+            <point key="canvasLocation" x="454.5" y="1115.5"/>
         </scene>
         <!--Yelp Table View Controller-->
         <scene sceneID="FAn-ep-jkZ">
@@ -751,6 +829,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Wir-AL-27z" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="bMG-Eh-L6b">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -763,6 +842,45 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fQ9-Af-2c2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1523" y="1096"/>
+        </scene>
+        <!--Park and PIn-->
+        <scene sceneID="cN7-SK-Y15">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fHc-Sx-owk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="n4u-j2-vws" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Park and PIn" image="EditedPin-2" id="35c-0D-gts"/>
+                    <toolbarItems/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Z08-rf-gcg">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="vXZ-lx-hvc" kind="relationship" relationship="rootViewController" id="Lkb-K4-dQg"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="941.5" y="299.5"/>
+        </scene>
+        <!--Pinned Location-->
+        <scene sceneID="1wI-7E-p1P">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xZJ-Nt-YUh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="vxo-Qn-Erf" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Pinned Location" image="Triangle 1 Copy" id="HKO-g0-Rbx"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="TqM-J9-xGF">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Af9-Rb-XX8" kind="relationship" relationship="rootViewController" id="Evp-5G-XCa"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="1997.5" y="327.5"/>
         </scene>
     </scenes>
     <resources>
@@ -780,8 +898,10 @@
         <image name="Triangle 1 Copy" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="lvq-f5-pNt"/>
+        <segue reference="ehm-tr-gqB"/>
+        <segue reference="BYZ-k1-TJe"/>
+        <segue reference="KNb-Ih-0oE"/>
         <segue reference="B1w-p8-k0z"/>
-        <segue reference="utQ-xm-y6I"/>
+        <segue reference="p0U-gC-6sh"/>
     </inferredMetricsTieBreakers>
 </document>

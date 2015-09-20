@@ -21,8 +21,11 @@ var manager = CLLocationManager();
 var pinnedLocationGlobal: CLLocation!
 
 
-class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UITableViewDelegate, UIAlertViewDelegate {
+class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UITableViewDelegate, UIAlertViewDelegate, SideBarDelegate {
     
+    
+    @IBOutlet weak var menuButton: UIBarButtonItem!
+
     @IBOutlet var map: MKMapView!
     @IBOutlet var pinLocationButton: UIButton!
    
@@ -32,11 +35,24 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
 
     var isEmpty = false;
     let regionRadius: CLLocationDistance = 1000
+    
+    var sidebar:SideBar = SideBar()
    
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        if(NSUserDefaults.standardUserDefaults().objectForKey("pinnedLocation") != nil) {
+        
+        if self.revealViewController() != nil {
+            menuButton.target = self.revealViewController()
+            menuButton.action = "revealToggle:"
+            self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+            
+            // Uncomment to change the width of menu
+            //self.revealViewController().rearViewRevealWidth = 62
+        }
+        self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+
+    if(NSUserDefaults.standardUserDefaults().objectForKey("pinnedLocation") != nil) {
             pinLocationButton.enabled = false;
         }
         if let loadedData = NSUserDefaults.standardUserDefaults().dataForKey("pinnedLocation") {
@@ -55,7 +71,10 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         self.map.showsUserLocation = true;
         currentLocation = map.userLocation;
     }
-
+    
+    func sideBarDidSelectButtonAtIndex(index: Int) {
+        //
+    }
     @IBAction func trashButtonSelected(sender: AnyObject) {
         // Remove from NSDefaults
         // Show alertview
@@ -184,7 +203,11 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         if (segue.identifier == "detailViewSegue") {
             var svc = segue.destinationViewController as! detailViewController;
             svc.toPass = title;
-        } 
+        } else if segue.identifier == "pinnedLocationSegue" {
+            if let ivc = segue.destinationViewController as? detailViewController {
+                ivc.toPass = title;
+            }
+        }
     }
     
     

@@ -8,9 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		219A73441B951EF5008BAFE6 /* Traffic.png in Resources */ = {isa = PBXBuildFile; fileRef = 219A73431B951EF5008BAFE6 /* Traffic.png */; };
+		850465931BA7E4A700F6596A /* SideBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850465911BA7E4A700F6596A /* SideBar.swift */; };
+		850465941BA7E4A700F6596A /* SideBarTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850465921BA7E4A700F6596A /* SideBarTableViewController.swift */; };
 		8509B5091B4CA225001C4AE8 /* detailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8509B5081B4CA225001C4AE8 /* detailViewController.swift */; };
 		850A45DF1B6C4240008D30E0 /* Resturant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850A45DE1B6C4240008D30E0 /* Resturant.swift */; };
 		850A45E11B6C790A008D30E0 /* YelpBusiness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850A45E01B6C790A008D30E0 /* YelpBusiness.swift */; };
+		852853EC1BA896C400DFB788 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 852853EB1BA896C400DFB788 /* SWRevealViewController.m */; };
+		852853F41BA8BCE400DFB788 /* BackTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852853F31BA8BCE400DFB788 /* BackTableVC.swift */; };
 		8550DE2B1B47478F0074A71C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8550DE2A1B47478F0074A71C /* AppDelegate.swift */; };
 		8550DE2D1B47478F0074A71C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8550DE2C1B47478F0074A71C /* ViewController.swift */; };
 		8550DE301B47478F0074A71C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8550DE2E1B47478F0074A71C /* Main.storyboard */; };
@@ -33,7 +37,6 @@
 		85DC42E41B915BBD00CB72B2 /* Business.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85DC42E31B915BBD00CB72B2 /* Business.swift */; };
 		85DCCFFB1B54A32100188C4D /* CustomCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85DCCFFA1B54A32100188C4D /* CustomCellTableViewCell.swift */; };
 		85DCCFFD1B54A52F00188C4D /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85DCCFFC1B54A52F00188C4D /* CategoryModel.swift */; };
-		85E84C491B4C2DF800614FB3 /* PublicArt.json in Resources */ = {isa = PBXBuildFile; fileRef = 85E84C481B4C2DF800614FB3 /* PublicArt.json */; };
 		85E84C4D1B4C35C300614FB3 /* VCMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E84C4C1B4C35C300614FB3 /* VCMapView.swift */; };
 		85E84C511B4C60DB00614FB3 /* Annotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85E84C501B4C60DB00614FB3 /* Annotation.swift */; };
 		85EC7B9C1B92EFCA0042FF5B /* PinnedLocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85EC7B9B1B92EFCA0042FF5B /* PinnedLocationTableViewCell.swift */; };
@@ -61,9 +64,14 @@
 		219A73431B951EF5008BAFE6 /* Traffic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Traffic.png; path = "UI Assets/Traffic.png"; sourceTree = SOURCE_ROOT; };
 		48083750E2C542F3A1308F6F /* Pods-Park 'N Go.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Park 'N Go.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Park 'N Go/Pods-Park 'N Go.debug.xcconfig"; sourceTree = "<group>"; };
 		612978662B9A9602632F4E0D /* Pods-Park 'N Go.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Park 'N Go.release.xcconfig"; path = "Pods/Target Support Files/Pods-Park 'N Go/Pods-Park 'N Go.release.xcconfig"; sourceTree = "<group>"; };
+		850465911BA7E4A700F6596A /* SideBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideBar.swift; sourceTree = "<group>"; };
+		850465921BA7E4A700F6596A /* SideBarTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideBarTableViewController.swift; sourceTree = "<group>"; };
 		8509B5081B4CA225001C4AE8 /* detailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = detailViewController.swift; sourceTree = "<group>"; };
 		850A45DE1B6C4240008D30E0 /* Resturant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Resturant.swift; sourceTree = "<group>"; };
 		850A45E01B6C790A008D30E0 /* YelpBusiness.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YelpBusiness.swift; sourceTree = "<group>"; };
+		852853EA1BA896C400DFB788 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		852853EB1BA896C400DFB788 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		852853F31BA8BCE400DFB788 /* BackTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackTableVC.swift; sourceTree = "<group>"; };
 		8550DE251B47478F0074A71C /* Park 'N Go.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Park 'N Go.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8550DE291B47478F0074A71C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8550DE2A1B47478F0074A71C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -90,7 +98,6 @@
 		85DC42E31B915BBD00CB72B2 /* Business.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Business.swift; sourceTree = "<group>"; };
 		85DCCFFA1B54A32100188C4D /* CustomCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCellTableViewCell.swift; sourceTree = "<group>"; };
 		85DCCFFC1B54A52F00188C4D /* CategoryModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryModel.swift; sourceTree = "<group>"; };
-		85E84C481B4C2DF800614FB3 /* PublicArt.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = PublicArt.json; sourceTree = "<group>"; };
 		85E84C4C1B4C35C300614FB3 /* VCMapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VCMapView.swift; sourceTree = "<group>"; };
 		85E84C501B4C60DB00614FB3 /* Annotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Annotation.swift; sourceTree = "<group>"; };
 		85EC7B9B1B92EFCA0042FF5B /* PinnedLocationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinnedLocationTableViewCell.swift; sourceTree = "<group>"; };
@@ -124,6 +131,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		852853E91BA8969E00DFB788 /* SWNavigation */ = {
+			isa = PBXGroup;
+			children = (
+				852853EA1BA896C400DFB788 /* SWRevealViewController.h */,
+				852853EB1BA896C400DFB788 /* SWRevealViewController.m */,
+			);
+			name = SWNavigation;
+			sourceTree = "<group>";
+		};
 		8550DE1C1B47478F0074A71C = {
 			isa = PBXGroup;
 			children = (
@@ -148,6 +164,7 @@
 		8550DE271B47478F0074A71C /* Park 'N Go */ = {
 			isa = PBXGroup;
 			children = (
+				852853E91BA8969E00DFB788 /* SWNavigation */,
 				85BE522E1B5B5918006C351B /* YelpAPI */,
 				85630AB51B502CAA000DE1BD /* ViewControllers */,
 				855980DB1B55DDF30071F120 /* Models */,
@@ -171,7 +188,6 @@
 		8550DE281B47478F0074A71C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				85E84C481B4C2DF800614FB3 /* PublicArt.json */,
 				8550DE291B47478F0074A71C /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -239,6 +255,9 @@
 				85A7B5A71B508B1000EE0611 /* AttractionsDetailViewController.swift */,
 				85DC42DE1B9149A800CB72B2 /* YelpTableViewController.swift */,
 				85556FB21BA3D4F40011C401 /* SettingsTableViewController.swift */,
+				850465911BA7E4A700F6596A /* SideBar.swift */,
+				850465921BA7E4A700F6596A /* SideBarTableViewController.swift */,
+				852853F31BA8BCE400DFB788 /* BackTableVC.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -282,6 +301,7 @@
 				8550DE221B47478F0074A71C /* Frameworks */,
 				8550DE231B47478F0074A71C /* Resources */,
 				94931556853724EBB938ABBE /* Copy Pods Resources */,
+				852853F51BA8D21B00DFB788 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -354,7 +374,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				85BED0DA1B6EF56500413EE4 /* categories.json in Resources */,
-				85E84C491B4C2DF800614FB3 /* PublicArt.json in Resources */,
 				8550DE301B47478F0074A71C /* Main.storyboard in Resources */,
 				85FE49811B9232EC00820FC4 /* blur background.png in Resources */,
 				85FE49831B92333200820FC4 /* BlackBackgroundWithBlurr.pdf in Resources */,
@@ -376,6 +395,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		852853F51BA8D21B00DFB788 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/Fabric.framework/run\" f273194f5621deb51da401e0b9b45f1b40e5ac3d 9d82fbb6367d79acbec80e1e8d6bf213beb6e17d0c4a48f9888c93e7812875f5";
+		};
 		94931556853724EBB938ABBE /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -414,11 +446,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				85DC42E21B914B8A00CB72B2 /* YelpTableBusinessCell.swift in Sources */,
+				850465941BA7E4A700F6596A /* SideBarTableViewController.swift in Sources */,
 				85E84C4D1B4C35C300614FB3 /* VCMapView.swift in Sources */,
 				85DC1B4C1B54E6C500DA8ABB /* CustomCategoryCell.swift in Sources */,
 				85FE49871B923D9700820FC4 /* YelpInfoContactCell.swift in Sources */,
 				85DCCFFD1B54A52F00188C4D /* CategoryModel.swift in Sources */,
 				855980F31B5B4E9A0071F120 /* (null) in Sources */,
+				852853EC1BA896C400DFB788 /* SWRevealViewController.m in Sources */,
 				85FE49851B923D8100820FC4 /* YelpInfoDirectionCell.swift in Sources */,
 				8550DE2D1B47478F0074A71C /* ViewController.swift in Sources */,
 				85DCCFFB1B54A32100188C4D /* CustomCellTableViewCell.swift in Sources */,
@@ -427,12 +461,14 @@
 				85556FB31BA3D4F40011C401 /* SettingsTableViewController.swift in Sources */,
 				85A7B5A81B508B1000EE0611 /* AttractionsDetailViewController.swift in Sources */,
 				85EC7B9C1B92EFCA0042FF5B /* PinnedLocationTableViewCell.swift in Sources */,
+				852853F41BA8BCE400DFB788 /* BackTableVC.swift in Sources */,
 				850A45DF1B6C4240008D30E0 /* Resturant.swift in Sources */,
 				857C5D351B9AADC1004796AF /* ETATableViewCell.swift in Sources */,
 				85630AB41B4E0144000DE1BD /* VCDetailMapView.swift in Sources */,
 				85DC42E41B915BBD00CB72B2 /* Business.swift in Sources */,
 				857C5D331B9AAD99004796AF /* DistanceTableViewCell.swift in Sources */,
 				85A7B59C1B504D6200EE0611 /* AttractionsVC.swift in Sources */,
+				850465931BA7E4A700F6596A /* SideBar.swift in Sources */,
 				850A45E11B6C790A008D30E0 /* YelpBusiness.swift in Sources */,
 				85DC42DF1B9149A800CB72B2 /* YelpTableViewController.swift in Sources */,
 				8509B5091B4CA225001C4AE8 /* detailViewController.swift in Sources */,

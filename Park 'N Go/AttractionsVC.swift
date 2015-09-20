@@ -12,7 +12,7 @@ import AddressBook
 
 var userLocationCoordinate:CLLocationCoordinate2D!;
 
-class AttractionsVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, UITableViewDelegate, UISearchBarDelegate, UITextFieldDelegate, UINavigationControllerDelegate {
+class AttractionsVC: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, UITableViewDelegate, UISearchBarDelegate, UITextFieldDelegate, UINavigationControllerDelegate, SideBarDelegate {
     
     @IBOutlet weak var yelpTableButton: UIBarButtonItem!
     @IBOutlet weak var tableButton: UIButton!
@@ -36,6 +36,7 @@ class AttractionsVC: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
     var tempSearchBar:UIBarButtonItem!
 
 
+    @IBOutlet weak var openSidebar: UIBarButtonItem!
     @IBOutlet weak var attractionsTabView: UITableView! //testVersion
     @IBOutlet weak var AttractionsTableView: UITableView!
     
@@ -50,8 +51,19 @@ class AttractionsVC: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
     var servicesCategories = [String]();
     var queryString: String = ""
     
+    var sideBar:SideBar = SideBar()
     override func viewDidLoad() {
         super.viewDidLoad()
+        if self.revealViewController() != nil {
+            openSidebar.target = self.revealViewController()
+            openSidebar.action = "revealToggle:"
+            self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+            
+            // Uncomment to change the width of menu
+            //self.revealViewController().rearViewRevealWidth = 62
+        }
+
+
         searchBar2.delegate = self
         searchBar2.searchBarStyle = UISearchBarStyle.Minimal
         setupSetUps();
@@ -78,6 +90,12 @@ class AttractionsVC: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "sortBySettingsChanged:", name: "sortBySettingsChanged", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "radiusSettingsChanged:", name: "radiusSettingsChanged", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "numResultsPickerChanged:", name: "numResultsPickerChanged", object: nil)
+    }
+    func sideBarDidSelectButtonAtIndex(index: Int) {
+        
+    }
+    func sidebarDidSelectButtonAtIndex(index: Int) {
+    
     }
     func numResultsPickerChanged(notification: NSNotification) {
         performYelpSearch(queryString)
