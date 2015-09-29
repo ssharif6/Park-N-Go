@@ -10,10 +10,10 @@ import Foundation
 import MapKit
 import AddressBook
 
-extension detailViewController: MKMapViewDelegate {
-    func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
+extension detailViewController {
+    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
         if(annotation is MKUserLocation) {
-            println("This guy....");
+            print("This guy....");
             return nil;
         }
         let reuseId = "pin";
@@ -22,17 +22,16 @@ extension detailViewController: MKMapViewDelegate {
             pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId);
             pinView!.canShowCallout = true;
             pinView!.animatesDrop = true;
-            var rightButton: UIButton;
         }
-        var rightButton = UIButton.buttonWithType(UIButtonType.DetailDisclosure) as! UIButton;
+        let rightButton = UIButton(type: UIButtonType.DetailDisclosure)
         pinView?.rightCalloutAccessoryView = rightButton;
         return pinView;
     }
-    func mapView(mapView: MKMapView!, annotationView view: MKAnnotationView!, calloutAccessoryControlTapped control: UIControl!) {
+    func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         let selectedLocation = view.annotation;
         if(control == view.rightCalloutAccessoryView) {
             let currentLocMapItem = MKMapItem.mapItemForCurrentLocation();
-            let selectedPlacemark = MKPlacemark(coordinate: selectedLocation.coordinate, addressDictionary: nil);
+            let selectedPlacemark = MKPlacemark(coordinate: selectedLocation!.coordinate, addressDictionary: nil);
             let selectedMapItem = MKMapItem(placemark: selectedPlacemark);
             let mapItems = [currentLocMapItem, selectedMapItem]
             let launchOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeWalking]

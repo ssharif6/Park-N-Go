@@ -58,7 +58,7 @@ class detailViewController: UIViewController, MKMapViewDelegate, CLLocationManag
         smallMapView.zoomEnabled = true;
         if let loadedData = NSUserDefaults.standardUserDefaults().dataForKey("pinnedLocation") {
             if let loadedLocation = NSKeyedUnarchiver.unarchiveObjectWithData(loadedData) as? CLLocation {
-                println("You've gotten to the detailViewcontroller")
+                print("You've gotten to the detailViewcontroller")
                 let location = loadedLocation;
                 let coordinate = loadedLocation.coordinate
                 self.coordinateToUse = coordinate
@@ -66,9 +66,8 @@ class detailViewController: UIViewController, MKMapViewDelegate, CLLocationManag
                 CLGeocoder().reverseGeocodeLocation(location, completionHandler: { (placemarks, error) -> Void in
                     var title = "";
                     var subtitle = "";
-                    var locality = "";
                     if(error == nil) {
-                        if let placemark = CLPlacemark(placemark: placemarks?[0] as! CLPlacemark) {
+                        if let placemark = placemarks?[0] {
                             var subThoroughfare:String = "";
                             var thoroughfare:String = "";
                             var locality:String = "";
@@ -77,45 +76,45 @@ class detailViewController: UIViewController, MKMapViewDelegate, CLLocationManag
                             var country:String = "";
                             
                             if (placemark.subThoroughfare != nil) {
-                                subThoroughfare = placemark.subThoroughfare;
+                                subThoroughfare = placemark.subThoroughfare!;
                             }
                             if(placemark.thoroughfare != nil) {
-                                thoroughfare = placemark.thoroughfare;
+                                thoroughfare = placemark.thoroughfare!;
                             }
                             if(placemark.locality != nil) {
-                                locality = placemark.locality;
+                                locality = placemark.locality!;
                             }
                             if(placemark.postalCode != nil) {
-                                postalCode = placemark.postalCode;
+                                postalCode = placemark.postalCode!;
                             }
                             if(placemark.administrativeArea != nil) {
-                                administrativeArea = placemark.administrativeArea;
+                                administrativeArea = placemark.administrativeArea!;
                             }
                             if(placemark.country != nil) {
-                                country = placemark.country;
+                                country = placemark.country!;
                             }
-                            println("viewcontroller placmark data:");
-                            println(locality);
-                            println(postalCode);
-                            println(administrativeArea);
-                            println(country);
+                            print("viewcontroller placmark data:");
+                            print(locality);
+                            print(postalCode);
+                            print(administrativeArea);
+                            print(country);
                             
                             title = " \(subThoroughfare) \(thoroughfare) \n \(locality), \(administrativeArea) \n \(postalCode) \(country)";
                             subtitle = " \(subThoroughfare) \(thoroughfare)";
-                            println(title);
+                            print(title);
                             //                            self.addressLabel.text = title;
                             self.toPass = title
                         }
                     }
-                    var latitude = location.coordinate.latitude;
-                    var longitude = location.coordinate.longitude;
-                    var latDelta:CLLocationDegrees = 0.001;
-                    var longDelta:CLLocationDegrees = 0.001;
+                    let latitude = location.coordinate.latitude;
+                    let longitude = location.coordinate.longitude;
+                    let latDelta:CLLocationDegrees = 0.001;
+                    let longDelta:CLLocationDegrees = 0.001;
                     
-                    var span: MKCoordinateSpan = MKCoordinateSpanMake(latDelta, longDelta);
-                    var overallLoc = CLLocationCoordinate2DMake(latitude, longitude);
-                    var region:MKCoordinateRegion = MKCoordinateRegionMake(overallLoc, span);
-                    var annotation = MKPointAnnotation();
+                    let span: MKCoordinateSpan = MKCoordinateSpanMake(latDelta, longDelta);
+                    let overallLoc = CLLocationCoordinate2DMake(latitude, longitude);
+                    let region:MKCoordinateRegion = MKCoordinateRegionMake(overallLoc, span);
+                    let annotation = MKPointAnnotation();
                     locationToUseForAppleMaps = location
                     annotation.coordinate = coordinate;
                     annotation.title = subtitle;
@@ -152,23 +151,22 @@ class detailViewController: UIViewController, MKMapViewDelegate, CLLocationManag
         let currentLocMapItem = MKMapItem.mapItemForCurrentLocation();
         let selectedPlacemark = MKPlacemark(coordinate: locationCooridnate, addressDictionary: nil);
         let selectedMapItem = MKMapItem(placemark: selectedPlacemark);
-        let mapItems = [currentLocMapItem, selectedMapItem];
         let request: MKDirectionsRequest = MKDirectionsRequest()
         request.transportType = MKDirectionsTransportType.Walking;
-        request.setSource(currentLocMapItem)
-        request.setDestination(selectedMapItem);
-        var directions: MKDirections = MKDirections(request: request);
+        request.source = currentLocMapItem
+        request.destination = selectedMapItem
+        let directions: MKDirections = MKDirections(request: request);
         directions.calculateDirectionsWithCompletionHandler { (response, error) -> Void in
             if (error == nil) {
-                if (response.routes.count > 0) {
-                    var route: MKRoute = response.routes[0] as! MKRoute;
+                if (response!.routes.count > 0) {
+                    let route: MKRoute = response!.routes[0] ;
                     self.routeToUse = route
                     //                    route.distance = distance
                     //                    route.expectedTravelTime = eta
-                    var distanceInMiles = route.distance * 0.000621371192237
-                    var distanceInMilesRounded = Double(round(100 * distanceInMiles)/100)
+                    let distanceInMiles = route.distance * 0.000621371192237
+                    let distanceInMilesRounded = Double(round(100 * distanceInMiles)/100)
                     self.distanceFromPinLabel.text = "\(distanceInMilesRounded) Miles"
-                    var minutesAndHourtext = self.stringFromTimeInterval(route.expectedTravelTime)
+                    let minutesAndHourtext = self.stringFromTimeInterval(route.expectedTravelTime)
                     self.etaLabel.text = "\(minutesAndHourtext)"
                 }
             }
@@ -178,16 +176,15 @@ class detailViewController: UIViewController, MKMapViewDelegate, CLLocationManag
     func loadData(notification:NSNotification) {
         if let loadedData = NSUserDefaults.standardUserDefaults().dataForKey("pinnedLocation") {
             if let loadedLocation = NSKeyedUnarchiver.unarchiveObjectWithData(loadedData) as? CLLocation {
-                println("You've gotten to the detailViewcontroller")
+                print("You've gotten to the detailViewcontroller")
                 let location = loadedLocation;
                 let coordinate = loadedLocation.coordinate
                 
                 CLGeocoder().reverseGeocodeLocation(location, completionHandler: { (placemarks, error) -> Void in
                     var title = "";
                     var subtitle = "";
-                    var locality = "";
                     if(error == nil) {
-                        if let placemark = CLPlacemark(placemark: placemarks?[0] as! CLPlacemark) {
+                        if let placemark = placemarks?[0] {
                             var subThoroughfare:String = "";
                             var thoroughfare:String = "";
                             var locality:String = "";
@@ -195,28 +192,28 @@ class detailViewController: UIViewController, MKMapViewDelegate, CLLocationManag
                             var administrativeArea:String = "";
                             var country:String = "";
                             if (placemark.subThoroughfare != nil) {
-                                subThoroughfare = placemark.subThoroughfare;
+                                subThoroughfare = placemark.subThoroughfare!;
                             }
                             if(placemark.thoroughfare != nil) {
-                                thoroughfare = placemark.thoroughfare;
+                                thoroughfare = placemark.thoroughfare!;
                             }
                             if(placemark.locality != nil) {
-                                locality = placemark.locality;
+                                locality = placemark.locality!;
                             }
                             if(placemark.postalCode != nil) {
-                                postalCode = placemark.postalCode;
+                                postalCode = placemark.postalCode!;
                             }
                             if(placemark.administrativeArea != nil) {
-                                administrativeArea = placemark.administrativeArea;
+                                administrativeArea = placemark.administrativeArea!;
                             }
                             if(placemark.country != nil) {
-                                country = placemark.country;
+                                country = placemark.country!;
                             }
-                            println("viewcontroller placmark data:");
-                            println(locality);
-                            println(postalCode);
-                            println(administrativeArea);
-                            println(country);
+                            print("viewcontroller placmark data:");
+                            print(locality);
+                            print(postalCode);
+                            print(administrativeArea);
+                            print(country);
                             
                             title = " \(subThoroughfare) \(thoroughfare) \n \(locality), \(administrativeArea) \n \(postalCode) \(country)";
                             subtitle = " \(subThoroughfare) \(thoroughfare)";
@@ -224,15 +221,15 @@ class detailViewController: UIViewController, MKMapViewDelegate, CLLocationManag
                             self.toPass = title
                         }
                     }
-                    var latitude = location.coordinate.latitude;
-                    var longitude = location.coordinate.longitude;
-                    var latDelta:CLLocationDegrees = 0.001;
-                    var longDelta:CLLocationDegrees = 0.001;
+                    let latitude = location.coordinate.latitude;
+                    let longitude = location.coordinate.longitude;
+                    let latDelta:CLLocationDegrees = 0.001;
+                    let longDelta:CLLocationDegrees = 0.001;
                     
-                    var span: MKCoordinateSpan = MKCoordinateSpanMake(latDelta, longDelta);
-                    var overallLoc = CLLocationCoordinate2DMake(latitude, longitude);
-                    var region:MKCoordinateRegion = MKCoordinateRegionMake(overallLoc, span);
-                    var annotation = MKPointAnnotation();
+                    let span: MKCoordinateSpan = MKCoordinateSpanMake(latDelta, longDelta);
+                    let overallLoc = CLLocationCoordinate2DMake(latitude, longitude);
+                    let region:MKCoordinateRegion = MKCoordinateRegionMake(overallLoc, span);
+                    let annotation = MKPointAnnotation();
                     annotation.coordinate = coordinate;
                     annotation.title = subtitle;
                     self.smallMapView.addAnnotation(annotation);
@@ -257,15 +254,15 @@ class detailViewController: UIViewController, MKMapViewDelegate, CLLocationManag
     func resetData(notification:NSNotification) {
         smallMapView.removeAnnotations(smallMapView.annotations);
         smallMapView.showsUserLocation = true;
-        var location = locationManager.location;
-        var latitude = location.coordinate.latitude;
-        var longitude = location.coordinate.longitude;
-        var latDelta:CLLocationDegrees = 0.001;
-        var longDelta:CLLocationDegrees = 0.001;
+        let location = locationManager.location;
+        let latitude = location!.coordinate.latitude;
+        let longitude = location!.coordinate.longitude;
+        let latDelta:CLLocationDegrees = 0.001;
+        let longDelta:CLLocationDegrees = 0.001;
         
-        var span: MKCoordinateSpan = MKCoordinateSpanMake(latDelta, longDelta);
-        var overallLoc = CLLocationCoordinate2DMake(latitude, longitude);
-        var region:MKCoordinateRegion = MKCoordinateRegionMake(overallLoc, span);
+        let span: MKCoordinateSpan = MKCoordinateSpanMake(latDelta, longDelta);
+        let overallLoc = CLLocationCoordinate2DMake(latitude, longitude);
+        let region:MKCoordinateRegion = MKCoordinateRegionMake(overallLoc, span);
         self.smallMapView.setRegion(region, animated: true)
         
     }

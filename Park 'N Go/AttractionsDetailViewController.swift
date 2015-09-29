@@ -90,7 +90,7 @@ class AttractionsDetailViewController: UIViewController, MKMapViewDelegate, CLLo
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var businessMock: Business = Business(dictionary: currentBusiness)
+        let businessMock: Business = Business(dictionary: currentBusiness)
 
         if indexPath.row == 0 { // Direction Cell
             let directionsCell = YelpInfoTableview.dequeueReusableCellWithIdentifier("YelpInfoDirectionCell", forIndexPath: indexPath) as! YelpInfoDirectionCell
@@ -138,10 +138,10 @@ class AttractionsDetailViewController: UIViewController, MKMapViewDelegate, CLLo
     func makeCall() {
         if let checkURL = NSURL(string: "tel://" + businessToUse.phone) {
             if UIApplication.sharedApplication().openURL(checkURL) {
-                println("Phone Url opened")
+                print("Phone Url opened")
             }
         } else {
-            println("Phone URL didn't open")
+            print("Phone URL didn't open")
         }
         // Doesn't work on simulator
     }
@@ -149,10 +149,10 @@ class AttractionsDetailViewController: UIViewController, MKMapViewDelegate, CLLo
     func openYelpURL() {
         if let checkURL = NSURL(string: businessToUse.mobileUrl) {
             if UIApplication.sharedApplication().openURL(checkURL) {
-                println("url opened sucesfully")
+                print("url opened sucesfully")
             }
         } else {
-            println("url failed")
+            print("url failed")
         }
     }
 

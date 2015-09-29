@@ -44,7 +44,8 @@ class YelpBusiness {
     var imageURL: NSURL? {
         get {
             if let image = self.dictionary["image_url"] as? String {
-                return NSURL(string: image.stringByReplacingOccurrencesOfString("ms.jpg", withString: "ls.jpg", options: nil, range: nil))
+//                return NSURL(string: image.stringByReplacingOccurrencesOfString("ms.jpg", withString: "ls.jpg", options: nil, range: nil))
+                return NSURL(string: image.stringByReplacingOccurrencesOfString("ms.jpg", withString: "ls.jpg"))
             }
             return nil
         }
@@ -104,9 +105,11 @@ class YelpBusiness {
             if let location = self.dictionary["location"] as? NSDictionary {
                 if let address = location["address"] as? Array<String> {
                     if let neighborhoods = location["neighborhoods"] as? Array<String> {
-                        return ", ".join(address + [neighborhoods[0]])
+//                        return ", ".join(address + [neighborhoods[0]])
+                        let neighborhoodAddress = neighborhoods + address
+                        return neighborhoodAddress.joinWithSeparator(", ")
                     }
-                    return ", ".join(address)
+                    
                 }
             }
             return ""
@@ -117,7 +120,7 @@ class YelpBusiness {
         get {
             if let location = self.dictionary["location"] as? NSDictionary {
                 if let address = location["display_address"] as? Array<String> {
-                    return ", ".join(address)
+                    return address.joinWithSeparator(", ")
                 }
             }
             return ""
@@ -127,7 +130,7 @@ class YelpBusiness {
     var displayCategories: String {
         get {
             if let categories = self.dictionary["categories"] as? Array<Array<String>> {
-                return ", ".join(categories.map({ $0[0] }))
+                return categories.map({ $0[0] }).joinWithSeparator(", ")
             }
             return ""
         }

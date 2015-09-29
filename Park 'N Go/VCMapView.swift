@@ -9,10 +9,10 @@ import Foundation
 import MapKit
 import AddressBook
 
-extension ViewController: MKMapViewDelegate {
+extension ViewController {
     
 
-    func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
+    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
         if(annotation is MKUserLocation) {
             return nil;
         }
@@ -23,26 +23,24 @@ extension ViewController: MKMapViewDelegate {
             pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId);
             pinView!.canShowCallout = true;
             pinView!.animatesDrop = true;
-            var rightButton:UIButton;
 
         }
         
         // Use custom image of a car or something to distinguish directions
-        var leftButton = UIButton.buttonWithType(UIButtonType.DetailDisclosure) as! UIButton;
+//        let leftButton = UIButton.buttonWithType(UIButtonType.DetailDisclosure) as! UIButton;
+        let leftButton = UIButton(type: UIButtonType.DetailDisclosure)
         pinView?.leftCalloutAccessoryView = leftButton;
         return pinView;
 
     }
     
-    func mapView(mapView: MKMapView!, annotationView view: MKAnnotationView!, calloutAccessoryControlTapped control: UIControl!) {
+    func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         let selectedLoc = view.annotation
             if(control == view.leftCalloutAccessoryView) {
                 let currentLocMapItem = MKMapItem.mapItemForCurrentLocation()
-                let selectedPlacemark = MKPlacemark(coordinate: selectedLoc.coordinate, addressDictionary: nil)
+                let selectedPlacemark = MKPlacemark(coordinate: selectedLoc!.coordinate, addressDictionary: nil)
                 let selectedMapItem = MKMapItem(placemark: selectedPlacemark);
                 let launchOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeWalking]
-                var placemarkStartingLocation:MKPlacemark = MKPlacemark(coordinate: carInitialCoordinate, addressDictionary: nil)
-                var startingLocationItem:MKMapItem = MKMapItem(placemark: placemarkStartingLocation);
                 let mapItems = [currentLocMapItem, selectedMapItem]
 
                 MKMapItem.openMapsWithItems(mapItems, launchOptions:launchOptions)
@@ -50,7 +48,7 @@ extension ViewController: MKMapViewDelegate {
             
     }
     
-    func mapView(mapView: MKMapView!, rendererForOverlay overlay: MKOverlay!) -> MKOverlayRenderer! {
+    func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay) -> MKOverlayRenderer {
         let renderer = MKPolylineRenderer(overlay: overlay);
         renderer.strokeColor = UIColor.blueColor();
         renderer.lineWidth = 5.0;

@@ -74,15 +74,14 @@ class AttractionsVC: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
         locationManager.desiredAccuracy = kCLLocationAccuracyBest;
         // Do any additional setup after loading the view.
         let location = self.locationManager.location;
-        var coordinate = carInitialCoordinate
-        var latitude = location.coordinate.latitude;
-        var longitude = location.coordinate.longitude;
-        var latDelta:CLLocationDegrees = 0.03;
-        var longDelta:CLLocationDegrees = 0.03;
+        let latitude = location!.coordinate.latitude;
+        let longitude = location!.coordinate.longitude;
+        let latDelta:CLLocationDegrees = 0.03;
+        let longDelta:CLLocationDegrees = 0.03;
         
-        var span: MKCoordinateSpan = MKCoordinateSpanMake(latDelta, longDelta);
-        var overallLoc = CLLocationCoordinate2DMake(latitude, longitude);
-        var region:MKCoordinateRegion = MKCoordinateRegionMake(overallLoc, span);
+        let span: MKCoordinateSpan = MKCoordinateSpanMake(latDelta, longDelta);
+        let overallLoc = CLLocationCoordinate2DMake(latitude, longitude);
+        let region:MKCoordinateRegion = MKCoordinateRegionMake(overallLoc, span);
         attractionsMap.region = region;
         attractionsMap.setRegion(region, animated: true)
         self.attractionsMap.showsUserLocation = true;
@@ -119,7 +118,7 @@ class AttractionsVC: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         searchBar.resignFirstResponder();
         attractionsMap.removeAnnotations(attractionsMap.annotations);
-        performYelpSearch(searchBar.text)
+        performYelpSearch(searchBar.text!)
     }
 
     func setupSetUps() {
@@ -139,7 +138,6 @@ class AttractionsVC: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
         let americanFood = "American Food"
         let bakery = "Bakery"
         let cofeehouses = "Coffee"
-        let frenchFood = "French Food"
         let seafood = "Seafood"
         let steakhouses = "Steakhouse"
         let mexicanFood = "Mexican Food"
@@ -160,7 +158,7 @@ class AttractionsVC: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
         categoryDictionary["Food"] = foodCategories;
     }
     func setUpCategoryEntertainment() {
-        var movieTheaters = "Movie Theatre"
+        let movieTheaters = "Movie Theatre"
 
         entertainmentCategories.append(movieTheaters);
         
@@ -168,9 +166,9 @@ class AttractionsVC: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
 
     }
     func setUpRecreation() {
-        var parks = "Parks"
-        var beaches = "Beach"
-        var amusementParks = "Amusement Park"
+        let parks = "Parks"
+        let beaches = "Beach"
+        let amusementParks = "Amusement Park"
         
         recreationCategories.append(parks);
         recreationCategories.append(beaches);
@@ -180,10 +178,10 @@ class AttractionsVC: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
 
     }
     func setUpShopping() {
-        var malls = "Mall";
+        let malls = "Mall";
         shoppingCategories.append(malls);
-        var supermarkets = "Supermarket";
-        var electronics = "Electronics";
+        let supermarkets = "Supermarket";
+        let electronics = "Electronics";
         
         shoppingCategories.append(malls);
         shoppingCategories.append(supermarkets);
@@ -192,9 +190,9 @@ class AttractionsVC: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
         categoryDictionary["Shopping"] = shoppingCategories;
     }
     func setUpTransport() {
-        var busStops = "Bus Stops"
-        var parknride = "Park & Ride"
-        var taxis = "Taxi"
+        let busStops = "Bus Stops"
+        let parknride = "Park & Ride"
+        let taxis = "Taxi"
         
         transportCategories.append(busStops);
         transportCategories.append(parknride);
@@ -204,9 +202,9 @@ class AttractionsVC: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
 
     }
     func setUpLodging() {
-        var hotels = "Hotel"
-        var motels = "Motel"
-        var hostels = "Hostel"
+        let hotels = "Hotel"
+        let motels = "Motel"
+        let hostels = "Hostel"
         
         lodgingCategories.append(hotels);
         lodgingCategories.append(motels);
@@ -215,9 +213,9 @@ class AttractionsVC: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
         categoryDictionary["Lodging"] = lodgingCategories;
     }
     func setupServices() {
-        var bank = "Bank"
-        var atm = "ATM"
-        var postOffice = "Post Office"
+        let bank = "Bank"
+        let atm = "ATM"
+        let postOffice = "Post Office"
         
         servicesCategories.append(bank);
         servicesCategories.append(atm);
@@ -233,11 +231,11 @@ class AttractionsVC: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
 
         Resturant.searchWithQuery(self.attractionsMap, query: query, completion: { (BusinessList: [Resturant]!, error: NSError!) in
             if(error != nil) {
-                println("Error occured in search: \(error.localizedDescription)")
+                print("Error occured in search: \(error.localizedDescription)")
             } else if BusinessList.count == 0 {
-                println("No matches found")
+                print("No matches found")
             } else {
-                println("Yelp matches found!")
+                print("Yelp matches found!")
             }
         })
     }
@@ -248,30 +246,30 @@ class AttractionsVC: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
         var resturantMock:Resturant = Resturant(dictionary: resultQueryDictionary)
         Resturant.searchWithQueryWithRadius(self.attractionsMap, term: query, deal: false, radius: 100, sort: 0, categories: "Restaurants") { (BusinessList: [Resturant]!, error: NSError!) -> Void in
             if(error != nil) {
-                println("Error occured in the search \(error.localizedDescription)")
+                print("Error occured in the search \(error.localizedDescription)")
             } else if BusinessList.count == 0 {
-                println("No matches")
+                print("No matches")
             } else {
-                println("Yelp Matches Found!")
+                print("Yelp Matches Found!")
             }
         }
     }
     
-    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
-        let location = locations.last as! CLLocation;
-        let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude);
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let location = locations.last
+        let center = CLLocationCoordinate2D(latitude: location!.coordinate.latitude, longitude: location!.coordinate.longitude);
         let region = MKCoordinateRegion(center: center, span: MKCoordinateSpanMake(0.01, 0.01));
         self.attractionsMap.setRegion(region, animated: true);
         
-        var point:MKPointAnnotation! = MKPointAnnotation();
-        point.coordinate = location.coordinate;
+        let point:MKPointAnnotation! = MKPointAnnotation();
+        point.coordinate = location!.coordinate;
         point.title = "Current Location";
         point.subtitle = "Subtitle";
         self.attractionsMap.addAnnotation(point);
         locationManager.stopUpdatingLocation();
     }
     
-    func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
+    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
         if(annotation is MKUserLocation) {
             return nil;
         }
@@ -283,15 +281,15 @@ class AttractionsVC: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
             pinView!.animatesDrop = true;
             
         }
-        var moreInfoButton = UIButton.buttonWithType(UIButtonType.DetailDisclosure) as! UIButton;
+        let moreInfoButton = UIButton(type: UIButtonType.DetailDisclosure)
         pinView?.rightCalloutAccessoryView = moreInfoButton;
         return pinView;
     }
     
-    func mapView(mapView: MKMapView!, annotationView view: MKAnnotationView!, calloutAccessoryControlTapped control: UIControl!) {
+    func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         if (control == view.rightCalloutAccessoryView) {
             let selectedLocation = view.annotation;
-            let selectedCoordinate = view.annotation.coordinate;
+            let selectedCoordinate = view.annotation!.coordinate;
             var latitude = selectedCoordinate.latitude
             var longitude = selectedCoordinate.longitude
             var location:CLLocation = CLLocation(latitude: latitude, longitude: longitude)
@@ -303,8 +301,8 @@ class AttractionsVC: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
             for business in dataArray {
                 let obj = business as! NSDictionary
                 var yelpBusinessMock: YelpBusiness = YelpBusiness(dictionary: obj)
-                if yelpBusinessMock.latitude == view.annotation.coordinate.latitude {
-                    if yelpBusinessMock.longitude == view.annotation.coordinate.longitude {
+                if yelpBusinessMock.latitude == view.annotation!.coordinate.latitude {
+                    if yelpBusinessMock.longitude == view.annotation!.coordinate.longitude {
                         attractionDict = obj;
                         foundDisplayAddress = yelpBusinessMock.displayAddress
                         businessMock = Business(dictionary: obj)
@@ -317,7 +315,7 @@ class AttractionsVC: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
     }
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "attractionToDetail" {
-            if let annotation = (sender as? MKAnnotationView)?.annotation {
+            if let _annotation = (sender as? MKAnnotationView)?.annotation {
                 if let ivc = segue.destinationViewController as? AttractionsDetailViewController {
                     ivc.attractionLocation = self.indicatedMapItem
                     ivc.attractionDetailAddressString = self.attractionLocationString
@@ -337,17 +335,17 @@ class AttractionsVC: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        var sectionTitle = categoriesList[section];
-        var sectionArray = categoryDictionary[sectionTitle];
+        let sectionTitle = categoriesList[section];
+        let sectionArray = categoryDictionary[sectionTitle];
         return sectionArray!.count;
     }
     
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell:UITableViewCell = tableView.dequeueReusableCellWithIdentifier("myCell") as! UITableViewCell;
-        var sectionTitle = categoriesList[indexPath.section]
+        let cell:UITableViewCell = tableView.dequeueReusableCellWithIdentifier("myCell")!
+        let sectionTitle = categoriesList[indexPath.section]
         var sectionArray = categoryDictionary[sectionTitle];
-        var itemInArray = sectionArray?[indexPath.row];
+        let itemInArray = sectionArray?[indexPath.row];
         cell.textLabel?.text = itemInArray;
         cell.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.2)
         cell.textLabel?.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.0)
@@ -359,11 +357,9 @@ class AttractionsVC: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
 
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        var detailView = false;
-        let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Cell")
-        var sectionTitle = categoriesList[indexPath.section]
+        let sectionTitle = categoriesList[indexPath.section]
         var sectionArray = categoryDictionary[sectionTitle];
-        var itemInArray = sectionArray?[indexPath.row];
+        let itemInArray = sectionArray?[indexPath.row];
         performYelpSearch(itemInArray!)
         self.attractionsTabView.deselectRowAtIndexPath(indexPath, animated: true)
     

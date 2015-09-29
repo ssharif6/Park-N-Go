@@ -18,7 +18,7 @@ class YelpClient: BDBOAuth1RequestOperationManager {
     
     
     required init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+        super.init(coder: aDecoder)!
     }
     
     class var sharedInstance : YelpClient {
@@ -35,16 +35,16 @@ class YelpClient: BDBOAuth1RequestOperationManager {
     init(consumerKey key: String!, consumerSecret secret: String!, accessToken: String!, accessSecret: String!) {
         self.accessToken = accessToken
         self.accessSecret = accessSecret
-        var baseUrl = NSURL(string: "http://api.yelp.com/v2/")
+        let baseUrl = NSURL(string: "http://api.yelp.com/v2/")
         super.init(baseURL: baseUrl, consumerKey: key, consumerSecret: secret);
         
-        var token = BDBOAuthToken(token: accessToken, secret: accessSecret, expiration: nil)
+        let token = BDBOAuthToken(token: accessToken, secret: accessSecret, expiration: nil)
         self.requestSerializer.saveAccessToken(token)
     }
     
     func searchWithTerm(term: String, sort: Int, radius: Double, limit: Int, success: (AFHTTPRequestOperation!, AnyObject!) -> Void, failure: (AFHTTPRequestOperation!, NSError!) -> Void) -> AFHTTPRequestOperation! {
 //        // For additional parameters, see http://www.yelp.com/developers/documentation/v2/search_api
-        var parameters = ["term": term, "ll": "\(userLocationCoordinate.latitude), \(userLocationCoordinate.longitude)", "sort": sort, "radius_filter": radius, "limit": limit]
+        let parameters = ["term": term, "ll": "\(userLocationCoordinate.latitude), \(userLocationCoordinate.longitude)", "sort": sort, "radius_filter": radius, "limit": limit]
         return self.GET("search", parameters: parameters, success: success, failure: failure)
     }
     
@@ -55,7 +55,7 @@ class YelpClient: BDBOAuth1RequestOperationManager {
             parameters = ["term": term, "ll": "\(userLocationCoordinate.latitude), \(userLocationCoordinate.longitude)", "deals_filter": deal, "sort": sort, "category_filter": categories]
         }
         else {
-            var meter:Double = Double(radius) * 1609.34
+            let meter:Double = Double(radius) * 1609.34
             parameters = ["term": term, "ll": "\(userLocationCoordinate.latitude), \(userLocationCoordinate.longitude)", "deals_filter": deal, "radius_filter": meter, "sort": sort, "category_filter": categories]
         }
         return self.GET("search", parameters: parameters as [NSObject : AnyObject], success: success, failure: failure)

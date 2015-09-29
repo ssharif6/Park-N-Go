@@ -12,7 +12,7 @@ var sortGlobal:Int = 0
 var radiusGlobal:Int = 1
 var numResultsGlobal:Int = 5
 
-class SettingsTableViewController: UITableViewController, UITableViewDelegate, UITableViewDataSource, UIPickerViewDelegate, UIPickerViewDataSource {
+class SettingsTableViewController: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
     @IBOutlet var settingsTableView: UITableView!
     @IBOutlet weak var radiusPIcker: UIPickerView!
@@ -96,7 +96,7 @@ class SettingsTableViewController: UITableViewController, UITableViewDelegate, U
         }
     }
     
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
+    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if pickerView == radiusPIcker {
             radiusGlobal = row + 1
             return String(radiusPickerData[row])

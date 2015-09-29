@@ -29,24 +29,24 @@ class Resturant: NSObject {
     
     class func searchWithQuery(map: MKMapView, query: String, completion: ([Resturant]!, NSError!) -> Void) {
 //        var radiusInMiles: Double = Double(radiusGlobal) * 0.000621371
-        var radiusInMeters: Double = Double(radiusGlobal) * 1609.34
+        let radiusInMeters: Double = Double(radiusGlobal) * 1609.34
         YelpClient.sharedInstance.searchWithTerm(query, sort: sortGlobal, radius: radiusInMeters, limit: numResultsGlobal, success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
             let responseInfo = response as! NSDictionary
             resultQueryDictionary = responseInfo
-            println(responseInfo)
+            print(responseInfo)
             let dataArray = responseInfo["businesses"] as! NSArray
             businessArray = dataArray
             for business in dataArray {
                 let obj = business as! NSDictionary
-                var yelpBusinessMock: Business = Business(dictionary: obj)
-                var annotation = MKPointAnnotation()
+                let yelpBusinessMock: Business = Business(dictionary: obj)
+                let annotation = MKPointAnnotation()
                 annotation.coordinate = yelpBusinessMock.location.coordinate
                 annotation.title = yelpBusinessMock.name
                 annotation.subtitle = yelpBusinessMock.displayAddress
                 map.addAnnotation(annotation)
             }
             }) { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
-         println(error)
+         print(error)
         }
     }
     
@@ -56,18 +56,18 @@ class Resturant: NSObject {
         YelpClient.sharedInstance.searchWithTerm(term, deal: false, radius: radius, sort: sort,categories: categories, success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
             let responseInfo = response as! NSDictionary
             resultQueryDictionary = responseInfo
-            println(responseInfo)
+            print(responseInfo)
             let dataArray = responseInfo["businesses"] as! NSArray
             for business in dataArray {
                 let obj = business as! NSDictionary
-                var yelpBusinessMock: YelpBusiness = YelpBusiness(dictionary: obj)
-                var annotation = MKPointAnnotation()
+                let yelpBusinessMock: YelpBusiness = YelpBusiness(dictionary: obj)
+                let annotation = MKPointAnnotation()
                 annotation.coordinate = yelpBusinessMock.location.coordinate
                 annotation.title = yelpBusinessMock.name
                 map.addAnnotation(annotation)
             }
             }) { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
-            println(error)
+            print(error)
         }
     }
     

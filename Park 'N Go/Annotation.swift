@@ -13,26 +13,26 @@ import AddressBook
 
 class Annotation: NSObject, MKAnnotation {
     var coordinate: CLLocationCoordinate2D;
-    var title: String;
+    var title2: String;
     var locationName: String;
     
     init(coordinate: CLLocationCoordinate2D, title: String, locationName: String) {
         self.coordinate = coordinate;
-        self.title = title;
+        self.title2 = title;
         self.locationName = locationName;
         
         super.init()
 
     }
-    var subtitle: String {
+    var subtitle2: String {
         return locationName
     }
     
     func mapItem() -> MKMapItem {
-        let addressDictionary = [String(kABPersonAddressStreetKey): subtitle]
+        let addressDictionary = [String(kABPersonAddressStreetKey): subtitle2]
         let placemark = MKPlacemark(coordinate: coordinate, addressDictionary: addressDictionary)
         let mapItem = MKMapItem(placemark: placemark)
-        mapItem.name = title
+        mapItem.name = title2
         
         return mapItem
     }
