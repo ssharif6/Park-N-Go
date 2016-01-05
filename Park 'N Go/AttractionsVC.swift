@@ -51,17 +51,8 @@ class AttractionsVC: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
     var servicesCategories = [String]();
     var queryString: String = ""
     
-    var sideBar:SideBar = SideBar()
     override func viewDidLoad() {
         super.viewDidLoad()
-        if self.revealViewController() != nil {
-            openSidebar.target = self.revealViewController()
-            openSidebar.action = "revealToggle:"
-            self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
-            
-            // Uncomment to change the width of menu
-            //self.revealViewController().rearViewRevealWidth = 62
-        }
 
 
         searchBar2.delegate = self

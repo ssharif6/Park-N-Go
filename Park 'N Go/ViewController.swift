@@ -24,8 +24,6 @@ var pinnedLocationGlobal: CLLocation!
 class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UITableViewDelegate, UIAlertViewDelegate, SideBarDelegate {
     
     
-    @IBOutlet weak var menuButton: UIBarButtonItem!
-
     @IBOutlet var map: MKMapView!
     @IBOutlet var pinLocationButton: UIButton!
    
@@ -42,15 +40,6 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         
         super.viewDidLoad()
         
-        if self.revealViewController() != nil {
-            menuButton.target = self.revealViewController()
-            menuButton.action = "revealToggle:"
-            self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
-            
-            // Uncomment to change the width of menu
-            //self.revealViewController().rearViewRevealWidth = 62
-        }
-        self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
 
     if(NSUserDefaults.standardUserDefaults().objectForKey("pinnedLocation") != nil) {
             pinLocationButton.enabled = false;
