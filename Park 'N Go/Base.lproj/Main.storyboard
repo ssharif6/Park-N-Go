@@ -656,6 +656,7 @@
                         <outlet property="attractionsTabView" destination="Mb9-JW-eVU" id="i3n-Y5-pg3"/>
                         <outlet property="searchBar2" destination="6bl-dv-YTU" id="8eI-vQ-goH"/>
                         <outlet property="segmentedView" destination="XvY-nb-l3b" id="mnu-0z-EQU"/>
+                        <segue destination="hM4-tT-yfm" kind="show" identifier="attractionToDetail" id="p0U-gC-6sh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iRd-x4-vOm" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1031,5 +1032,6 @@
         <segue reference="rw0-hr-5vw"/>
         <segue reference="q7D-ti-4qx"/>
         <segue reference="8b2-FH-d27"/>
+        <segue reference="lvq-f5-pNt"/>
     </inferredMetricsTieBreakers>
 </document>
