@@ -567,11 +567,6 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Attractions" id="cL3-OP-9Jk">
-                        <barButtonItem key="leftBarButtonItem" title="Table" id="s6h-UQ-PhP">
-                            <connections>
-                                <segue destination="Ozt-YZ-leu" kind="show" id="B1w-p8-k0z"/>
-                            </connections>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Settings" id="Fbe-uS-5Oa">
                             <connections>
                                 <action selector="settingsButtonClicked:" destination="rMh-AC-EEB" id="RLw-69-Cdq"/>
@@ -587,7 +582,6 @@
                         <outlet property="attractionsTabView" destination="Mb9-JW-eVU" id="i3n-Y5-pg3"/>
                         <outlet property="searchBar2" destination="6bl-dv-YTU" id="8eI-vQ-goH"/>
                         <outlet property="segmentedView" destination="XvY-nb-l3b" id="mnu-0z-EQU"/>
-                        <outlet property="yelpTableButton" destination="s6h-UQ-PhP" id="PXH-EY-am5"/>
                         <segue destination="hM4-tT-yfm" kind="show" identifier="attractionToDetail" id="p0U-gC-6sh"/>
                     </connections>
                 </viewController>
@@ -941,10 +935,9 @@
         <image name="Triangle 1 Copy" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="p0U-gC-6sh"/>
+        <segue reference="rw0-hr-5vw"/>
         <segue reference="q7D-ti-4qx"/>
         <segue reference="8b2-FH-d27"/>
-        <segue reference="rw0-hr-5vw"/>
-        <segue reference="B1w-p8-k0z"/>
+        <segue reference="p0U-gC-6sh"/>
     </inferredMetricsTieBreakers>
 </document>

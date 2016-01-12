@@ -266,8 +266,8 @@ class detailViewController: UIViewController, MKMapViewDelegate, CLLocationManag
         let overallLoc = CLLocationCoordinate2DMake(latitude, longitude);
         let region:MKCoordinateRegion = MKCoordinateRegionMake(overallLoc, span);
         self.smallMapView.setRegion(region, animated: true)
-        pinnedLocationTableView.reloadInputViews()
-        
+        pinnedLocationTableView.reloadData()
+
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
