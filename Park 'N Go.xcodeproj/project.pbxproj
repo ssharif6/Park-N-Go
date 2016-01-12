@@ -302,6 +302,7 @@
 				8550DE231B47478F0074A71C /* Resources */,
 				94931556853724EBB938ABBE /* Copy Pods Resources */,
 				852853F51BA8D21B00DFB788 /* ShellScript */,
+				2023254854466EE46E071472 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -395,16 +396,31 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		852853F51BA8D21B00DFB788 /* ShellScript */ = {
+		2023254854466EE46E071472 /* Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
+			name = "Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Park 'N Go/Pods-Park 'N Go-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		852853F51BA8D21B00DFB788 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 8;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Fabric/Fabric.framework/run\" f273194f5621deb51da401e0b9b45f1b40e5ac3d 9d82fbb6367d79acbec80e1e8d6bf213beb6e17d0c4a48f9888c93e7812875f5";
 		};
