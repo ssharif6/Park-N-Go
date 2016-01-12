@@ -18,6 +18,7 @@ class AttractionsVC: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
     @IBOutlet weak var tableButton: UIButton!
     @IBOutlet weak var searchBar2: UISearchBar!
 
+    
     @IBOutlet weak var searchButton: UIBarButtonItem!
     var businessMock: Business!
     var matchingItems: [MKMapItem] = [MKMapItem]();

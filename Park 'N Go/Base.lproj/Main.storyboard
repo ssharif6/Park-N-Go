@@ -590,13 +590,17 @@
                                 <rect key="frame" x="0.0" y="108" width="375" height="559"/>
                                 <animations/>
                             </imageView>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.90000000000000002" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="4jm-xj-E0A">
+                                <rect key="frame" x="0.0" y="108" width="375" height="274"/>
+                                <animations/>
+                            </mapView>
                             <searchBar contentMode="redraw" fixedFrame="YES" placeholder="Search Attractions" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6bl-dv-YTU">
                                 <rect key="frame" x="0.0" y="64" width="375" height="44"/>
                                 <animations/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsMultipleSelection="YES" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Mb9-JW-eVU">
-                                <rect key="frame" x="0.0" y="108" width="375" height="510"/>
+                                <rect key="frame" x="0.0" y="380" width="375" height="238"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -642,6 +646,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="AttractionsTableView" destination="Mb9-JW-eVU" id="Psj-L5-fkC"/>
+                        <outlet property="attractionsMap" destination="4jm-xj-E0A" id="hBr-1q-zJ0"/>
                         <outlet property="attractionsTabView" destination="Mb9-JW-eVU" id="i3n-Y5-pg3"/>
                         <outlet property="searchBar2" destination="6bl-dv-YTU" id="8eI-vQ-goH"/>
                         <outlet property="yelpTableButton" destination="s6h-UQ-PhP" id="PXH-EY-am5"/>
