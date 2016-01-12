@@ -373,6 +373,7 @@ class AttractionsVC: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
         let itemInArray = sectionArray?[indexPath.row];
         performYelpSearch(itemInArray!)
         self.attractionsTabView.deselectRowAtIndexPath(indexPath, animated: true)
+//        performSegueWithIdentifier("cellToYelpTableview", sender: self)
     
     }
     
