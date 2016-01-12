@@ -64,6 +64,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     func sideBarDidSelectButtonAtIndex(index: Int) {
         //
     }
+    
     @IBAction func trashButtonSelected(sender: AnyObject) {
         // Remove from NSDefaults
         // Show alertview

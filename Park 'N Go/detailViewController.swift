@@ -19,7 +19,7 @@ class detailViewController: UIViewController, MKMapViewDelegate, CLLocationManag
     @IBOutlet weak var pinnedLocationTableView: UITableView!
     @IBOutlet var localityLabel: UILabel!
     @IBOutlet var smallMapView: MKMapView!
-    
+    var cachedMessage : String? = nil
     var toPass:String!
     var distanceLabelString:String!
     var etaLabelString:String!
@@ -39,10 +39,12 @@ class detailViewController: UIViewController, MKMapViewDelegate, CLLocationManag
             //self.revealViewController().rearViewRevealWidth = 62
         }
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
-
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "resetData:", name: "reloadData", object: nil);
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "reloadData:", name: "reloadData", object: nil);
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadData:", name: "loadData", object: nil);
+        // When pin is deleted
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "pinDeleted:", name: "pinDeleted", object: nil)
+
         smallMapView.delegate = self;
         locationManager.delegate = self;
         self.pinnedLocationTableView.separatorStyle = UITableViewCellSeparatorStyle.None
@@ -251,7 +253,7 @@ class detailViewController: UIViewController, MKMapViewDelegate, CLLocationManag
         MKMapItem.openMapsWithItems(mapItems, launchOptions: launchOptions);
     }
 
-    func resetData(notification:NSNotification) {
+    func reloadData(notification:NSNotification) {
         smallMapView.removeAnnotations(smallMapView.annotations);
         smallMapView.showsUserLocation = true;
         let location = locationManager.location;
@@ -264,6 +266,7 @@ class detailViewController: UIViewController, MKMapViewDelegate, CLLocationManag
         let overallLoc = CLLocationCoordinate2DMake(latitude, longitude);
         let region:MKCoordinateRegion = MKCoordinateRegionMake(overallLoc, span);
         self.smallMapView.setRegion(region, animated: true)
+        pinnedLocationTableView.reloadInputViews()
         
     }
     
