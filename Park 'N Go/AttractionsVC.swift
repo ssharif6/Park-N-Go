@@ -18,6 +18,8 @@ class AttractionsVC: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
     @IBOutlet weak var tableButton: UIButton!
     @IBOutlet weak var searchBar2: UISearchBar!
 
+    @IBOutlet weak var segmentedView : UISegmentedControl!
+    
     
     @IBOutlet weak var searchButton: UIBarButtonItem!
     var businessMock: Business!
@@ -52,6 +54,20 @@ class AttractionsVC: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
     var servicesCategories = [String]();
     var queryString: String = ""
     
+    
+    @IBAction func segmentedControlIndexChanged(sender: UISegmentedControl) {
+        switch segmentedView.selectedSegmentIndex {
+        case 0:
+            AttractionsTableView.hidden = true
+            attractionsMap.hidden = false
+        case 1:
+            attractionsMap.hidden = true
+            AttractionsTableView.hidden = false
+        default:
+            break;
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -81,7 +97,10 @@ class AttractionsVC: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "sortBySettingsChanged:", name: "sortBySettingsChanged", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "radiusSettingsChanged:", name: "radiusSettingsChanged", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "numResultsPickerChanged:", name: "numResultsPickerChanged", object: nil)
-    }
+        
+        AttractionsTableView.hidden = true
+        attractionsMap.hidden = false
+    } 
     func sideBarDidSelectButtonAtIndex(index: Int) {
         
     }
