@@ -20,10 +20,13 @@ class Business: NSObject {
     let ratingImageURL: NSURL?
     let reviewCount: NSNumber?
 
+    let imageURLString:String?
+    let ratingImageURLString: String?
+    
     init(dictionary: NSDictionary) {
         self.dictionary = dictionary
         name = dictionary["name"] as? String
-        let imageURLString = dictionary["image_url"] as? String
+        imageURLString = dictionary["image_url"] as? String
         if imageURLString != nil {
             imageURL = NSURL(string: imageURLString!)!
         } else {
@@ -68,7 +71,7 @@ class Business: NSObject {
             distance = nil
         }
         
-        let ratingImageURLString = dictionary["rating_img_url_large"] as? String
+        ratingImageURLString = dictionary["rating_img_url_large"] as? String
         if ratingImageURLString != nil {
             ratingImageURL = NSURL(string: ratingImageURLString!)
         } else {

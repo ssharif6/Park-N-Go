@@ -9,6 +9,7 @@
 import UIKit
 import MapKit
 import CoreLocation
+import Parse
 
 var distanceLabelStringG: String!
 var etaLabelStringG:String!
@@ -37,7 +38,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     var sidebar:SideBar = SideBar()
    
     override func viewDidLoad() {
-        
+
         super.viewDidLoad()
         
 

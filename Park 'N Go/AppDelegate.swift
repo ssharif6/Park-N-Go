@@ -9,6 +9,7 @@
 import UIKit
 import Fabric
 import Crashlytics
+import Parse
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,8 +18,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
-        Fabric.with([Crashlytics.self()])
+        /// [Optional] Power your app with Local Datastore. For more info, go to
+        // https://parse.com/docs/ios/guide#local-datastore
+        Parse.enableLocalDatastore()
+        
+        // Initialize Parse.
+        Parse.setApplicationId("4LxnaeRl4cYwwp2rSG1OPAjrUyMBKy14lByxOusU",
+            clientKey: "4RQ1gI32KVbHRhNIaKiLxxBSPOYNv4JuOkixbHpJ")
+        
+        // [Optional] Track statistics around application opens.
+        PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
+        
+        // ...
         return true
     }
     

@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import Parse
 
 var resultQueryDictionary:NSDictionary!
 var businessArray:NSArray!
@@ -39,6 +40,20 @@ class Resturant: NSObject {
             for business in dataArray {
                 let obj = business as! NSDictionary
                 let yelpBusinessMock: Business = Business(dictionary: obj)
+                let businessToParse = PFObject(className: "Business")
+                businessToParse["name"] = yelpBusinessMock.name
+                businessToParse["address"] = yelpBusinessMock.address
+                businessToParse["categories"] = yelpBusinessMock.categories
+                businessToParse["distance"] = yelpBusinessMock.distance
+                businessToParse["imageURLString"] = yelpBusinessMock.imageURLString
+//                businessToParse["imageURL"] = yelpBusinessMock.imageURL
+                businessToParse.saveInBackgroundWithBlock({ (sucessful: Bool, errors: NSError?) -> Void in
+                    if(sucessful) {
+                        
+                    } else {
+                       print(errors?.description)
+                    }
+                })
                 let annotation = MKPointAnnotation()
                 annotation.coordinate = yelpBusinessMock.location.coordinate
                 annotation.title = yelpBusinessMock.name

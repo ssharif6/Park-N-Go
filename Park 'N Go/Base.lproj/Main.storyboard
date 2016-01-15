@@ -506,7 +506,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ek0-1a-bkJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="418.5" y="-200.5"/>
+            <point key="canvasLocation" x="1110.5" y="-492.5"/>
         </scene>
         <!--Attractions-->
         <scene sceneID="PVF-tv-EOd">
@@ -541,7 +541,7 @@
                                         <gestureRecognizers/>
                                         <connections>
                                             <outletCollection property="gestureRecognizers" destination="ZNG-0n-Uh2" appends="YES" id="FYa-re-Lgu"/>
-                                            <segue destination="Ozt-YZ-leu" kind="showDetail" identifier="cellToYelpTableview" action="showViewController:sender:" id="ALJ-8h-ofX"/>
+                                            <segue destination="ea5-0e-830" kind="show" identifier="cellToStack" id="0xy-Ys-StC"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -590,6 +590,47 @@
                 <swipeGestureRecognizer direction="right" id="ZNG-0n-Uh2"/>
             </objects>
             <point key="canvasLocation" x="1063.5" y="1115.5"/>
+        </scene>
+        <!--Attraction Stack View Controller-->
+        <scene sceneID="gi8-Te-e3F">
+            <objects>
+                <viewController id="ea5-0e-830" customClass="AttractionStackViewController" customModule="Park__N_Go" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="X1G-XZ-pHr"/>
+                        <viewControllerLayoutGuide type="bottom" id="Wt2-HR-zwO"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="IZx-jF-QHk">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pQQ-XA-2ou">
+                                <rect key="frame" x="56" y="113" width="263" height="171"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RVw-bT-SCf">
+                                        <rect key="frame" x="62" y="49" width="139" height="73"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Attraction" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vkH-9l-hEZ">
+                                        <rect key="frame" x="93" y="8" width="76" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.63483885220000003" green="0.86402045900000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="attractionImage" destination="RVw-bT-SCf" id="PXP-W5-Puw"/>
+                        <outlet property="attractionTitle" destination="vkH-9l-hEZ" id="xSB-DS-Xfd"/>
+                        <outlet property="containerView" destination="pQQ-XA-2ou" id="KUy-7w-5Zg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YHy-Jg-UvF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="906.5" y="1957.5"/>
         </scene>
         <!--Attractions Detail View Controller-->
         <scene sceneID="1sx-Xb-VFJ">
@@ -917,9 +958,9 @@
         <image name="Triangle 1 Copy" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="rw0-hr-5vw"/>
         <segue reference="q7D-ti-4qx"/>
+        <segue reference="rw0-hr-5vw"/>
         <segue reference="8b2-FH-d27"/>
-        <segue reference="lvq-f5-pNt"/>
+        <segue reference="p0U-gC-6sh"/>
     </inferredMetricsTieBreakers>
 </document>
