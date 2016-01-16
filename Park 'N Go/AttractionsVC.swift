@@ -40,7 +40,6 @@ class AttractionsVC: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
 
 
     @IBOutlet weak var openSidebar: UIBarButtonItem!
-    @IBOutlet weak var attractionsTabView: UITableView! //testVersion
     @IBOutlet weak var AttractionsTableView: UITableView!
     
     var currentArray:[String] = [String]();
@@ -372,9 +371,7 @@ class AttractionsVC: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
         var sectionArray = categoryDictionary[sectionTitle];
         let itemInArray = sectionArray?[indexPath.row];
         performYelpSearch(itemInArray!)
-        self.attractionsTabView.deselectRowAtIndexPath(indexPath, animated: true)
-        performSegueWithIdentifier("cellToStack", sender: self)
-    
+        self.AttractionsTableView.deselectRowAtIndexPath(indexPath, animated: true)    
     }
     
 }

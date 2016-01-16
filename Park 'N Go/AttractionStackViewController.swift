@@ -17,8 +17,7 @@ class AttractionStackViewController: UIViewController {
         super.viewDidLoad()
         let gesture = UIPanGestureRecognizer(target: self, action: Selector("wasDragged:"))
         containerView.addGestureRecognizer(gesture)
-        containerView.userInteractionEnabled = true
-        
+        containerView.userInteractionEnabled = true        
     }
     func wasDragged(gesture: UIPanGestureRecognizer) {
         let translation = gesture.translationInView(self.view) // where it starts and ends
