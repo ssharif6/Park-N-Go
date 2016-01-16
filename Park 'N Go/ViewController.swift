@@ -35,7 +35,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     var isEmpty = false;
     let regionRadius: CLLocationDistance = 1000
     
-    var sidebar:SideBar = SideBar()
+    var sidebar : SideBar = SideBar()
    
     override func viewDidLoad() {
 
@@ -44,6 +44,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
 
     if(NSUserDefaults.standardUserDefaults().objectForKey("pinnedLocation") != nil) {
             pinLocationButton.enabled = false;
+            pinLocationButton.alpha = 0.6
         }
         if let loadedData = NSUserDefaults.standardUserDefaults().dataForKey("pinnedLocation") {
             if let loadedLocation = NSKeyedUnarchiver.unarchiveObjectWithData(loadedData) as? CLLocation {
@@ -62,6 +63,11 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         currentLocation = map.userLocation;
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+    }
+    
     func sideBarDidSelectButtonAtIndex(index: Int) {
         //
     }
@@ -78,6 +84,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             NSNotificationCenter.defaultCenter().postNotificationName("reloadData", object: nil);
             self.map.removeAnnotations(self.map.annotations);
             self.pinLocationButton.enabled = true;
+            self.pinLocationButton.alpha = 1.0
         }
         alertController.addAction(deleteButton);
         alertController.addAction(cancelAction);
@@ -107,7 +114,8 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         //places.append(["name":title,"lat":"\(newCoordinate.latitude)","lon":"\(newCoordinate.longitude)"])
         isPinLocationButtonPressed = true;
         pinLocationButton.enabled = false;
-
+        pinLocationButton.alpha = 0.5
+        
         getLocationInfo(map.userLocation.location!);
         let pinnedLocation = map.userLocation.location;
         locationToUseForAppleMaps = pinnedLocation
