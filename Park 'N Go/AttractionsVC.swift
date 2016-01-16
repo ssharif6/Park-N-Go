@@ -298,19 +298,13 @@ class AttractionsVC: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
     
     func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         if (control == view.rightCalloutAccessoryView) {
-            let selectedLocation = view.annotation;
             let selectedCoordinate = view.annotation!.coordinate;
-            var latitude = selectedCoordinate.latitude
-            var longitude = selectedCoordinate.longitude
-            var location:CLLocation = CLLocation(latitude: latitude, longitude: longitude)
-            let businessPlacemark = MKPlacemark(coordinate: selectedCoordinate, addressDictionary: nil)
             indicatedMapItem = selectedCoordinate;
-            let resturantMock:Resturant = Resturant(dictionary: resultQueryDictionary)
             let dataArray = resultQueryDictionary["businesses"] as! NSArray
             var foundDisplayAddress:String = "Address not found"
             for business in dataArray {
                 let obj = business as! NSDictionary
-                var yelpBusinessMock: YelpBusiness = YelpBusiness(dictionary: obj)
+                let yelpBusinessMock: YelpBusiness = YelpBusiness(dictionary: obj)
                 if yelpBusinessMock.latitude == view.annotation!.coordinate.latitude {
                     if yelpBusinessMock.longitude == view.annotation!.coordinate.longitude {
                         attractionDict = obj;
