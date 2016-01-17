@@ -36,7 +36,6 @@ class Business: NSObject {
         var address = ""
         if location != nil {
             let addressArray = location!["address"] as? NSArray
-            var street: String? = ""
             if addressArray != nil && addressArray!.count > 0 {
                 address = addressArray![0] as! String
             }

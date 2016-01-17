@@ -41,7 +41,7 @@ class YelpTableViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("YelpTableBusinessCell", forIndexPath: indexPath) as! YelpTableBusinessCell
-        var business:Business = Business(dictionary: businessArray[indexPath.row] as! NSDictionary)
+        let business:Business = Business(dictionary: businessArray[indexPath.row] as! NSDictionary)
         cell.business = business
         cell.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.2)
         cell.textLabel?.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.0)
@@ -61,9 +61,9 @@ class YelpTableViewController: UIViewController, UITableViewDelegate, UITableVie
             if let ivc = segue.destinationViewController as? AttractionsDetailViewController {
                 ivc.businessToUse = self.businessToUseTVC
                 ivc.currentBusiness = self.businessDict
-                var locationLatitude = businessToUseTVC.latitude
-                var locationLongitude = businessToUseTVC.longitude
-                var locationCoordinate: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: locationLatitude!, longitude: locationLongitude!)
+                let locationLatitude = businessToUseTVC.latitude
+                let locationLongitude = businessToUseTVC.longitude
+                let locationCoordinate: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: locationLatitude!, longitude: locationLongitude!)
                 ivc.attractionLocation = locationCoordinate
 //                ivc.attractionLocation = self.indicatedMapItem
 

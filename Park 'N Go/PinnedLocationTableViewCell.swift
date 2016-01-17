@@ -14,6 +14,8 @@ class PinnedLocationTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        OGAddressLabel.adjustsFontSizeToFitWidth = true
+        OGAddressLabel.minimumScaleFactor = 0.9
         
     }
 

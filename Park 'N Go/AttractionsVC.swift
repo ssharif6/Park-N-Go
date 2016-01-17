@@ -253,7 +253,6 @@ class AttractionsVC: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
     func performYelpSearchWithParams(query: String) {
         attractionsMap.removeAnnotations(attractionsMap.annotations)
         matchingItems.removeAll()
-        var resturantMock:Resturant = Resturant(dictionary: resultQueryDictionary)
         Resturant.searchWithQueryWithRadius(self.attractionsMap, term: query, deal: false, radius: 100, sort: 0, categories: "Restaurants") { (BusinessList: [Resturant]!, error: NSError!) -> Void in
             if(error != nil) {
                 print("Error occured in the search \(error.localizedDescription)")
@@ -353,7 +352,7 @@ class AttractionsVC: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
         cell.textLabel?.text = itemInArray;
         cell.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.2)
         cell.textLabel?.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.0)
-        cell.textLabel?.textColor = UIColor.whiteColor()
+//        cell.textLabel?.textColor = UIColor.whiteColor()
         cell.contentView.backgroundColor = UIColor.clearColor()
         AttractionsTableView.backgroundColor = UIColor.clearColor()
         return cell

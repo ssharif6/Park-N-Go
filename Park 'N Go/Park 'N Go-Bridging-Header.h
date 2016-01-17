@@ -13,5 +13,4 @@
 #import <AFNetworking.h>
 #import <BDBOAuth1RequestOperationManager.h>
 #import <NSDictionary+BDBOAuth1Manager.h>
-#import "SWRevealViewController.h"
 #endif

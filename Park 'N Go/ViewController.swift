@@ -126,8 +126,8 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     }
     func getLocationInfo(locationParameter:CLLocation) {
         
-        var location = locationParameter
-        var coordinate = location.coordinate
+        let location = locationParameter
+        let coordinate = location.coordinate
         
         CLGeocoder().reverseGeocodeLocation(location, completionHandler: { (placemarks, error) -> Void in
             var title = ""

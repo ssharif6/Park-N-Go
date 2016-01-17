@@ -13,7 +13,6 @@
 		8509B5091B4CA225001C4AE8 /* detailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8509B5081B4CA225001C4AE8 /* detailViewController.swift */; };
 		850A45DF1B6C4240008D30E0 /* Resturant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850A45DE1B6C4240008D30E0 /* Resturant.swift */; };
 		850A45E11B6C790A008D30E0 /* YelpBusiness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850A45E01B6C790A008D30E0 /* YelpBusiness.swift */; };
-		852853EC1BA896C400DFB788 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 852853EB1BA896C400DFB788 /* SWRevealViewController.m */; };
 		852853F41BA8BCE400DFB788 /* BackTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852853F31BA8BCE400DFB788 /* BackTableVC.swift */; };
 		8550DE2B1B47478F0074A71C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8550DE2A1B47478F0074A71C /* AppDelegate.swift */; };
 		8550DE2D1B47478F0074A71C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8550DE2C1B47478F0074A71C /* ViewController.swift */; };
@@ -85,8 +84,6 @@
 		8509B5081B4CA225001C4AE8 /* detailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = detailViewController.swift; sourceTree = "<group>"; };
 		850A45DE1B6C4240008D30E0 /* Resturant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Resturant.swift; sourceTree = "<group>"; };
 		850A45E01B6C790A008D30E0 /* YelpBusiness.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YelpBusiness.swift; sourceTree = "<group>"; };
-		852853EA1BA896C400DFB788 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
-		852853EB1BA896C400DFB788 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		852853F31BA8BCE400DFB788 /* BackTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackTableVC.swift; sourceTree = "<group>"; };
 		8550DE251B47478F0074A71C /* Park 'N Go.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Park 'N Go.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8550DE291B47478F0074A71C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -177,15 +174,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		852853E91BA8969E00DFB788 /* SWNavigation */ = {
-			isa = PBXGroup;
-			children = (
-				852853EA1BA896C400DFB788 /* SWRevealViewController.h */,
-				852853EB1BA896C400DFB788 /* SWRevealViewController.m */,
-			);
-			name = SWNavigation;
-			sourceTree = "<group>";
-		};
 		8550DE1C1B47478F0074A71C = {
 			isa = PBXGroup;
 			children = (
@@ -212,7 +200,6 @@
 		8550DE271B47478F0074A71C /* Park 'N Go */ = {
 			isa = PBXGroup;
 			children = (
-				852853E91BA8969E00DFB788 /* SWNavigation */,
 				85BE522E1B5B5918006C351B /* YelpAPI */,
 				85630AB51B502CAA000DE1BD /* ViewControllers */,
 				855980DB1B55DDF30071F120 /* Models */,
@@ -532,7 +519,6 @@
 				85FE49871B923D9700820FC4 /* YelpInfoContactCell.swift in Sources */,
 				85DCCFFD1B54A52F00188C4D /* CategoryModel.swift in Sources */,
 				855980F31B5B4E9A0071F120 /* (null) in Sources */,
-				852853EC1BA896C400DFB788 /* SWRevealViewController.m in Sources */,
 				85FE49851B923D8100820FC4 /* YelpInfoDirectionCell.swift in Sources */,
 				8550DE2D1B47478F0074A71C /* ViewController.swift in Sources */,
 				85DCCFFB1B54A32100188C4D /* CustomCellTableViewCell.swift in Sources */,
