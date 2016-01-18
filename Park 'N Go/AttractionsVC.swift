@@ -23,7 +23,7 @@ class AttractionsVC: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
     
     @IBOutlet var categoriesView: UIView!
     
-    var sectionTitle : String!
+    var categoryTitle : String!
     
     @IBOutlet weak var searchButton: UIBarButtonItem!
     var businessMock: Business!
@@ -33,7 +33,7 @@ class AttractionsVC: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
     // For list in pinned location and attractions. To be
     var attractionDict: NSDictionary!
     
-    var categoryDictionary = [String:[String]]();
+    var categoryDictionary = [String:[String]]()
     
 
     @IBOutlet var searchText: UITextField!
@@ -47,7 +47,7 @@ class AttractionsVC: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
     @IBOutlet weak var openSidebar: UIBarButtonItem!
     @IBOutlet weak var AttractionsTableView: UITableView!
     
-    var currentArray:[String] = [String]();
+    var currentArray: [String] = [String]();
     var categoriesList = ["Food", "Entertainment", "Recreation", "Shopping", "Transport", "Lodging", "Services"]
     var foodCategories = [String]();
     var entertainmentCategories = [String]();
@@ -75,7 +75,7 @@ class AttractionsVC: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
     }
     
     @IBAction func categorySelected(sender: UIButton) {
-        sectionTitle = sender.titleLabel?.text
+        categoryTitle = sender.titleLabel?.text
 
         AttractionsTableView.reloadData()
         
@@ -88,6 +88,7 @@ class AttractionsVC: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        categoryTitle = "Entertainment"
 
         searchBar2.delegate = self
         searchBar2.searchBarStyle = UISearchBarStyle.Minimal
@@ -187,9 +188,13 @@ class AttractionsVC: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
         categoryDictionary["Food"] = foodCategories;
     }
     func setUpCategoryEntertainment() {
-        let movieTheaters = "Movie Theatre"
+        let cinemas = "Cinemas"
+        let theaters = "Theaters"
+        let concertHalls = "Concert Halls"
 
-        entertainmentCategories.append(movieTheaters);
+        entertainmentCategories.append(cinemas)
+        entertainmentCategories.append(theaters)
+        entertainmentCategories.append(concertHalls)
         
         categoryDictionary["Entertainment"] = entertainmentCategories;
 
@@ -212,7 +217,6 @@ class AttractionsVC: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
         let supermarkets = "Supermarket";
         let electronics = "Electronics";
         
-        shoppingCategories.append(malls);
         shoppingCategories.append(supermarkets);
         shoppingCategories.append(electronics);
         
@@ -357,8 +361,7 @@ class AttractionsVC: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let sectionTitle = categoriesList[section];
-        let sectionArray = categoryDictionary[sectionTitle];
+        let sectionArray = categoryDictionary[self.categoryTitle]
         return sectionArray!.count;
     }
     
@@ -366,22 +369,16 @@ class AttractionsVC: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell:UITableViewCell = tableView.dequeueReusableCellWithIdentifier("myCell")!
         
-        var sectionArray : [String]
+        var categoryArray = categoryDictionary[self.categoryTitle]!
         
-        if self.sectionTitle == nil {
-            sectionArray = categoryDictionary[categoriesList[indexPath.section]]!;
-        } else {
-            sectionArray = categoryDictionary[self.sectionTitle]!
-        }
+        let itemInArray = categoryArray[indexPath.row]
         
-        
-        let itemInArray = sectionArray[indexPath.row];
-        cell.textLabel?.text = itemInArray;
+        cell.textLabel?.text = itemInArray
         cell.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.2)
         cell.textLabel?.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.0)
-//        cell.textLabel?.textColor = UIColor.whiteColor()
         cell.contentView.backgroundColor = UIColor.clearColor()
         AttractionsTableView.backgroundColor = UIColor.clearColor()
+        
         return cell
     }
 
