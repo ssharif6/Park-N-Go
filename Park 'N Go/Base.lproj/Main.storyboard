@@ -573,7 +573,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pQQ-XA-2ou">
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pQQ-XA-2ou" customClass="AttractionCard" customModule="Park__N_Go" customModuleProvider="target">
                                 <rect key="frame" x="56" y="113" width="263" height="171"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RVw-bT-SCf">
@@ -614,10 +614,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="ReformParisII" translatesAutoresizingMaskIntoConstraints="NO" id="jxX-FT-Z2C">
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" image="ReformParisII" translatesAutoresizingMaskIntoConstraints="NO" id="jxX-FT-Z2C">
                                 <rect key="frame" x="0.0" y="64" width="375" height="667"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Facing East" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Tl-0y-xvv">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Facing East" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Tl-0y-xvv">
                                 <rect key="frame" x="11" y="72" width="308" height="26"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -632,7 +632,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="T7w-Ix-bZ4">
                                 <rect key="frame" x="11" y="106" width="83" height="15"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="608 Reviews" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hdI-4f-JBc">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="608 Reviews" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hdI-4f-JBc">
                                 <rect key="frame" x="102" y="103" width="98" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -736,6 +736,16 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="jxX-FT-Z2C" firstAttribute="top" secondItem="mfX-pp-eQi" secondAttribute="bottom" id="4jQ-FW-R0i"/>
+                            <constraint firstItem="jxX-FT-Z2C" firstAttribute="leading" secondItem="PfU-Mi-ihO" secondAttribute="leadingMargin" constant="-20" id="524-oe-ig3"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="7Tl-0y-xvv" secondAttribute="trailing" constant="36" id="IwH-PT-rHL"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="jxX-FT-Z2C" secondAttribute="bottom" constant="-64" id="NXP-73-v7v"/>
+                            <constraint firstItem="7Tl-0y-xvv" firstAttribute="leading" secondItem="PfU-Mi-ihO" secondAttribute="leadingMargin" constant="-9" id="dDh-C0-ULZ"/>
+                            <constraint firstItem="7Tl-0y-xvv" firstAttribute="top" secondItem="mfX-pp-eQi" secondAttribute="bottom" constant="8" id="er3-rJ-7D3"/>
+                            <constraint firstItem="hdI-4f-JBc" firstAttribute="top" secondItem="7Tl-0y-xvv" secondAttribute="bottom" constant="5" id="i55-Yj-CJf"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="jxX-FT-Z2C" secondAttribute="trailing" constant="-20" id="uwK-S3-ijw"/>
+                        </constraints>
                     </view>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>

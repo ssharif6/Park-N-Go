@@ -45,6 +45,7 @@
 		85A7B59C1B504D6200EE0611 /* AttractionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A7B59B1B504D6200EE0611 /* AttractionsVC.swift */; };
 		85A7B5A81B508B1000EE0611 /* AttractionsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A7B5A71B508B1000EE0611 /* AttractionsDetailViewController.swift */; };
 		85BED0DA1B6EF56500413EE4 /* categories.json in Resources */ = {isa = PBXBuildFile; fileRef = 85BED0D91B6EF56500413EE4 /* categories.json */; };
+		85C24D851C4B9CA700959399 /* AttractionCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C24D841C4B9CA700959399 /* AttractionCard.swift */; };
 		85C7E0361B6C3D3C00E2F3A2 /* YelpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C7E0351B6C3D3C00E2F3A2 /* YelpClient.swift */; };
 		85DC1B4C1B54E6C500DA8ABB /* CustomCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85DC1B4B1B54E6C500DA8ABB /* CustomCategoryCell.swift */; };
 		85DC42DF1B9149A800CB72B2 /* YelpTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85DC42DE1B9149A800CB72B2 /* YelpTableViewController.swift */; };
@@ -120,6 +121,7 @@
 		85A7B59B1B504D6200EE0611 /* AttractionsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttractionsVC.swift; sourceTree = "<group>"; };
 		85A7B5A71B508B1000EE0611 /* AttractionsDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttractionsDetailViewController.swift; sourceTree = "<group>"; };
 		85BED0D91B6EF56500413EE4 /* categories.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = categories.json; sourceTree = "<group>"; };
+		85C24D841C4B9CA700959399 /* AttractionCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttractionCard.swift; sourceTree = "<group>"; };
 		85C7E0351B6C3D3C00E2F3A2 /* YelpClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YelpClient.swift; sourceTree = "<group>"; };
 		85DC1B4B1B54E6C500DA8ABB /* CustomCategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCategoryCell.swift; sourceTree = "<group>"; };
 		85DC42DE1B9149A800CB72B2 /* YelpTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YelpTableViewController.swift; sourceTree = "<group>"; };
@@ -295,6 +297,7 @@
 				850465921BA7E4A700F6596A /* SideBarTableViewController.swift */,
 				852853F31BA8BCE400DFB788 /* BackTableVC.swift */,
 				858117A21C48C97A00573F06 /* AttractionStackViewController.swift */,
+				85C24D841C4B9CA700959399 /* AttractionCard.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -523,6 +526,7 @@
 				8550DE2D1B47478F0074A71C /* ViewController.swift in Sources */,
 				85DCCFFB1B54A32100188C4D /* CustomCellTableViewCell.swift in Sources */,
 				85C7E0361B6C3D3C00E2F3A2 /* YelpClient.swift in Sources */,
+				85C24D851C4B9CA700959399 /* AttractionCard.swift in Sources */,
 				85E84C511B4C60DB00614FB3 /* Annotation.swift in Sources */,
 				85556FB31BA3D4F40011C401 /* SettingsTableViewController.swift in Sources */,
 				85A7B5A81B508B1000EE0611 /* AttractionsDetailViewController.swift in Sources */,
