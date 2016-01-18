@@ -21,6 +21,10 @@ class AttractionsVC: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
     @IBOutlet weak var segmentedView : UISegmentedControl!
     
     
+    @IBOutlet var categoriesView: UIView!
+    
+    var sectionTitle : String!
+    
     @IBOutlet weak var searchButton: UIBarButtonItem!
     var businessMock: Business!
     var matchingItems: [MKMapItem] = [MKMapItem]();
@@ -28,6 +32,7 @@ class AttractionsVC: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
     var attractionLocationString:String!
     // For list in pinned location and attractions. To be
     var attractionDict: NSDictionary!
+    
     var categoryDictionary = [String:[String]]();
     
 
@@ -57,15 +62,28 @@ class AttractionsVC: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
     @IBAction func segmentedControlIndexChanged(sender: UISegmentedControl) {
         switch segmentedView.selectedSegmentIndex {
         case 0:
-            AttractionsTableView.hidden = true
+            categoriesView.hidden = true
             attractionsMap.hidden = false
+            AttractionsTableView.hidden = true
         case 1:
+            categoriesView.hidden = false
             attractionsMap.hidden = true
-            AttractionsTableView.hidden = false
+            AttractionsTableView.hidden = true
         default:
             break;
         }
     }
+    
+    @IBAction func categorySelected(sender: UIButton) {
+        sectionTitle = sender.titleLabel?.text
+
+        AttractionsTableView.reloadData()
+        
+        categoriesView.hidden = true
+        AttractionsTableView.hidden = false
+        
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -99,6 +117,7 @@ class AttractionsVC: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
         
         AttractionsTableView.hidden = true
         attractionsMap.hidden = false
+        categoriesView.hidden = true
     } 
     func sideBarDidSelectButtonAtIndex(index: Int) {
         
@@ -330,11 +349,11 @@ class AttractionsVC: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return categoriesList.count;
+        return 1
     }
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String?  {
-        return categoriesList[section];
+        return nil
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -346,9 +365,17 @@ class AttractionsVC: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell:UITableViewCell = tableView.dequeueReusableCellWithIdentifier("myCell")!
-        let sectionTitle = categoriesList[indexPath.section]
-        var sectionArray = categoryDictionary[sectionTitle];
-        let itemInArray = sectionArray?[indexPath.row];
+        
+        var sectionArray : [String]
+        
+        if self.sectionTitle == nil {
+            sectionArray = categoryDictionary[categoriesList[indexPath.section]]!;
+        } else {
+            sectionArray = categoryDictionary[self.sectionTitle]!
+        }
+        
+        
+        let itemInArray = sectionArray[indexPath.row];
         cell.textLabel?.text = itemInArray;
         cell.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.2)
         cell.textLabel?.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.0)
