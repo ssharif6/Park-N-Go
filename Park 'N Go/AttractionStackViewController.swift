@@ -65,7 +65,12 @@ class AttractionStackViewController: UIViewController {
                 
                 PFUser.currentUser()?.addUniqueObjectsFromArray([displayedUserId], forKey:acceptedOrRejected)
                 
-                PFUser.currentUser()?.saveInBackground()
+                do {
+                    try PFUser.currentUser()?.save()
+                } catch {
+                    // Error handling
+                }
+                
                 
             }
             
@@ -96,7 +101,7 @@ class AttractionStackViewController: UIViewController {
                 for object in objects {
                     self.displayUserId = object.objectId!
                     let businessName = object["name"] as! String
-                    print(businessName + " Hello " )
+                    print(businessName + self.displayUserId)
                     self.attractionTitle.text = businessName
                 }
             }

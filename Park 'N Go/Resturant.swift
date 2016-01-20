@@ -30,6 +30,7 @@ class Resturant: NSObject {
     
     class func searchWithQuery(map: MKMapView, query: String, completion: ([Resturant]!, NSError!) -> Void) {
 //        var radiusInMiles: Double = Double(radiusGlobal) * 0.000621371
+        
         let radiusInMeters: Double = Double(radiusGlobal) * 1609.34
         YelpClient.sharedInstance.searchWithTerm(query, sort: sortGlobal, radius: radiusInMeters, limit: numResultsGlobal, success: { (operation: AFHTTPRequestOperation!, response: AnyObject!) -> Void in
             let responseInfo = response as! NSDictionary
@@ -37,16 +38,22 @@ class Resturant: NSObject {
             print(responseInfo)
             let dataArray = responseInfo["businesses"] as! NSArray
             businessArray = dataArray
+            let businessQuery = PFQuery(className: "Business")
+            businessQuery.findObjectsInBackgroundWithBlock({ (objects: [PFObject]?, error: NSError?) -> Void in
+                for object in objects! {
+                    object.deleteInBackground()
+                }
+            })
             for business in dataArray {
                 let obj = business as! NSDictionary
                 let yelpBusinessMock: Business = Business(dictionary: obj)
+                
                 let businessToParse = PFObject(className: "Business")
                 businessToParse["name"] = yelpBusinessMock.name
                 businessToParse["address"] = yelpBusinessMock.address
                 businessToParse["categories"] = yelpBusinessMock.categories
                 businessToParse["distance"] = yelpBusinessMock.distance
                 businessToParse["imageURLString"] = yelpBusinessMock.imageURLString
-//                businessToParse["imageURL"] = yelpBusinessMock.imageURL
                 businessToParse.saveInBackgroundWithBlock({ (sucessful: Bool, errors: NSError?) -> Void in
                     if(sucessful) {
                         
