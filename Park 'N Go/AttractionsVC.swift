@@ -9,6 +9,7 @@
 import UIKit
 import MapKit
 import AddressBook
+import Parse
 
 var userLocationCoordinate:CLLocationCoordinate2D!;
 
@@ -76,20 +77,18 @@ class AttractionsVC: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
     
     @IBAction func categorySelected(sender: UIButton) {
         categoryTitle = sender.titleLabel?.text
-
         AttractionsTableView.reloadData()
-        
         categoriesView.hidden = true
         AttractionsTableView.hidden = false
         
     }
     
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         categoryTitle = "Entertainment"
-
+        resetDatabase()
         searchBar2.delegate = self
         searchBar2.searchBarStyle = UISearchBarStyle.Minimal
         setupSetUps();
@@ -119,7 +118,25 @@ class AttractionsVC: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
         AttractionsTableView.hidden = true
         attractionsMap.hidden = false
         categoriesView.hidden = true
-    } 
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        resetDatabase()
+    }
+    
+    func resetDatabase() {
+        let businessQuery = PFQuery(className: "Business")
+        businessQuery.findObjectsInBackgroundWithBlock({ (objects: [PFObject]?, error: NSError?) -> Void in
+            for object in objects! {
+                do {
+                    try object.delete()
+                } catch {
+                    // do something
+                    print("FUCK")
+                }
+            }
+        })
+    }
     func sideBarDidSelectButtonAtIndex(index: Int) {
         
     }
@@ -388,7 +405,8 @@ class AttractionsVC: UIViewController, CLLocationManagerDelegate, MKMapViewDeleg
         var sectionArray = categoryDictionary[sectionTitle];
         let itemInArray = sectionArray?[indexPath.row];
         performYelpSearch(itemInArray!)
-        self.AttractionsTableView.deselectRowAtIndexPath(indexPath, animated: true)    
+        self.AttractionsTableView.deselectRowAtIndexPath(indexPath, animated: true)
+
     }
     
 }

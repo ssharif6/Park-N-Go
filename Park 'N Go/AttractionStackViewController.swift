@@ -16,20 +16,30 @@ class AttractionStackViewController: UIViewController {
     @IBOutlet weak var attractionImage: UIImageView!
     
     var displayUserId = ""
+    var queryString: String = ""
+    var mostRecentObj: PFObject?
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-        updateAttractionCard()
+        getFirstAttractionCard()
         let gesture = UIPanGestureRecognizer(target: self, action: Selector("wasDragged:"))
         containerView.addGestureRecognizer(gesture)
-        containerView.userInteractionEnabled = true        
+        containerView.userInteractionEnabled = true
+        super.viewDidLoad()
         
     }
+    
+    override func viewDidAppear(animated: Bool) {
+        getFirstAttractionCard()
+        let gesture = UIPanGestureRecognizer(target: self, action: Selector("wasDragged:"))
+        containerView.addGestureRecognizer(gesture)
+        containerView.userInteractionEnabled = true
+        viewDidLoad()
+    }
+
     var displayedUserId = ""
     
     
     func wasDragged(gesture: UIPanGestureRecognizer) {
-        
         let translation = gesture.translationInView(self.view)
         let label = gesture.view!
         
@@ -62,14 +72,7 @@ class AttractionStackViewController: UIViewController {
             }
             
             if acceptedOrRejected != "" {
-                
-                PFUser.currentUser()?.addUniqueObjectsFromArray([displayedUserId], forKey:acceptedOrRejected)
-                
-                do {
-                    try PFUser.currentUser()?.save()
-                } catch {
-                    // Error handling
-                }
+                updateAttractionCard(acceptedOrRejected)
                 
                 
             }
@@ -82,17 +85,30 @@ class AttractionStackViewController: UIViewController {
             
             label.center = CGPoint(x: self.view.bounds.width / 2, y: self.view.bounds.height / 2)
             
-            updateAttractionCard()
             
         }
         
         
-        
     }
-    func updateAttractionCard() {
+    
+    func getFirstAttractionCard() {
+        let query = PFQuery(className: "Business")
+        do {
+            let shit:PFObject = try query.getFirstObject()
+            self.attractionTitle.text = shit["name"] as? String
+            self.mostRecentObj = shit
+            print(shit["name"] as? String)
+
+        } catch {
+            // do something
+            print(error)
+        }
+    }
+    
+    
+    func updateAttractionCard(status: String) {
         // Get the first attraction
         let businessQuery = PFQuery(className: "Business")
-        
         businessQuery.limit = 1
         businessQuery.findObjectsInBackgroundWithBlock { (objects: [PFObject]?, error: NSError?) -> Void in
             if error != nil {
@@ -101,8 +117,20 @@ class AttractionStackViewController: UIViewController {
                 for object in objects {
                     self.displayUserId = object.objectId!
                     let businessName = object["name"] as! String
+                    print(businessName)
                     print(businessName + self.displayUserId)
                     self.attractionTitle.text = businessName
+                    if status == "accepted" {
+                        // Accepted Method
+                    } else  {
+                        // firstTime
+                        do {
+                            try object.delete()
+                        } catch {
+                            print("FUCK")
+                        }
+                        self.getFirstAttractionCard()
+                    }
                 }
             }
         }
@@ -114,5 +142,6 @@ class AttractionStackViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
     
 }

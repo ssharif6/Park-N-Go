@@ -18,7 +18,7 @@ class Resturant: NSObject {
     var thumbUrl: String!
     var address: String!
     var jsonData: NSData!
-    var locationDict: NSDictionary        // location
+    var locationDict: NSDictionary   
     var sortFromSettings: Int! = 0
     
     init(dictionary: NSDictionary) {
@@ -41,7 +41,12 @@ class Resturant: NSObject {
             let businessQuery = PFQuery(className: "Business")
             businessQuery.findObjectsInBackgroundWithBlock({ (objects: [PFObject]?, error: NSError?) -> Void in
                 for object in objects! {
-                    object.deleteInBackground()
+                    do {
+                        try object.delete()
+                    } catch {
+                        // do something
+                        print("FUCK")
+                    }
                 }
             })
             for business in dataArray {
@@ -54,9 +59,10 @@ class Resturant: NSObject {
                 businessToParse["categories"] = yelpBusinessMock.categories
                 businessToParse["distance"] = yelpBusinessMock.distance
                 businessToParse["imageURLString"] = yelpBusinessMock.imageURLString
+               
                 businessToParse.saveInBackgroundWithBlock({ (sucessful: Bool, errors: NSError?) -> Void in
                     if(sucessful) {
-                        
+                        print("FUCK 2")
                     } else {
                        print(errors?.description)
                     }
